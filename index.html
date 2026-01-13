@@ -115,6 +115,24 @@
             color: var(--accent-brown);
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-products {
+            font-size: 0.85rem;
+            color: var(--accent-brown);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .header-products:hover {
+            color: #7a6548;
+        }
+
         /* Hero */
         .hero {
             padding: 10rem 2rem 6rem;
@@ -241,6 +259,196 @@
         .stat-label {
             font-size: 0.85rem;
             color: var(--text-secondary);
+        }
+
+        /* Choose Yourself Section */
+        .choose-yourself {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
+        }
+
+        .choose-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .choose-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-brown));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(196, 149, 106, 0.3);
+        }
+
+        .choose-icon-wrapper svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+        }
+
+        .choose-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .choose-lead {
+            font-size: 1.15rem;
+            color: var(--accent-brown);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .choose-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .choose-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .choose-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .choose-card:hover {
+            box-shadow: var(--shadow-soft);
+            transform: translateX(5px);
+        }
+
+        .choose-card.highlight {
+            background: linear-gradient(135deg, var(--accent-brown), #6b5a45);
+            border: none;
+            color: white;
+        }
+
+        .choose-card.highlight:hover {
+            transform: translateX(5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(139, 115, 85, 0.3);
+        }
+
+        .choose-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .choose-card:not(.highlight) .choose-card-icon {
+            background: rgba(166, 84, 84, 0.1);
+        }
+
+        .choose-card:not(.highlight) .choose-card-icon svg {
+            stroke: var(--accent-red);
+        }
+
+        .choose-card.highlight .choose-card-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .choose-card.highlight .choose-card-icon svg {
+            stroke: white;
+        }
+
+        .choose-card-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .choose-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .choose-card:not(.highlight) h4 {
+            color: var(--text-primary);
+        }
+
+        .choose-card ul {
+            list-style: none;
+        }
+
+        .choose-card ul li {
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .choose-card:not(.highlight) ul li {
+            color: var(--text-secondary);
+        }
+
+        .choose-card.highlight ul li {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .choose-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0.5;
+        }
+
+        .choose-quote {
+            max-width: 700px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .choose-quote blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .choose-quote blockquote::before,
+        .choose-quote blockquote::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+            font-family: Georgia, serif;
+        }
+
+        .choose-quote blockquote::before {
+            top: -1rem;
+            left: 0;
+        }
+
+        .choose-quote blockquote::after {
+            content: '"';
+            bottom: -2rem;
+            right: 0;
         }
 
         /* Section Headers */
@@ -521,60 +729,37 @@
         }
 
         .timeline-container {
-            max-width: 900px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .timeline-items {
             position: relative;
             margin-top: 3rem;
+            padding-left: 80px;
         }
 
         .timeline-items::before {
             content: '';
             position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
+            left: 25px;
+            top: 25px;
+            bottom: 25px;
             width: 2px;
             background: linear-gradient(180deg, var(--accent-gold) 0%, var(--accent-brown) 100%);
-            transform: translateX(-50%);
             opacity: 0.3;
         }
 
         .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            flex: 1;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 2rem;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 2rem;
+            position: relative;
+            margin-bottom: 1.5rem;
         }
 
         .timeline-dot {
+            position: absolute;
+            left: -55px;
+            top: 50%;
+            transform: translateY(-50%);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -586,9 +771,16 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             font-weight: 600;
-            flex-shrink: 0;
             z-index: 1;
             box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-soft);
         }
 
         .timeline-week {
@@ -1290,6 +1482,7 @@
         /* Mobile */
         @media (max-width: 768px) {
             .header { padding: 1rem 1.5rem; }
+            .header-products { display: none; }
             .hero { padding: 8rem 1.5rem 4rem; }
 
             .stats-grid {
@@ -1299,23 +1492,33 @@
             .stat-item::after { display: none; }
             .stat-value { font-size: 2.2rem; }
 
+            .choose-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .choose-content { text-align: center; }
+            .choose-icon-wrapper { margin: 0 auto 1.5rem; }
+            .choose-content h2 { font-size: 1.8rem; }
+            .choose-quote blockquote { font-size: 1.2rem; }
+
+            .timeline-items {
+                padding-left: 60px;
+            }
+            .timeline-dot {
+                left: -45px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .timeline-items::before {
+                left: 20px;
+            }
+
             .problem-grid { grid-template-columns: 1fr; }
 
             .science-content { 
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .timeline-items::before { display: none; }
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                flex-direction: column;
-            }
-            .timeline-content,
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                margin: 1rem 0 0 0;
-                text-align: center;
             }
 
             .comparison-grid { 
@@ -1497,7 +1700,10 @@
             <svg class="logo-icon"><use href="#icon-sparkle"/></svg>
             <span>Архитектура</span> сознания
         </a>
-        <a href="https://t.me/TheBodyMindCode_support" class="header-cta">Поддержка</a>
+        <div class="header-right">
+            <a href="#products" class="header-products">Смотреть программы</a>
+            <a href="https://t.me/TheBodyMindCode_support" class="header-cta">Поддержка</a>
+        </div>
     </header>
 
     <!-- Hero -->
@@ -1506,10 +1712,10 @@
             <svg><use href="#icon-brain"/></svg>
             Прикладная нейробиология
         </span>
-        <h1>Инструменты для тех, кто готов <em>измениться</em></h1>
+        <h1>Момент, когда вы <em>выбираете себя</em></h1>
         <p class="hero-subtitle">
-            Научно обоснованные методы работы с сознанием. 
-            Выберите свой путь к ясности, спокойствию и результатам.
+            Не откладывать. Не ждать подходящего момента. Не надеяться, что «само пройдёт». 
+            А принять решение — и дать себе инструменты для изменений.
         </p>
         <a href="#products" class="hero-cta">
             Смотреть программы
@@ -1540,6 +1746,58 @@
                 <div class="stat-value">∞</div>
                 <div class="stat-label">вечный доступ к материалам</div>
             </div>
+        </div>
+    </section>
+
+    <!-- Choose Yourself Section -->
+    <section class="choose-yourself">
+        <div class="choose-container">
+            <div class="choose-content">
+                <div class="choose-icon-wrapper">
+                    <svg><use href="#icon-heart"/></svg>
+                </div>
+                <h2>Выбрать себя — это не эгоизм</h2>
+                <p class="choose-lead">Это единственный способ по-настоящему быть полезным другим.</p>
+                <div class="choose-text">
+                    <p>Вы не можете налить из пустого стакана. Не можете дать другим то, чего нет у вас. Спокойствие, ясность, энергия — это не роскошь. Это фундамент, на котором строится всё остальное.</p>
+                    <p>Каждый раз, когда вы откладываете заботу о себе «на потом» — вы платите. Своим здоровьем, отношениями, возможностями. Инвестиция в себя — это не трата. Это актив, который работает на вас каждый день.</p>
+                </div>
+            </div>
+            <div class="choose-cards">
+                <div class="choose-card">
+                    <div class="choose-card-icon">
+                        <svg><use href="#icon-x"/></svg>
+                    </div>
+                    <div class="choose-card-content">
+                        <h4>Когда вы не выбираете себя</h4>
+                        <ul>
+                            <li>Отдаёте энергию, которой нет</li>
+                            <li>Раздражаетесь на близких</li>
+                            <li>Принимаете решения из усталости</li>
+                            <li>Живёте в режиме «дотянуть до пятницы»</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="choose-card highlight">
+                    <div class="choose-card-icon">
+                        <svg><use href="#icon-check"/></svg>
+                    </div>
+                    <div class="choose-card-content">
+                        <h4>Когда вы выбираете себя</h4>
+                        <ul>
+                            <li>Даёте из наполненности</li>
+                            <li>Присутствуете в отношениях</li>
+                            <li>Действуете из ясности</li>
+                            <li>Живёте, а не выживаете</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="choose-quote">
+            <blockquote>
+                «Вы не можете изменить мир, пока не измените себя. И вы не измените себя, пока не решите, что достойны этих изменений.»
+            </blockquote>
         </div>
     </section>
 
@@ -1676,36 +1934,36 @@
 
             <div class="timeline-items">
                 <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
                     <div class="timeline-content">
                         <div class="timeline-week">Неделя 1</div>
                         <div class="timeline-title">Знакомство с тишиной</div>
                         <div class="timeline-text">Осваиваете базовые техники. Первые моменты внутреннего покоя. Улучшение сна.</div>
                     </div>
-                    <div class="timeline-dot">1</div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
                     <div class="timeline-content">
                         <div class="timeline-week">Неделя 2</div>
                         <div class="timeline-title">Первые изменения</div>
                         <div class="timeline-text">Замечаете, что мысли уже не управляют вами. Меньше реактивности, больше выбора.</div>
                     </div>
-                    <div class="timeline-dot">2</div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
                     <div class="timeline-content">
                         <div class="timeline-week">Неделя 3</div>
                         <div class="timeline-title">Углубление практики</div>
                         <div class="timeline-text">Тишина становится доступной по запросу. Фокус и концентрация заметно растут.</div>
                     </div>
-                    <div class="timeline-dot">3</div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
                     <div class="timeline-content">
                         <div class="timeline-week">Неделя 4</div>
                         <div class="timeline-title">Новое состояние</div>
                         <div class="timeline-text">Спокойствие как фоновое состояние. Ясность мышления. Структурные изменения мозга закрепляются.</div>
                     </div>
-                    <div class="timeline-dot">4</div>
                 </div>
             </div>
         </div>
@@ -1818,7 +2076,7 @@
 
             <div class="products-grid">
                 <!-- Product 1 -->
-                <article class="product-card">
+                <article class="product-card featured">
                     <div class="product-icon">
                         <svg><use href="#icon-brain"/></svg>
                     </div>
@@ -1848,7 +2106,7 @@
                 </article>
 
                 <!-- Product 2 -->
-                <article class="product-card featured">
+                <article class="product-card">
                     <div class="product-icon">
                         <svg><use href="#icon-compass"/></svg>
                     </div>
