@@ -1234,6 +1234,126 @@
             transform: scale(1.02);
         }
 
+        /* Bundle Section */
+        .bundle {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #a99783 0%, #8b7a66 100%);
+        }
+
+        .bundle-container {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .bundle-tag {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: rgba(139, 115, 85, 0.9);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .bundle-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .bundle-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .bundle-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .bundle-item {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .bundle-price {
+            margin-bottom: 2rem;
+        }
+
+        .bundle-price-old {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .bundle-price-new {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .bundle-price-new span {
+            font-size: 2rem;
+        }
+
+        .bundle-savings {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent-green);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 100px;
+        }
+
+        .bundle-btn {
+            display: inline-block;
+            padding: 1.1rem 3rem;
+            background: white;
+            color: var(--accent-brown);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .bundle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
         /* Triggers */
         .triggers {
             padding: 6rem 2rem;
@@ -1574,6 +1694,12 @@
             .products-grid { grid-template-columns: 1fr; }
             .product-card { padding: 2rem; }
             .button-group { flex-direction: column; }
+
+            .bundle { padding: 3rem 1.5rem; }
+            .bundle-title { font-size: 2.2rem; }
+            .bundle-price-new { font-size: 2.5rem; }
+            .bundle-price-row { flex-direction: column; gap: 0.75rem; }
+            .bundle-item { max-width: 100%; padding: 0.8rem 1.5rem; font-size: 0.95rem; }
 
             .triggers-grid { grid-template-columns: 1fr; }
 
@@ -2213,7 +2339,32 @@
         </div>
     </section>
 
-    <!-- Triggers -->
+    <!-- Bundle Section -->
+    <section class="bundle">
+        <div class="bundle-container">
+            <span class="bundle-tag">🎁 МАКСИМАЛЬНАЯ ВЫГОДА</span>
+            <h2 class="bundle-title">Всё в одном</h2>
+            <p class="bundle-description">Полный набор инструментов трансформации: протокол + практикум + персональная сессия</p>
+            
+            <div class="bundle-items">
+                <div class="bundle-item">🧠 Протокол остановки ума</div>
+                <div class="bundle-item">✨ Код нового года</div>
+                <div class="bundle-item">💫 Сессия с Дарьей</div>
+            </div>
+            
+            <div class="bundle-price">
+                <span class="bundle-price-old">15 480 ₽</span>
+                <div class="bundle-price-row">
+                    <span class="bundle-price-new">10 830 <span>₽</span></span>
+                    <span class="bundle-savings">Экономия 4 650 ₽</span>
+                </div>
+            </div>
+            
+            <a href="https://payform.ru/okam9WI/" class="bundle-btn">
+                Купить набор →
+            </a>
+        </div>
+    </section>
     <section class="triggers">
         <div class="triggers-container">
             <div class="section-header">
