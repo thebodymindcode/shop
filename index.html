@@ -1234,6 +1234,65 @@
             transform: scale(1.02);
         }
 
+        /* Reviews Section */
+        .reviews {
+            padding: 6rem 2rem;
+            background: var(--bg-primary);
+        }
+
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews-slider {
+            margin-top: 3rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 1rem;
+        }
+
+        .reviews-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.5rem;
+        }
+
+        .review-item {
+            flex-shrink: 0;
+            width: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+
+        .review-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .review-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .reviews-hint {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
         /* Bundle Section */
         .bundle {
             padding: 5rem 2rem;
@@ -1701,6 +1760,9 @@
             .bundle-price-row { flex-direction: column; gap: 0.75rem; }
             .bundle-item { max-width: 100%; padding: 0.8rem 1.5rem; font-size: 0.95rem; }
 
+            .reviews { padding: 4rem 1rem; }
+            .review-item { width: 280px; }
+
             .triggers-grid { grid-template-columns: 1fr; }
 
             .footer-links { flex-direction: column; gap: 1rem; }
@@ -1965,6 +2027,50 @@
             <blockquote>
                 «Вы не можете изменить мир, пока не измените себя. И вы не измените себя, пока не решите, что достойны этих изменений.»
             </blockquote>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="reviews-container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <svg><use href="#icon-message"/></svg>
+                    Отзывы участников
+                </span>
+                <h2 class="section-title">Что говорят те, кто уже прошёл</h2>
+            </div>
+            
+            <div class="reviews-slider">
+                <div class="reviews-track">
+                    <div class="review-item"><img src="reviews/01.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/02.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/03.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/04.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/05.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/06.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/07.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/08.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/09.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/010.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/011.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/012.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/013.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/014.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/015.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/016.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/017.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/018.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/019.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/020.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/021.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/022.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/023.jpg" alt="Отзыв"></div>
+                    <div class="review-item"><img src="reviews/024.jpg" alt="Отзыв"></div>
+                </div>
+            </div>
+            
+            <p class="reviews-hint">← Листайте →</p>
         </div>
     </section>
 
