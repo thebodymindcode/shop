@@ -1,2811 +1,673 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин | Архитектура сознания</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #faf8f5;
-            --bg-secondary: #f3efe8;
-            --bg-card: #ffffff;
-            --bg-accent: #f5f1eb;
-            --bg-dark: #1a1816;
-            --text-primary: #1a1a1a;
-            --text-secondary: #5a5a5a;
-            --text-muted: #8a8a8a;
-            --accent-brown: #8b7355;
-            --accent-gold: #c4956a;
-            --accent-green: #5a7a5a;
-            --accent-red: #a65454;
-            --accent-blue: #5a6a7a;
-            --border-color: rgba(0, 0, 0, 0.08);
-            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* Premium Icons */
-        .icon {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            stroke-width: 1.5;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .icon-lg {
-            width: 32px;
-            height: 32px;
-        }
-
-        .icon-xl {
-            width: 48px;
-            height: 48px;
-        }
-
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1.5rem 2rem;
-            background: rgba(250, 248, 245, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 20px;
-            height: 20px;
-            stroke: var(--accent-gold);
-            fill: none;
-        }
-
-        .logo span { color: var(--accent-gold); }
-
-        .header-cta {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border: 1px solid var(--border-color);
-            border-radius: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .header-cta:hover {
-            border-color: var(--accent-brown);
-            color: var(--accent-brown);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-products {
-            font-size: 0.85rem;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, var(--accent-brown), var(--accent-gold));
-            border-radius: 100px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
-        }
-
-        .header-products:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 10rem 2rem 6rem;
-            text-align: center;
-            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--accent-brown);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-tag svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            white-space: nowrap;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--accent-brown);
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 550px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            background: var(--accent-brown);
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cta:hover {
-            background: #7a6548;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.3);
-        }
-
-        .hero-cta svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Stats */
-        .stats {
-            padding: 4rem 2rem;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .stats-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .stat-item::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 50%;
-            background: var(--border-color);
-        }
-
-        .stat-item:last-child::after {
-            display: none;
-        }
-
-        .stat-icon {
-            width: 44px;
-            height: 44px;
-            margin: 0 auto 1rem;
-            stroke: var(--accent-brown);
-            fill: none;
-            padding: 8px;
-            background: rgba(196, 149, 106, 0.1);
-            border-radius: 12px;
-        }
-
-        .stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--accent-brown);
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Choose Yourself Section */
-        .choose-yourself {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--bg-accent) 0%, var(--bg-primary) 100%);
-        }
-
-        .choose-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .choose-icon-wrapper {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-brown));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(196, 149, 106, 0.3);
-        }
-
-        .choose-icon-wrapper svg {
-            width: 32px;
-            height: 32px;
-            stroke: white;
-            fill: none;
-        }
-
-        .choose-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 400;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .choose-lead {
-            font-size: 1.15rem;
-            color: var(--accent-brown);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .choose-text p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .choose-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .choose-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-            transition: all 0.3s ease;
-        }
-
-        .choose-card:hover {
-            box-shadow: var(--shadow-soft);
-            transform: translateX(5px);
-        }
-
-        .choose-card.highlight {
-            background: linear-gradient(135deg, var(--accent-brown), #6b5a45);
-            border: none;
-            color: white;
-        }
-
-        .choose-card.highlight:hover {
-            transform: translateX(5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(139, 115, 85, 0.3);
-        }
-
-        .choose-card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .choose-card:not(.highlight) .choose-card-icon {
-            background: rgba(166, 84, 84, 0.1);
-        }
-
-        .choose-card:not(.highlight) .choose-card-icon svg {
-            stroke: var(--accent-red);
-        }
-
-        .choose-card.highlight .choose-card-icon {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .choose-card.highlight .choose-card-icon svg {
-            stroke: white;
-        }
-
-        .choose-card-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-        }
-
-        .choose-card h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .choose-card:not(.highlight) h4 {
-            color: var(--text-primary);
-        }
-
-        .choose-card ul {
-            list-style: none;
-        }
-
-        .choose-card ul li {
-            font-size: 0.9rem;
-            padding: 0.3rem 0;
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .choose-card:not(.highlight) ul li {
-            color: var(--text-secondary);
-        }
-
-        .choose-card.highlight ul li {
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .choose-card ul li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            opacity: 0.5;
-        }
-
-        .choose-quote {
-            max-width: 700px;
-            margin: 4rem auto 0;
-            text-align: center;
-        }
-
-        .choose-quote blockquote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--text-secondary);
-            position: relative;
-            padding: 0 2rem;
-        }
-
-        .choose-quote blockquote::before,
-        .choose-quote blockquote::after {
-            content: '"';
-            font-size: 3rem;
-            color: var(--accent-gold);
-            opacity: 0.3;
-            position: absolute;
-            font-family: Georgia, serif;
-        }
-
-        .choose-quote blockquote::before {
-            top: -1rem;
-            left: 0;
-        }
-
-        .choose-quote blockquote::after {
-            content: '"';
-            bottom: -2rem;
-            right: 0;
-        }
-
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            color: var(--accent-brown);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 1rem;
-        }
-
-        .section-tag svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 400;
-            line-height: 1.3;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 1rem auto 0;
-        }
-
-        /* Problem Section */
-        .problem {
-            padding: 6rem 2rem;
-            background: var(--bg-dark);
-            color: white;
-        }
-
-        .problem-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .problem .section-tag {
-            color: var(--accent-gold);
-        }
-
-        .problem .section-title {
-            color: white;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .problem-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .problem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: var(--accent-gold);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .problem-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-3px);
-        }
-
-        .problem-card:hover::before {
-            opacity: 1;
-        }
-
-        .problem-icon {
-            width: 56px;
-            height: 56px;
-            stroke: var(--accent-gold);
-            margin-bottom: 1.25rem;
-            stroke-width: 1.2;
-            fill: none;
-            padding: 12px;
-            background: rgba(196, 149, 106, 0.15);
-            border-radius: 14px;
-        }
-
-        .problem-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            color: white;
-        }
-
-        .problem-card p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Science Section */
-        .science {
-            padding: 6rem 2rem;
-            background: var(--bg-primary);
-        }
-
-        .science-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .science-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .science-text h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .science-text p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .science-quote {
-            background: var(--bg-accent);
-            border-left: 3px solid var(--accent-gold);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 0 12px 12px 0;
-        }
-
-        .science-quote p {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .science-quote cite {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Brain Infographic */
-        .brain-visual {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .brain-title {
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-        }
-
-        .brain-title svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--accent-brown);
-            fill: none;
-        }
-
-        .brain-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .brain-stat {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .brain-stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .brain-stat-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 1.5;
-            fill: none;
-        }
-
-        .brain-stat-icon.green { 
-            background: rgba(90, 122, 90, 0.12); 
-        }
-        .brain-stat-icon.green svg { stroke: var(--accent-green); }
-        
-        .brain-stat-icon.gold { 
-            background: rgba(196, 149, 106, 0.12); 
-        }
-        .brain-stat-icon.gold svg { stroke: var(--accent-gold); }
-        
-        .brain-stat-icon.red { 
-            background: rgba(166, 84, 84, 0.12); 
-        }
-        .brain-stat-icon.red svg { stroke: var(--accent-red); }
-        
-        .brain-stat-icon.blue { 
-            background: rgba(90, 106, 122, 0.12); 
-        }
-        .brain-stat-icon.blue svg { stroke: var(--accent-blue); }
-
-        .brain-stat-content { flex: 1; }
-
-        .brain-stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .brain-stat-bar {
-            height: 6px;
-            background: var(--bg-accent);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .brain-stat-fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 1s ease;
-        }
-
-        .brain-stat-fill.green { background: var(--accent-green); }
-        .brain-stat-fill.gold { background: var(--accent-gold); }
-        .brain-stat-fill.red { background: var(--accent-red); }
-        .brain-stat-fill.blue { background: var(--accent-blue); }
-
-        .brain-stat-value {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: 0.25rem;
-        }
-
-        /* Timeline Section */
-        .timeline {
-            padding: 6rem 2rem;
-            background: var(--bg-secondary);
-        }
-
-        .timeline-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .timeline-items {
-            position: relative;
-            margin-top: 3rem;
-            padding-left: 80px;
-        }
-
-        .timeline-items::before {
-            content: '';
-            position: absolute;
-            left: 25px;
-            top: 25px;
-            bottom: 25px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent-gold) 0%, var(--accent-brown) 100%);
-            opacity: 0.3;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -55px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-brown), var(--accent-gold));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .timeline-week {
-            font-size: 0.75rem;
-            color: var(--accent-brown);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Comparison Section */
-        .comparison {
-            padding: 6rem 2rem;
-            background: var(--bg-card);
-        }
-
-        .comparison-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            gap: 0;
-            margin-top: 3rem;
-            align-items: stretch;
-        }
-
-        .comparison-card {
-            border-radius: 20px;
-            padding: 2.5rem;
-        }
-
-        .comparison-card.before {
-            background: linear-gradient(135deg, #f8f5f2, #f0ebe4);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .comparison-card.after {
-            background: linear-gradient(135deg, var(--accent-brown), #6b5a45);
-            color: white;
-        }
-
-        .comparison-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .comparison-arrow svg {
-            width: 40px;
-            height: 40px;
-            stroke: var(--accent-brown);
-            fill: none;
-            opacity: 0.5;
-        }
-
-        .comparison-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            margin-bottom: 1.5rem;
-        }
-
-        .comparison-label svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .comparison-card.before .comparison-label {
-            background: rgba(166, 84, 84, 0.12);
-            color: var(--accent-red);
-        }
-
-        .comparison-card.after .comparison-label {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-        }
-
-        .comparison-list {
-            list-style: none;
-        }
-
-        .comparison-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
-            font-size: 0.95rem;
-        }
-
-        .comparison-card.before .comparison-list li {
-            color: var(--text-secondary);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .comparison-card.after .comparison-list li {
-            color: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .comparison-list li:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-list svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
-            fill: none;
-        }
-
-        .comparison-card.before .comparison-list svg {
-            stroke: var(--accent-red);
-        }
-
-        .comparison-card.after .comparison-list svg {
-            stroke: rgba(255, 255, 255, 0.9);
-        }
-
-        /* Why Section */
-        .why {
-            padding: 6rem 2rem;
-            background: var(--bg-primary);
-        }
-
-        .why-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .why-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .why-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background: var(--accent-gold);
-            border-radius: 0 0 3px 3px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .why-card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
-        }
-
-        .why-card:hover::before {
-            opacity: 1;
-        }
-
-        .why-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--bg-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .why-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--accent-brown);
-            fill: none;
-        }
-
-        .why-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .why-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        /* Products */
-        .products {
-            padding: 6rem 2rem;
-            background: var(--bg-secondary);
-        }
-
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Product Card */
-        .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            position: relative;
-            transition: all 0.4s ease;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product-card.featured {
-            border: 2px solid var(--accent-gold);
-        }
-
-        .product-card.featured::before {
-            content: 'Популярный выбор';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-brown));
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .product-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, rgba(196, 149, 106, 0.15), rgba(139, 115, 85, 0.1));
-            border: 1px solid rgba(196, 149, 106, 0.2);
-        }
-
-        .product-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--accent-brown);
-            fill: none;
-        }
-
-        .product-category {
-            font-size: 0.75rem;
-            color: var(--accent-brown);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .product-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .product-note {
-            background: rgba(196, 149, 106, 0.1);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            font-size: 0.85rem;
-            color: var(--accent-brown);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .product-note svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
-            stroke: var(--accent-brown);
-            fill: none;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .product-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .product-features li:last-child { border-bottom: none; }
-        
-        .product-features svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--accent-green);
-            fill: none;
-            flex-shrink: 0;
-        }
-
-        .price-block {
-            margin-bottom: 1.5rem;
-        }
-
-        .price-old {
-            font-size: 1rem;
-            color: var(--text-muted);
-            text-decoration: line-through;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .price-new {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: var(--accent-brown);
-        }
-
-        .price-currency {
-            font-size: 1.2rem;
-            font-weight: 400;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .btn-details {
-            flex: 1;
-            padding: 1rem;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            text-decoration: none;
-            text-align: center;
-            font-weight: 500;
-            font-size: 0.85rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-details:hover {
-            border-color: var(--accent-brown);
-            color: var(--accent-brown);
-        }
-
-        .btn-buy {
-            flex: 1;
-            padding: 1rem;
-            background: var(--accent-brown);
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-buy svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .btn-buy:hover {
-            background: #7a6548;
-            transform: scale(1.02);
-        }
-
-        /* Reviews Section */
-        .reviews {
-            padding: 6rem 2rem;
-            background: var(--bg-primary);
-        }
-
-        .reviews-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .reviews-slider {
-            margin-top: 3rem;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding-bottom: 1rem;
-        }
-
-        .reviews-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .reviews-track {
-            display: flex;
-            gap: 1.5rem;
-            padding: 0.5rem;
-        }
-
-        .review-item {
-            flex-shrink: 0;
-            width: 320px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: white;
-        }
-
-        .review-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .review-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .reviews-hint {
-            text-align: center;
-            margin-top: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Bundle Section */
-        .bundle {
-            padding: 5rem 2rem;
-            background: linear-gradient(180deg, #a99783 0%, #8b7a66 100%);
-        }
-
-        .bundle-container {
-            max-width: 650px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .bundle-tag {
-            display: inline-block;
-            padding: 0.6rem 1.5rem;
-            background: rgba(139, 115, 85, 0.9);
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            border-radius: 100px;
-            margin-bottom: 1.5rem;
-        }
-
-        .bundle-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 400;
-            font-style: italic;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .bundle-description {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .bundle-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .bundle-item {
-            display: inline-block;
-            padding: 0.9rem 2rem;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 100px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 500;
-            backdrop-filter: blur(5px);
-            max-width: 320px;
-            margin: 0 auto;
-        }
-
-        .bundle-price {
-            margin-bottom: 2rem;
-        }
-
-        .bundle-price-old {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: line-through;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .bundle-price-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .bundle-price-new {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 500;
-            color: white;
-        }
-
-        .bundle-price-new span {
-            font-size: 2rem;
-        }
-
-        .bundle-savings {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--accent-green);
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 100px;
-        }
-
-        .bundle-btn {
-            display: inline-block;
-            padding: 1.1rem 3rem;
-            background: white;
-            color: var(--accent-brown);
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .bundle-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Triggers */
-        .triggers {
-            padding: 6rem 2rem;
-            background: var(--bg-card);
-        }
-
-        .triggers-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .triggers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .trigger-card {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            background: var(--bg-accent);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .trigger-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-gold), var(--accent-brown));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .trigger-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .trigger-card:hover::before {
-            opacity: 1;
-        }
-
-        .trigger-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .trigger-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--accent-brown);
-            fill: none;
-        }
-
-        .trigger-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .trigger-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* FAQ */
-        .faq {
-            padding: 6rem 2rem;
-            background: var(--bg-primary);
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-section {
-            margin-bottom: 3rem;
-        }
-
-        .faq-section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .faq-section-title svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--accent-brown);
-            fill: none;
-        }
-
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: rgba(196, 149, 106, 0.3);
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 1.25rem 1.5rem;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            color: var(--accent-brown);
-        }
-
-        .faq-icon {
-            width: 24px;
-            height: 24px;
-            stroke: var(--accent-brown);
-            fill: none;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-item.active {
-            border-color: var(--accent-gold);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-
-        .faq-answer-content {
-            padding: 0 1.5rem 1.25rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* CTA */
-        .cta {
-            padding: 6rem 2rem;
-            background: var(--bg-accent);
-            text-align: center;
-        }
-
-        .cta-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        .cta-text {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            background: var(--accent-brown);
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .cta-button:hover {
-            background: #7a6548;
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .footer-logo svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--accent-gold);
-            fill: none;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover { color: var(--accent-brown); }
-
-        .footer-copy {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .header { padding: 1rem 1.5rem; }
-            .header-products { 
-                font-size: 0.75rem;
-                padding: 0.5rem 1rem;
-            }
-            .header-cta { display: none; }
-            .hero { padding: 8rem 1.5rem 4rem; }
-            .hero h1 { 
-                white-space: normal !important; 
-                font-size: 1.8rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            .stat-item::after { display: none; }
-            .stat-value { font-size: 2.2rem; }
-
-            .choose-container {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            .choose-content { text-align: center; }
-            .choose-icon-wrapper { margin: 0 auto 1.5rem; }
-            .choose-content h2 { font-size: 1.8rem; }
-            .choose-quote blockquote { font-size: 1.2rem; }
-
-            .timeline-items {
-                padding-left: 60px;
-            }
-            .timeline-dot {
-                left: -45px;
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            .timeline-items::before {
-                left: 20px;
-            }
-
-            .problem-grid { grid-template-columns: 1fr; }
-
-            .science-content { 
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .comparison-grid { 
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .comparison-arrow {
-                transform: rotate(90deg);
-                padding: 1rem 0;
-            }
-
-            .why-grid { grid-template-columns: repeat(2, 1fr); }
-
-            .products { padding: 4rem 1.5rem; }
-            .products-grid { grid-template-columns: 1fr; }
-            .product-card { padding: 2rem; }
-            .button-group { flex-direction: column; }
-
-            .bundle { padding: 3rem 1.5rem; }
-            .bundle-title { font-size: 2.2rem; }
-            .bundle-price-new { font-size: 2.5rem; }
-            .bundle-price-row { flex-direction: column; gap: 0.75rem; }
-            .bundle-item { max-width: 100%; padding: 0.8rem 1.5rem; font-size: 0.95rem; }
-
-            .reviews { padding: 4rem 1rem; }
-            .review-item { width: 280px; }
-
-            .triggers-grid { grid-template-columns: 1fr; }
-
-            .footer-links { flex-direction: column; gap: 1rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Программы | Архитектура сознания</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* ── PALETTE ── */
+:root{
+  --white:#FFFFFF;
+  --bg:#FAFBF8;
+  --bg2:#F3F4EF;
+  --sage:#3B7A5A;
+  --sage-dark:#2D5F45;
+  --sage-light:#E8F0EA;
+  --sage-pale:rgba(59,122,90,.06);
+  --gold:#C49A52;
+  --gold-light:#D4AF6E;
+  --text:#111;
+  --text2:#555;
+  --text3:#999;
+  --border:rgba(0,0,0,.06);
+  --r:14px;
+  --shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+  --shadow-hover:0 4px 12px rgba(0,0,0,.06),0 20px 48px rgba(0,0,0,.1);
+}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-c{max-width:1280px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:.9rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.brand i{font-style:normal;color:var(--sage)}
+.nav-r{display:flex;align-items:center;gap:6px}
+.nav-r a{font-size:.78rem;font-weight:500;color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:8px;transition:.2s}
+.nav-r a:hover{color:var(--text);background:var(--bg)}
+.nav-r .cta{background:var(--sage);color:#fff;font-weight:600;padding:9px 20px;border-radius:10px}
+.nav-r .cta:hover{background:var(--sage-dark);color:#fff}
+.mob-menu{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.mob-menu svg{width:22px;height:22px;color:var(--text)}
+
+/* ── HERO — minimal ── */
+.hero{max-width:1280px;margin:0 auto;padding:56px 32px 16px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.hero h1 span{color:var(--sage)}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.hero-stats .s{text-align:center}
+.hero-stats .s b{display:block;font-size:1.3rem;font-weight:800;color:var(--sage);letter-spacing:-.03em}
+.hero-stats .s small{font-size:.68rem;color:var(--text3);font-weight:500}
+
+/* ── TRUST BAR ── */
+.trust-bar{max-width:1280px;margin:0 auto;padding:20px 32px;display:flex;gap:20px;flex-wrap:wrap}
+.trust-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:var(--bg2);font-size:.72rem;color:var(--text2);font-weight:500}
+.trust-pill svg{width:14px;height:14px;color:var(--sage);flex-shrink:0}
+
+/* ── PRODUCTS SECTION ── */
+.products{max-width:1280px;margin:0 auto;padding:24px 32px 80px}
+
+/* ── PRODUCT CARD — magazine style ── */
+.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.card{
+  background:var(--white);border:1px solid var(--border);border-radius:20px;
+  padding:0;overflow:hidden;transition:all .35s cubic-bezier(.25,.8,.25,1);
+  display:flex;flex-direction:column;position:relative;
+}
+.card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:transparent}
+
+/* Card top — colored header strip */
+.card-head{padding:28px 28px 20px;position:relative}
+.card-head::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.card.c-green .card-head::before{background:linear-gradient(90deg,#3B7A5A,#5AA67A)}
+.card.c-gold .card-head::before{background:linear-gradient(90deg,#C49A52,#D4AF6E)}
+.card.c-blue .card-head::before{background:linear-gradient(90deg,#4A7FB5,#6BA0D4)}
+.card.c-rose .card-head::before{background:linear-gradient(90deg,#B85C5C,#D47A7A)}
+
+/* Badge */
+.card-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.card.c-green .card-badge{background:var(--sage-pale);color:var(--sage)}
+.card.c-gold .card-badge{background:rgba(196,154,82,.08);color:var(--gold)}
+.card.c-blue .card-badge{background:rgba(74,127,181,.08);color:#4A7FB5}
+.card.c-rose .card-badge{background:rgba(184,92,92,.08);color:#B85C5C}
+
+.card-badge svg{width:10px;height:10px}
+
+.card h3{font-size:1.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;line-height:1.2}
+.card-desc{font-size:.88rem;color:var(--text2);line-height:1.55;margin-bottom:20px}
+
+/* ── INFOGRAPHIC STATS ROW ── */
+.info-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.info-chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;background:var(--bg);font-size:.72rem;font-weight:600;color:var(--text2);white-space:nowrap}
+.info-chip svg{width:13px;height:13px;color:var(--sage);flex-shrink:0}
+.info-chip.gold svg{color:var(--gold)}
+
+/* ── WHAT'S INCLUDED — visual list ── */
+.includes{list-style:none;margin-bottom:auto;padding-bottom:20px}
+.includes li{display:flex;align-items:flex-start;gap:8px;padding:7px 0;font-size:.82rem;color:var(--text2);line-height:1.5}
+.includes li svg{width:16px;height:16px;color:var(--sage);flex-shrink:0;margin-top:2px}
+
+/* ── CARD FOOTER ── */
+.card-foot{padding:0 28px 28px;margin-top:auto}
+.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+.price-old{font-size:.88rem;color:var(--text3);text-decoration:line-through;font-weight:500}
+.price{font-size:1.8rem;font-weight:800;letter-spacing:-.03em;color:var(--text)}
+.price small{font-size:.85rem;font-weight:500;color:var(--text3)}
+
+.btns{display:flex;gap:8px}
+.btn-primary{flex:1;padding:13px;text-align:center;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;border-radius:12px;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:5px}
+.btn-primary:hover{background:var(--sage-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(59,122,90,.25)}
+.btn-primary svg{width:14px;height:14px}
+.btn-ghost{flex:1;padding:13px;text-align:center;border:1px solid var(--border);color:var(--text2);text-decoration:none;font-weight:600;font-size:.82rem;border-radius:12px;transition:all .25s}
+.btn-ghost:hover{border-color:var(--sage);color:var(--sage)}
+
+/* ── FEATURED CARD (full width) ── */
+.card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--sage)}
+.card.featured .card-head{padding:32px 32px 24px}
+.card.featured .card-foot{padding:0 32px 32px}
+.featured-tag{position:absolute;top:20px;right:20px;background:var(--sage);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:8px}
+.featured-right{padding:32px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
+.featured-right .card-foot{padding:0}
+
+/* ── BUNDLE ── */
+.bundle{max-width:1280px;margin:0 auto;padding:0 32px 80px}
+.bundle-box{background:var(--bg2);border-radius:20px;padding:48px;display:flex;align-items:center;gap:48px}
+.bundle-left{flex:1}
+.bundle-tag{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.bundle-tag::before{content:'';width:20px;height:2px;background:var(--sage)}
+.bundle-left h2{font-size:1.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.bundle-left p{color:var(--text2);font-size:.92rem;margin-bottom:24px}
+.bundle-items{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.bundle-item{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--white);border-radius:10px;font-size:.85rem;font-weight:500;color:var(--text)}
+.bundle-item svg{width:16px;height:16px;color:var(--sage)}
+.bundle-right{text-align:center;min-width:260px}
+.bundle-price-old{font-size:1rem;color:var(--text3);text-decoration:line-through;margin-bottom:4px}
+.bundle-price{font-size:2.8rem;font-weight:800;letter-spacing:-.04em;margin-bottom:4px}
+.bundle-price small{font-size:1rem;font-weight:500;color:var(--text3)}
+.bundle-save{display:inline-block;padding:5px 14px;border-radius:100px;background:rgba(59,122,90,.1);color:var(--sage);font-size:.78rem;font-weight:700;margin-bottom:20px}
+.bundle-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;border-radius:14px;transition:all .25s;box-shadow:0 4px 16px rgba(59,122,90,.2)}
+.bundle-btn:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,122,90,.3)}
+.bundle-btn svg{width:16px;height:16px}
+
+/* ── RESULTS INFOGRAPHIC ── */
+.results{max-width:1280px;margin:0 auto;padding:0 32px 80px}
+.results h2{font-size:1.6rem;font-weight:800;letter-spacing:-.03em;margin-bottom:32px;text-align:center}
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.r-card{background:var(--bg);border-radius:16px;padding:28px;text-align:center}
+.r-icon{width:48px;height:48px;border-radius:12px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.r-icon svg{width:22px;height:22px;color:var(--sage)}
+.r-val{font-size:2rem;font-weight:800;color:var(--sage);letter-spacing:-.03em;margin-bottom:4px}
+.r-label{font-size:.78rem;color:var(--text2);font-weight:500}
+.r-bar{height:4px;border-radius:2px;background:rgba(0,0,0,.06);margin-top:12px;overflow:hidden}
+.r-bar-fill{height:100%;border-radius:2px;background:var(--sage);transition:width 1.4s ease;width:0}
+.r-card.vis .r-bar-fill{width:var(--w)}
+
+/* ── SCIENCE STRIP ── */
+.science-strip{background:var(--bg2);padding:48px 32px}
+.science-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.science-inner h3{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.science-inner p{font-size:.88rem;color:var(--text2);margin-bottom:10px;line-height:1.6}
+.science-ref{font-size:.72rem;color:var(--text3);font-style:italic;margin-top:8px}
+.brain-stats{display:flex;flex-direction:column;gap:16px}
+.b-row{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text2);font-weight:500}
+.b-row .val{font-weight:700;color:var(--sage)}
+.b-row .neg{color:#B85C5C}
+.b-bar{height:5px;border-radius:3px;background:rgba(0,0,0,.05);overflow:hidden;margin-top:4px}
+.b-fill{height:100%;border-radius:3px;transition:width 1.2s ease;width:0}
+.b-fill.g{background:var(--sage)}
+.b-fill.r{background:#D47A7A}
+
+/* ── REVIEWS ── */
+.reviews{padding:64px 32px;max-width:1280px;margin:0 auto}
+.reviews h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:24px}
+.rv-track{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 0}
+.rv-track::-webkit-scrollbar{display:none}
+.rv-item{flex-shrink:0;width:260px;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--white);transition:.3s}
+.rv-item:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.rv-item img{width:100%;display:block}
+
+/* ── WHY BUY ── */
+.why-buy{padding:80px 32px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.wb-inner{max-width:1100px;margin:0 auto}
+.wb-header{text-align:center;margin-bottom:48px}
+.wb-tag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px}
+.wb-tag::before,.wb-tag::after{content:'';width:24px;height:1.5px;background:var(--sage);opacity:.4}
+.wb-header h2{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.wb-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px}
+.wb-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s}
+.wb-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:transparent}
+.wb-num{font-size:.65rem;font-weight:800;color:var(--sage);letter-spacing:.05em;margin-bottom:10px;opacity:.6}
+.wb-card h3{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;color:var(--text)}
+.wb-card p{font-size:.84rem;color:var(--text2);line-height:1.65}
+.wb-bottom{text-align:center}
+.wb-quote{max-width:600px;margin:0 auto 28px;padding:32px;background:var(--white);border-radius:20px;border:1px solid var(--border)}
+.wb-quote p{font-size:.95rem;color:var(--text2);line-height:1.7}
+.wb-quote strong{color:var(--text);font-weight:700}
+.wb-cta{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;border-radius:14px;transition:all .25s;box-shadow:0 4px 16px rgba(59,122,90,.2)}
+.wb-cta:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,122,90,.3)}
+@media(max-width:768px){.wb-grid{grid-template-columns:1fr}.why-buy{padding:60px 20px}}
+
+/* ── FAQ ── */
+.faq{max-width:760px;margin:0 auto;padding:64px 32px}
+.faq h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:24px;text-align:center}
+.fq{border-bottom:1px solid var(--border)}
+.fq-q{width:100%;background:none;border:none;padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:.88rem;color:var(--text);font-weight:600;text-align:left;transition:.2s}
+.fq-q:hover{color:var(--sage)}
+.fq-q svg{width:18px;height:18px;color:var(--text3);transition:transform .3s;flex-shrink:0;margin-left:12px}
+.fq.open .fq-q svg{transform:rotate(45deg);color:var(--sage)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.fq.open .fq-a{max-height:500px}
+.fq-a p{padding:0 0 18px;font-size:.84rem;color:var(--text2);line-height:1.65}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:32px;text-align:center}
+.ft-links{display:flex;justify-content:center;gap:24px;margin-bottom:12px}
+.ft-links a{font-size:.78rem;color:var(--text3);text-decoration:none;font-weight:500;transition:.2s}
+.ft-links a:hover{color:var(--sage)}
+.ft-copy{font-size:.68rem;color:var(--text3);opacity:.7}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.22,1,.36,1)}
+.reveal.vis{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .p-grid{grid-template-columns:1fr}
+  .card.featured{grid-template-columns:1fr}
+  .featured-right{border-left:none;border-top:1px solid var(--border)}
+  .bundle-box{flex-direction:column;text-align:center;padding:36px}
+  .bundle-items{align-items:center}
+  .results-grid{grid-template-columns:1fr 1fr}
+  .science-inner{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-r a:not(.cta){display:none}.mob-menu{display:block}
+  .hero{padding:36px 20px 12px;flex-direction:column;align-items:flex-start}
+  .hero-stats{gap:16px}
+  .products,.bundle,.results,.reviews,.faq{padding-left:20px;padding-right:20px}
+  .p-grid{gap:12px}
+  .card h3{font-size:1.2rem}
+  .card-head{padding:24px 24px 16px}
+  .card-foot{padding:0 24px 24px}
+  .btns{flex-direction:column}
+  .bundle-box{padding:28px}
+  .results-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .r-val{font-size:1.6rem}
+  .trust-bar{padding:16px 20px}
+  .rv-item{width:220px}
+}
+@media(max-width:480px){
+  .results-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.6rem}
+  .hero-stats{gap:12px}
+}
+</style>
 </head>
 <body>
-    <!-- SVG Icons Definition -->
-    <svg style="display: none;">
-        <defs>
-            <!-- Sparkle/Star - Clean -->
-            <symbol id="icon-sparkle" viewBox="0 0 24 24">
-                <path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9L12 2Z" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M19 3L19.5 5L21.5 5.5L19.5 6L19 8L18.5 6L16.5 5.5L18.5 5L19 3Z" stroke-width="1.2" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Brain - Clean Line -->
-            <symbol id="icon-brain" viewBox="0 0 24 24">
-                <path d="M12 4C10.5 4 9.3 5 9 6.3C7.8 6.7 7 7.8 7 9C7 9.5 7.1 9.9 7.3 10.3C6.5 10.8 6 11.8 6 13C6 14.5 7 15.8 8.3 16.2C8.1 16.6 8 17 8 17.5C8 18.9 9.1 20 10.5 20H13.5C14.9 20 16 18.9 16 17.5C16 17 15.9 16.6 15.7 16.2C17 15.8 18 14.5 18 13C18 11.8 17.5 10.8 16.7 10.3C16.9 9.9 17 9.5 17 9C17 7.8 16.2 6.7 15 6.3C14.7 5 13.5 4 12 4Z" stroke-width="1.5"/>
-                <path d="M9.5 10C10 10.5 11 11 12 11C13 11 14 10.5 14.5 10" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M10 14.5C10.5 15 11.2 15.5 12 15.5C12.8 15.5 13.5 15 14 14.5" stroke-width="1.2" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Activity/Pulse - Clean -->
-            <symbol id="icon-activity" viewBox="0 0 24 24">
-                <path d="M3 12H6L9 4L12 20L15 8L18 12H21" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Target - Clean -->
-            <symbol id="icon-target" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
-                <circle cx="12" cy="12" r="5" stroke-width="1.5"/>
-                <circle cx="12" cy="12" r="1.5" stroke-width="1.5"/>
-            </symbol>
-            
-            <!-- Battery - Clean -->
-            <symbol id="icon-battery" viewBox="0 0 24 24">
-                <rect x="3" y="7" width="15" height="10" rx="2" stroke-width="1.5"/>
-                <path d="M18 10V14C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10Z" stroke-width="1.5"/>
-                <path d="M6 10V14" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M9 10V14" stroke-width="1.5" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Repeat/Loop - Clean -->
-            <symbol id="icon-repeat" viewBox="0 0 24 24">
-                <path d="M17 2L20 5L17 8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 11V9C3 6.2 5.2 4 8 4H20" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M7 22L4 19L7 16" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M21 13V15C21 17.8 18.8 20 16 20H4" stroke-width="1.5" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Shield - Clean -->
-            <symbol id="icon-shield" viewBox="0 0 24 24">
-                <path d="M12 3L4 7V12C4 16.4 7.4 20.5 12 21.5C16.6 20.5 20 16.4 20 12V7L12 3Z" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M9 12L11 14L15 10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Zap/Lightning - Clean -->
-            <symbol id="icon-zap" viewBox="0 0 24 24">
-                <path d="M13 2L4 14H11L10 22L20 10H13L13 2Z" stroke-width="1.5" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Message - Clean -->
-            <symbol id="icon-message" viewBox="0 0 24 24">
-                <path d="M21 12C21 16.4 16.9 20 12 20C10.5 20 9.1 19.7 7.8 19.1L3 21L4.4 16.4C3.5 15.1 3 13.6 3 12C3 7.6 7.1 4 12 4C16.9 4 21 7.6 21 12Z" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M8 12H8.01M12 12H12.01M16 12H16.01" stroke-width="2.5" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Check - Clean -->
-            <symbol id="icon-check" viewBox="0 0 24 24">
-                <path d="M5 13L9 17L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- X - Clean -->
-            <symbol id="icon-x" viewBox="0 0 24 24">
-                <path d="M18 6L6 18M6 6L18 18" stroke-width="2" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Users - Clean -->
-            <symbol id="icon-users" viewBox="0 0 24 24">
-                <circle cx="9" cy="7" r="3.5" stroke-width="1.5"/>
-                <path d="M2 20C2 16.7 5.1 14 9 14C12.9 14 16 16.7 16 20" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="17" cy="8" r="2.5" stroke-width="1.5"/>
-                <path d="M18 14C20.2 14.5 22 16.3 22 19" stroke-width="1.5" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Award - Clean -->
-            <symbol id="icon-award" viewBox="0 0 24 24">
-                <circle cx="12" cy="9" r="5.5" stroke-width="1.5"/>
-                <path d="M8.5 13.5L7 22L12 19L17 22L15.5 13.5" stroke-width="1.5" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Book - Clean -->
-            <symbol id="icon-book" viewBox="0 0 24 24">
-                <path d="M4 4.5C4 4.5 6 3 12 3C18 3 20 4.5 20 4.5V19.5C20 19.5 18 18 12 18C6 18 4 19.5 4 19.5V4.5Z" stroke-width="1.5"/>
-                <path d="M12 3V18" stroke-width="1.5"/>
-            </symbol>
-            
-            <!-- Infinity - Clean -->
-            <symbol id="icon-infinity" viewBox="0 0 24 24">
-                <path d="M6.5 12C6.5 10.1 8 8.5 10 8.5C11.5 8.5 12.7 9.3 13.5 10.5L14.5 12L15.5 13.5C16.3 14.7 17.5 15.5 19 15.5C20.4 15.5 21.5 14.4 21.5 13C21.5 11.6 20.4 10.5 19 10.5" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M17.5 12C17.5 13.9 16 15.5 14 15.5C12.5 15.5 11.3 14.7 10.5 13.5L9.5 12L8.5 10.5C7.7 9.3 6.5 8.5 5 8.5C3.6 8.5 2.5 9.6 2.5 11C2.5 12.4 3.6 13.5 5 13.5" stroke-width="1.8" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Trending Up - Clean -->
-            <symbol id="icon-trending" viewBox="0 0 24 24">
-                <path d="M3 17L9 11L13 15L21 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M15 7H21V13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Clock - Clean -->
-            <symbol id="icon-clock" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
-                <path d="M12 6V12L15.5 14" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Heart - Clean -->
-            <symbol id="icon-heart" viewBox="0 0 24 24">
-                <path d="M12 6.5C10.5 4.5 7.5 4 5.5 5.5C3.5 7 3 10 5 13C7 16 12 20 12 20C12 20 17 16 19 13C21 10 20.5 7 18.5 5.5C16.5 4 13.5 4.5 12 6.5Z" stroke-width="1.5" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Lock - Clean -->
-            <symbol id="icon-lock" viewBox="0 0 24 24">
-                <rect x="4" y="10" width="16" height="11" rx="2" stroke-width="1.5"/>
-                <path d="M8 10V7C8 4.8 9.8 3 12 3C14.2 3 16 4.8 16 7V10" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="15" r="1.5" stroke-width="1.5"/>
-            </symbol>
-            
-            <!-- Plus - Clean -->
-            <symbol id="icon-plus" viewBox="0 0 24 24">
-                <path d="M12 5V19M5 12H19" stroke-width="2" stroke-linecap="round"/>
-            </symbol>
-            
-            <!-- Arrow Right - Clean -->
-            <symbol id="icon-arrow-right" viewBox="0 0 24 24">
-                <path d="M5 12H19" stroke-width="2" stroke-linecap="round"/>
-                <path d="M13 6L19 12L13 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Arrow Up - Clean -->
-            <symbol id="icon-arrow-up" viewBox="0 0 24 24">
-                <path d="M12 19V5" stroke-width="2" stroke-linecap="round"/>
-                <path d="M6 11L12 5L18 11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Compass - Clean -->
-            <symbol id="icon-compass" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
-                <path d="M16.5 7.5L14 14L7.5 16.5L10 10L16.5 7.5Z" stroke-width="1.5" stroke-linejoin="round"/>
-            </symbol>
-            
-            <!-- Info - Clean -->
-            <symbol id="icon-info" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
-                <path d="M12 16V12" stroke-width="2" stroke-linecap="round"/>
-                <path d="M12 8V8.01" stroke-width="2.5" stroke-linecap="round"/>
-            </symbol>
-        </defs>
-    </svg>
 
-    <!-- Header -->
-    <header class="header">
-        <a href="#" class="logo">
-            <svg class="logo-icon"><use href="#icon-sparkle"/></svg>
-            <span>Архитектура</span> сознания
-        </a>
-        <div class="header-right">
-            <a href="#products" class="header-products">Смотреть программы</a>
-            <a href="https://t.me/TheBodyMindCode_support" class="header-cta">Поддержка</a>
+<!-- NAV -->
+<nav><div class="nav-c">
+  <a href="#" class="brand"><i>●</i> Архитектура сознания</a>
+  <div class="nav-r">
+    <a href="#results">Результаты</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://t.me/TheBodyMindCode_support" target="_blank">Поддержка</a>
+    <a href="#shop" class="cta">Программы ↓</a>
+    <button class="mob-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</div></nav>
+
+<!-- HERO — 2 строки, сразу к делу -->
+<div class="hero">
+  <h1>Научные программы<br>для <span>перестройки мозга</span></h1>
+  <div class="hero-stats">
+    <div class="s"><b>800+</b><small>участников</small></div>
+    <div class="s"><b>92%</b><small>результат</small></div>
+    <div class="s"><b>10+</b><small>лет практики</small></div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div class="trust-bar">
+  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Результат виден на МРТ</div>
+  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Вечный доступ</div>
+  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Закрытое сообщество</div>
+  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Безопасная оплата</div>
+</div>
+
+<!-- ═══ PRODUCTS ═══ -->
+<section id="shop" class="products">
+<div class="p-grid">
+
+  <!-- ★ FEATURED: Протокол -->
+  <article class="card featured c-green reveal">
+    <div>
+      <div class="card-head">
+        <span class="featured-tag">★ Хит продаж</span>
+        <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>28-дневная программа</div>
+        <h3>Протокол остановки ума</h3>
+        <p class="card-desc">16 минут в день, которые физически перестраивают мозг. Для тех, кто устал от бесконечного внутреннего диалога, тревоги и прокрастинации.</p>
+        <div class="info-row">
+          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>16 мин/день</span>
+          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Видео</span>
+          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>PDF 40 стр</span>
+          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Вечный доступ</span>
         </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <span class="hero-tag">
-            <svg><use href="#icon-brain"/></svg>
-            Прикладная нейробиология
-        </span>
-        <h1>Момент, когда вы <em>выбираете себя</em></h1>
-        <p class="hero-subtitle">
-            Не откладывать. Не ждать подходящего момента. Не надеяться, что «само пройдёт». 
-            А принять решение — и дать себе инструменты для изменений.
-        </p>
-        <a href="#products" class="hero-cta">
-            Смотреть программы
-            <svg><use href="#icon-arrow-right"/></svg>
-        </a>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <svg class="stat-icon"><use href="#icon-users"/></svg>
-                <div class="stat-value">200+</div>
-                <div class="stat-label">участников прошли программы</div>
-            </div>
-            <div class="stat-item">
-                <svg class="stat-icon"><use href="#icon-trending"/></svg>
-                <div class="stat-value">92%</div>
-                <div class="stat-label">отмечают изменения</div>
-            </div>
-            <div class="stat-item">
-                <svg class="stat-icon"><use href="#icon-award"/></svg>
-                <div class="stat-value">10+</div>
-                <div class="stat-label">лет практики автора</div>
-            </div>
-            <div class="stat-item">
-                <svg class="stat-icon"><use href="#icon-infinity"/></svg>
-                <div class="stat-value">∞</div>
-                <div class="stat-label">вечный доступ к материалам</div>
-            </div>
+      </div>
+      <div class="card-foot">
+        <div class="price-row"><span class="price-old">5 900 ₽</span><span class="price">2 990 <small>₽</small></span></div>
+        <div class="btns">
+          <a href="https://payform.ru/ktai8Xf/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://thebodymindcode.github.io/protocol" target="_blank" class="btn-ghost">Подробнее</a>
         </div>
-    </section>
-
-    <!-- Choose Yourself Section -->
-    <section class="choose-yourself">
-        <div class="choose-container">
-            <div class="choose-content">
-                <div class="choose-icon-wrapper">
-                    <svg><use href="#icon-heart"/></svg>
-                </div>
-                <h2>Выбрать себя — это не эгоизм</h2>
-                <p class="choose-lead">Это единственный способ по-настоящему быть полезным другим.</p>
-                <div class="choose-text">
-                    <p>Вы не можете налить из пустого стакана. Не можете дать другим то, чего нет у вас. Спокойствие, ясность, энергия — это не роскошь. Это фундамент, на котором строится всё остальное.</p>
-                    <p>Каждый раз, когда вы откладываете заботу о себе «на потом» — вы платите. Своим здоровьем, отношениями, возможностями. Инвестиция в себя — это не трата. Это актив, который работает на вас каждый день.</p>
-                </div>
-            </div>
-            <div class="choose-cards">
-                <div class="choose-card">
-                    <div class="choose-card-icon">
-                        <svg><use href="#icon-x"/></svg>
-                    </div>
-                    <div class="choose-card-content">
-                        <h4>Когда вы не выбираете себя</h4>
-                        <ul>
-                            <li>Отдаёте энергию, которой нет</li>
-                            <li>Раздражаетесь на близких</li>
-                            <li>Принимаете решения из усталости</li>
-                            <li>Живёте в режиме «дотянуть до пятницы»</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="choose-card highlight">
-                    <div class="choose-card-icon">
-                        <svg><use href="#icon-check"/></svg>
-                    </div>
-                    <div class="choose-card-content">
-                        <h4>Когда вы выбираете себя</h4>
-                        <ul>
-                            <li>Даёте из наполненности</li>
-                            <li>Присутствуете в отношениях</li>
-                            <li>Действуете из ясности</li>
-                            <li>Живёте, а не выживаете</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="featured-right">
+      <ul class="includes">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>7 видео-практик с пошаговым сопровождением</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Научный PDF-мануал 40+ страниц</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытый чат участников в Telegram</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Еженедельные отчёты прогресса</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Доступ навсегда — без подписок</li>
+      </ul>
+      <div class="card-foot">
+        <div style="padding:16px;background:var(--sage-pale);border-radius:12px;margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:.72rem;font-weight:600;color:var(--text2)">Тревога</span><span style="font-size:.72rem;font-weight:700;color:var(--sage)">↓ 78%</span></div>
+          <div style="height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><div style="width:78%;height:100%;border-radius:2px;background:var(--sage)"></div></div>
+          <div style="display:flex;justify-content:space-between;margin:10px 0 6px"><span style="font-size:.72rem;font-weight:600;color:var(--text2)">Ясность мышления</span><span style="font-size:.72rem;font-weight:700;color:var(--sage)">↑ 85%</span></div>
+          <div style="height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><div style="width:85%;height:100%;border-radius:2px;background:var(--sage)"></div></div>
+          <div style="display:flex;justify-content:space-between;margin:10px 0 6px"><span style="font-size:.72rem;font-weight:600;color:var(--text2)">Качество сна</span><span style="font-size:.72rem;font-weight:700;color:var(--sage)">↑ 67%</span></div>
+          <div style="height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><div style="width:67%;height:100%;border-radius:2px;background:var(--sage)"></div></div>
+          <p style="font-size:.62rem;color:var(--text3);margin-top:8px;text-align:center">По результатам опроса 800+ участников</p>
         </div>
-        <div class="choose-quote">
-            <blockquote>
-                «Вы не можете изменить мир, пока не измените себя. И вы не измените себя, пока не решите, что достойны этих изменений.»
-            </blockquote>
+      </div>
+    </div>
+  </article>
+
+  <!-- Код денег -->
+  <article class="card c-blue reveal d1">
+    <div class="card-head">
+      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 10-12h-7l1-8z"/></svg>14-дневный интенсив</div>
+      <h3>Код денег</h3>
+      <p class="card-desc">Измени денежный код за 14 дней. Разберись, почему деньги не задерживаются, и перепиши внутренние установки.</p>
+      <div class="info-row">
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>14 дней</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>5 Zoom-встреч</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>19 практик</span>
+      </div>
+      <ul class="includes">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>5 живых встреч в Zoom</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Рабочая тетрадь 225+ полей</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>19 уникальных практик</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Вечный доступ</li>
+      </ul>
+    </div>
+    <div class="card-foot">
+      <div class="price-row"><span class="price">5 900 <small>₽</small></span></div>
+      <div class="btns">
+        <a href="https://payform.ru/6haon9d/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://thebodymindcode.github.io/themoneycode/" target="_blank" class="btn-ghost">Подробнее</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Код нового года -->
+  <article class="card c-gold reveal d2">
+    <div class="card-head">
+      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>Онлайн-практикум</div>
+      <h3>Код нового года</h3>
+      <p class="card-desc">3 дня глубокой трансформации. Создайте персональную фразу-код, которая будет работать на вас весь год.</p>
+      <div class="info-row">
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>3 дня</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Живые Zoom</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>6 практик</span>
+      </div>
+      <ul class="includes">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 живых созвона по 60 минут</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Персональная фраза-код</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Утренний ритуал на год</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Вечный доступ к записям</li>
+      </ul>
+    </div>
+    <div class="card-foot">
+      <div class="price-row"><span class="price-old">7 900 ₽</span><span class="price">3 990 <small>₽</small></span></div>
+      <div class="btns">
+        <a href="https://payform.ru/4kai934/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://thebodymindcode.github.io/NewYearCode/" target="_blank" class="btn-ghost">Подробнее</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- За пределами заболеваний -->
+  <article class="card c-rose reveal d1">
+    <div class="card-head">
+      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>Zoom-встреча</div>
+      <h3>За пределами заболеваний</h3>
+      <p class="card-desc">90 минут, после которых тело перестанет быть проблемой. Живая практика + конкретный инструмент на каждый день.</p>
+      <div class="info-row">
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>90 минут</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Живой Zoom</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Запись навсегда</span>
+      </div>
+      <ul class="includes">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>90 минут живой работы</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Практика прямо на звонке</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Конспект и материалы</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Запись навсегда</li>
+      </ul>
+    </div>
+    <div class="card-foot">
+      <div class="price-row"><span class="price">1 490 <small>₽</small></span></div>
+      <div class="btns">
+        <a href="https://payform.ru/jjaA66G/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="https://thebodymindcode.github.io/Beyond/" target="_blank" class="btn-ghost">Подробнее</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Сессия — full width dark -->
+  <article class="card c-green reveal" style="grid-column:1/-1;background:#1a1f1c;color:#fff;border:none">
+    <div class="card-head" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:36px">
+      <div>
+        <div class="card-badge" style="background:rgba(59,122,90,.2);color:#7ABA93">Персональная работа</div>
+        <h3 style="color:#fff;font-size:1.6rem">Сессия с Дарьей</h3>
+        <p class="card-desc" style="color:rgba(255,255,255,.55)">60–90 минут, которые показывают то, что вы не видели годами. Точечная работа с корнем: тревога, прокрастинация, карьерные блоки, повторяющиеся паттерны.</p>
+        <div class="info-row">
+          <span class="info-chip" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#7ABA93"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>60–90 мин</span>
+          <span class="info-chip" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#7ABA93"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>1 на 1</span>
+          <span class="info-chip" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#7ABA93"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Запись навсегда</span>
         </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="reviews">
-        <div class="reviews-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-message"/></svg>
-                    Отзывы участников
-                </span>
-                <h2 class="section-title">Что говорят те, кто уже прошёл</h2>
-            </div>
-            
-            <div class="reviews-slider">
-                <div class="reviews-track">
-                    <div class="review-item"><img src="reviews/01.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/02.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/03.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/04.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/05.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/06.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/07.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/08.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/09.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/010.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/011.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/012.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/013.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/014.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/015.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/016.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/017.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/018.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/019.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/020.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/021.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/022.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/023.jpg" alt="Отзыв"></div>
-                    <div class="review-item"><img src="reviews/024.jpg" alt="Отзыв"></div>
-                </div>
-            </div>
-            
-            <p class="reviews-hint">← Листайте →</p>
+      </div>
+      <div>
+        <ul class="includes" style="margin-bottom:20px">
+          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Диагностика скрытых блоков</li>
+          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Трансформация прямо на сессии</li>
+          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Инструменты для самостоятельной работы</li>
+          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Запись сессии навсегда</li>
+        </ul>
+        <div class="price-row"><span class="price-old" style="color:rgba(255,255,255,.35)">15 000 ₽</span><span class="price" style="color:#fff">8 500 <small style="color:rgba(255,255,255,.4)">₽</small></span></div>
+        <div class="btns">
+          <a href="https://payform.ru/8da7uRf/" class="btn-primary" style="background:#7ABA93;color:#1a1f1c">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://thebodymindcode.github.io/session1/" target="_blank" class="btn-ghost" style="border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.6)">Подробнее</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </article>
 
-    <!-- Problem Section -->
-    <section class="problem">
-        <div class="problem-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-activity"/></svg>
-                    Знакомо?
-                </span>
-                <h2 class="section-title">Голова не выключается. Никогда.</h2>
-            </div>
+</div>
+</section>
 
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <svg class="problem-icon"><use href="#icon-repeat"/></svg>
-                    <h3>Внутренний диалог 24/7</h3>
-                    <p>Ведёшь разговоры с людьми, которых рядом нет. Репетируешь будущее. Прокручиваешь прошлое. Мозг генерирует 6000+ мыслей в день.</p>
-                </div>
-                <div class="problem-card">
-                    <svg class="problem-icon"><use href="#icon-activity"/></svg>
-                    <h3>Фоновая тревога</h3>
-                    <p>Вроде всё хорошо, но что-то не так. Тревожишься о том, что ещё не случилось. Тело напряжено без видимой причины.</p>
-                </div>
-                <div class="problem-card">
-                    <svg class="problem-icon"><use href="#icon-target"/></svg>
-                    <h3>Невозможность сфокусироваться</h3>
-                    <p>Читаешь страницу — и не помнишь, о чём. Начинаешь задачу — и через минуту думаешь о другом. Внимание постоянно утекает.</p>
-                </div>
-                <div class="problem-card">
-                    <svg class="problem-icon"><use href="#icon-battery"/></svg>
-                    <h3>Усталость без причины</h3>
-                    <p>Просыпаешься разбитым. Энергии нет, хотя ничего особенного не делал. Мозг потребляет 20% энергии на «мыслительную жвачку».</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- BUNDLE -->
+<section class="bundle reveal">
+<div class="bundle-box">
+  <div class="bundle-left">
+    <div class="bundle-tag">Выгодное предложение</div>
+    <h2>Всё в одном пакете</h2>
+    <p>Получите максимум: программа + практикум + персональная сессия</p>
+    <div class="bundle-items">
+      <div class="bundle-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Протокол остановки ума</div>
+      <div class="bundle-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Код нового года</div>
+      <div class="bundle-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Сессия с Дарьей</div>
+    </div>
+  </div>
+  <div class="bundle-right">
+    <div class="bundle-price-old">15 480 ₽</div>
+    <div class="bundle-price">10 830 <small>₽</small></div>
+    <div class="bundle-save">Экономия 4 650 ₽</div><br>
+    <a href="https://payform.ru/okam9WI/" class="bundle-btn">Забрать комплект <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
+</section>
 
-    <!-- Science Section -->
-    <section class="science">
-        <div class="science-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-brain"/></svg>
-                    Нейробиология
-                </span>
-                <h2 class="section-title">Почему это работает</h2>
-            </div>
+<!-- RESULTS INFOGRAPHIC -->
+<section id="results" class="results">
+<h2 class="reveal">Результаты участников</h2>
+<div class="results-grid">
+  <div class="r-card reveal d1" style="--w:92%">
+    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+    <div class="r-val">92%</div>
+    <div class="r-label">снижение уровня тревоги</div>
+    <div class="r-bar"><div class="r-bar-fill"></div></div>
+  </div>
+  <div class="r-card reveal d2" style="--w:85%">
+    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+    <div class="r-val">4–8</div>
+    <div class="r-label">недель до изменений на МРТ</div>
+    <div class="r-bar"><div class="r-bar-fill"></div></div>
+  </div>
+  <div class="r-card reveal d3" style="--w:78%">
+    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+    <div class="r-val">800+</div>
+    <div class="r-label">участников программ</div>
+    <div class="r-bar"><div class="r-bar-fill"></div></div>
+  </div>
+  <div class="r-card reveal d4" style="--w:67%">
+    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+    <div class="r-val">40+</div>
+    <div class="r-label">страниц научного мануала</div>
+    <div class="r-bar"><div class="r-bar-fill"></div></div>
+  </div>
+</div>
+</section>
 
-            <div class="science-content">
-                <div class="science-text">
-                    <h3>Default Mode Network</h3>
-                    <p>В 2001 году нейробиолог Marcus Raichle сделал открытие: определённые области мозга становятся более активными, когда человек ничего не делает.</p>
-                    <p>Эта сеть получила название Default Mode Network — сеть пассивного режима. Она потребляет до 20% энергии мозга на бесконечный внутренний монолог.</p>
-                    <p>Хорошая новость: целенаправленная практика физически меняет структуру мозга. Это видно на МРТ уже через 4-8 недель.</p>
+<!-- SCIENCE -->
+<div class="science-strip">
+<div class="science-inner reveal">
+  <div>
+    <h3>Почему это работает</h3>
+    <p>В 2001 году нейробиолог Marcus Raichle открыл Default Mode Network — сеть мозга, которая тратит до 20% энергии на бесконечный внутренний монолог.</p>
+    <p>Целенаправленная практика физически меняет структуру мозга — это видно на МРТ через 4–8 недель.</p>
+    <p class="science-ref">Killingsworth & Gilbert, Science, 2010: «Блуждающий ум — несчастный ум»</p>
+  </div>
+  <div class="brain-stats">
+    <div><div class="b-row">Префронтальная кора <span class="val">↑ +15%</span></div><div class="b-bar"><div class="b-fill g" style="--w:85%"></div></div></div>
+    <div><div class="b-row">Гиппокамп (память) <span class="val">↑ +12%</span></div><div class="b-bar"><div class="b-fill g" style="--w:75%"></div></div></div>
+    <div><div class="b-row">Миндалина (тревога) <span class="neg">↓ −18%</span></div><div class="b-bar"><div class="b-fill r" style="--w:35%"></div></div></div>
+    <div><div class="b-row">Активность DMN <span class="neg">↓ −40%</span></div><div class="b-bar"><div class="b-fill r" style="--w:25%"></div></div></div>
+  </div>
+</div>
+</div>
 
-                    <div class="science-quote">
-                        <p>«Человеческий ум — это блуждающий ум, а блуждающий ум — это несчастный ум»</p>
-                        <cite>— Killingsworth & Gilbert, Science, 2010</cite>
-                    </div>
-                </div>
+<!-- REVIEWS -->
+<section class="reviews">
+<h2 class="reveal">Отзывы участников</h2>
+<div class="rv-track reveal">
+  <div class="rv-item"><img src="reviews/01.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/02.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/03.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/04.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/05.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/06.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/07.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/08.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/09.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/010.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/011.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/012.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/013.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/014.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/015.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/016.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/017.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/018.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/019.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/020.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/021.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/022.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/023.jpg" alt="Отзыв" loading="lazy"></div>
+  <div class="rv-item"><img src="reviews/024.jpg" alt="Отзыв" loading="lazy"></div>
+</div>
+<p style="text-align:center;margin-top:12px;font-size:.75rem;color:var(--text3)">← Листайте →</p>
+</section>
 
-                <div class="brain-visual">
-                    <div class="brain-title">
-                        <svg><use href="#icon-trending"/></svg>
-                        Изменения мозга за 4-8 недель
-                    </div>
-                    <div class="brain-stats">
-                        <div class="brain-stat">
-                            <div class="brain-stat-icon green">
-                                <svg><use href="#icon-brain"/></svg>
-                            </div>
-                            <div class="brain-stat-content">
-                                <div class="brain-stat-label">Префронтальная кора (контроль)</div>
-                                <div class="brain-stat-bar">
-                                    <div class="brain-stat-fill green" style="width: 85%;"></div>
-                                </div>
-                                <div class="brain-stat-value">↑ Плотность +15%</div>
-                            </div>
-                        </div>
-                        <div class="brain-stat">
-                            <div class="brain-stat-icon gold">
-                                <svg><use href="#icon-book"/></svg>
-                            </div>
-                            <div class="brain-stat-content">
-                                <div class="brain-stat-label">Гиппокамп (память)</div>
-                                <div class="brain-stat-bar">
-                                    <div class="brain-stat-fill gold" style="width: 75%;"></div>
-                                </div>
-                                <div class="brain-stat-value">↑ Объём +12%</div>
-                            </div>
-                        </div>
-                        <div class="brain-stat">
-                            <div class="brain-stat-icon red">
-                                <svg><use href="#icon-zap"/></svg>
-                            </div>
-                            <div class="brain-stat-content">
-                                <div class="brain-stat-label">Миндалина (страх и тревога)</div>
-                                <div class="brain-stat-bar">
-                                    <div class="brain-stat-fill red" style="width: 35%;"></div>
-                                </div>
-                                <div class="brain-stat-value">↓ Размер -18%</div>
-                            </div>
-                        </div>
-                        <div class="brain-stat">
-                            <div class="brain-stat-icon blue">
-                                <svg><use href="#icon-activity"/></svg>
-                            </div>
-                            <div class="brain-stat-content">
-                                <div class="brain-stat-label">Активность DMN (шум)</div>
-                                <div class="brain-stat-bar">
-                                    <div class="brain-stat-fill blue" style="width: 25%;"></div>
-                                </div>
-                                <div class="brain-stat-value">↓ Активность -40%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- WHY BUY — self-selling block -->
+<section class="why-buy">
+<div class="wb-inner reveal">
+  <div class="wb-header">
+    <p class="wb-tag">Честно о главном</p>
+    <h2>Почему участники говорят:<br>«жалею, что не начала раньше»</h2>
+  </div>
 
-    <!-- Timeline Section -->
-    <section class="timeline">
-        <div class="timeline-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-clock"/></svg>
-                    Прогресс
-                </span>
-                <h2 class="section-title">Что происходит за 4 недели</h2>
-            </div>
+  <div class="wb-grid">
+    <div class="wb-card">
+      <div class="wb-num">01</div>
+      <h3>Вы уже всё попробовали</h3>
+      <p>Книги, медитации, аффирмации, терапия — и ничего не изменилось. Потому что вы работали с симптомами, а не с причиной. Наши программы бьют в корень: Default Mode Network — та часть мозга, которая генерирует бесконечный внутренний шум. Когда вы перестраиваете нейронные связи — проблема уходит навсегда, а не до следующего триггера.</p>
+    </div>
+    <div class="wb-card">
+      <div class="wb-num">02</div>
+      <h3>Это не мотивация — это нейронаука</h3>
+      <p>Мы не говорим «просто думай позитивно». Каждая программа основана на рецензируемых исследованиях — МРТ, кортизол, вариабельность сердечного ритма. Префронтальная кора растёт, миндалина уменьшается. Вы не «стараетесь быть спокойнее» — ваш мозг буквально становится другим. Это подтверждено сканами.</p>
+    </div>
+    <div class="wb-card">
+      <div class="wb-num">03</div>
+      <h3>Программа для каждой задачи</h3>
+      <p><strong>Тревога и внутренний шум</strong> → «Протокол остановки ума» за 28 дней. <strong>Денежные блоки</strong> → «Код денег» за 14 дней с живыми встречами и рабочей тетрадью. <strong>Цели и намерения</strong> → «Код нового года» — 3 дня глубокой трансформации. <strong>Здоровье и тело</strong> → «За пределами заболеваний» — 90 минут, которые всё меняют. <strong>Точечная работа</strong> → Персональная сессия с Дарьей 1 на 1.</p>
+    </div>
+    <div class="wb-card">
+      <div class="wb-num">04</div>
+      <h3>Один раз — и навсегда</h3>
+      <p>Нет подписок. Нет ежемесячных платежей. Нет «базовый/премиум/VIP». Вы платите один раз и получаете всё: видео, мануалы, закрытый чат, обновления. Навсегда. Это касается каждой программы — от «Протокола» до «Кода денег». Не расход — инвестиция, которая окупается каждый день.</p>
+    </div>
+    <div class="wb-card">
+      <div class="wb-num">05</div>
+      <h3>800+ людей уже это сделали</h3>
+      <p>Через программы прошли 800+ участников. 92% отмечают изменения в тревоге, сне, фокусе, отношениях с деньгами и телом. Листайте отзывы выше — реальные скриншоты из чатов, не постановка. Среди участников — предприниматели, врачи, айтишники, мамы в декрете, студенты. Работает для всех.</p>
+    </div>
+    <div class="wb-card">
+      <div class="wb-num">06</div>
+      <h3>Дешевле одной сессии терапевта</h3>
+      <p>«За пределами заболеваний» — 1 490 ₽ за 90-минутную трансформацию. «Протокол» — 2 990 ₽ за 28-дневную систему с 7 видео-практиками. «Код нового года» — 3 990 ₽ за 3 дня с живыми созвонами. «Код денег» — 5 900 ₽ за 14-дневный интенсив с 19 практиками. А комплект — экономия 4 650 ₽. Всё с пожизненным доступом.</p>
+    </div>
+  </div>
 
-            <div class="timeline-items">
-                <div class="timeline-item">
-                    <div class="timeline-dot">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-week">Неделя 1</div>
-                        <div class="timeline-title">Знакомство с тишиной</div>
-                        <div class="timeline-text">Осваиваете базовые техники. Первые моменты внутреннего покоя. Улучшение сна.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-week">Неделя 2</div>
-                        <div class="timeline-title">Первые изменения</div>
-                        <div class="timeline-text">Замечаете, что мысли уже не управляют вами. Меньше реактивности, больше выбора.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-week">Неделя 3</div>
-                        <div class="timeline-title">Углубление практики</div>
-                        <div class="timeline-text">Тишина становится доступной по запросу. Фокус и концентрация заметно растут.</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-week">Неделя 4</div>
-                        <div class="timeline-title">Новое состояние</div>
-                        <div class="timeline-text">Спокойствие как фоновое состояние. Ясность мышления. Структурные изменения мозга закрепляются.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="wb-bottom">
+    <div class="wb-quote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:28px;height:28px;color:var(--sage);opacity:.4;margin-bottom:12px"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+      <p>Тревога, деньги, здоровье, цели — у каждой проблемы есть своя программа.<br>Выберите ту, которая про вас прямо сейчас.<br><strong>Единственное, о чём жалеют участники — что не начали раньше.</strong></p>
+    </div>
+    <a href="#shop" class="wb-cta">Выбрать программу ↑</a>
+  </div>
+</div>
+</section>
 
-    <!-- Comparison Section -->
-    <section class="comparison">
-        <div class="comparison-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-trending"/></svg>
-                    Трансформация
-                </span>
-                <h2 class="section-title">До и после 4 недель</h2>
-            </div>
+<!-- FAQ -->
+<section id="faq" class="faq">
+<h2 class="reveal">Частые вопросы</h2>
+<div class="reveal">
+  <p style="text-align:center;color:var(--text3);font-size:.84rem;margin-bottom:24px">Не нашли ответ? Напишите в <a href="https://t.me/TheBodyMindCode_support" target="_blank" style="color:var(--sage);text-decoration:none;font-weight:600">поддержку</a></p>
+  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">О программах</p>
+  <div class="fq"><button class="fq-q">Нужен ли опыт медитации или практик?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Нет, никакой подготовки не нужно. Абсолютное большинство участников начинают с нуля. Все программы построены пошагово — от самого простого к сложному. Каждая практика объясняется подробно с видео-инструкцией. Вы не можете сделать что-то «неправильно».</p></div></div>
+  <div class="fq"><button class="fq-q">Когда я почувствую первый результат?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Зависит от практики. Эффект от дыхательной техники ощущается сразу — буквально через 3–5 минут. Устойчивые изменения в самочувствии и уровне тревоги — через 2–3 недели регулярной практики. Структурные изменения мозга, видимые на МРТ — через 4–8 недель. 92% участников отмечают значимые изменения уже в первый месяц.</p></div></div>
+  <div class="fq"><button class="fq-q">Это научно обосновано или эзотерика?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Все программы основаны на рецензируемых научных исследованиях — нейробиологии, психофизиологии и когнитивной науке. Мы используем объективные показатели: МРТ-сканирование, измерение кортизола, вариабельность сердечного ритма (HRV). Ключевые исследования: Killingsworth &amp; Gilbert (Science, 2010), Hölzel et al. (Psychiatry Research, 2011), работы Marcus Raichle по Default Mode Network. Никакой эзотерики — только нейронаука.</p></div></div>
+  <div class="fq"><button class="fq-q">Сколько времени в день нужно уделять?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Протокол остановки ума — 16 минут в день. Код денег — 30–40 минут (практика + рабочая тетрадь) плюс живые Zoom-встречи. Код нового года — 3 дня по 60 минут. «За пределами заболеваний» — одна встреча 90 минут. Программы сделаны так, чтобы вписываться в обычный распорядок дня.</p></div></div>
+  <div class="fq"><button class="fq-q">Чем «Протокол» отличается от обычной медитации?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Обычная медитация работает с вниманием — это полезно, но медленно. Протокол целенаправленно воздействует на Default Mode Network мозга — сеть, ответственную за навязчивый внутренний диалог. Мы используем комбинацию дыхательных техник, нейробиологических протоколов и когнитивных практик. Результат: не просто расслабление, а физическая перестройка нейронных связей за 28 дней.</p></div></div>
+  <div class="fq"><button class="fq-q">Подойдёт ли «Код денег» тем, у кого нет проблем с заработком?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Да. Программа работает не с «как зарабатывать больше», а с внутренними установками и паттернами, которые влияют на отношения с деньгами. Даже если вы хорошо зарабатываете, могут оставаться глубинные блоки: чувство вины за деньги, невозможность накапливать, подсознательный саботаж перед ростом дохода.</p></div></div>
+  <div class="fq"><button class="fq-q">Что такое «фраза-код» в практикуме «Код нового года»?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Это персональная формулировка, которую вы создаёте через серию глубоких практик. Она не придумывается — она «достаётся» из подсознания через специальную технику. Фраза-код становится вашим внутренним ориентиром и утренним ритуалом на весь год. Практикум актуален в любое время года — он работает с психологией «нового цикла».</p></div></div>
+  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">Оплата и доступ</p>
+  <div class="fq"><button class="fq-q">Как быстро я получу доступ после оплаты?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Мгновенно. Сразу после оплаты вы получаете ссылку на закрытый Telegram-канал с материалами программы. Обычно доступ приходит в течение 1–2 минут. Если что-то не пришло — напишите в поддержку, решим за 5 минут.</p></div></div>
+  <div class="fq"><button class="fq-q">Доступ ограничен по времени?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Нет. Один раз оплатили — доступ навсегда. Без подписок, ежемесячных платежей и скрытых условий. Материалы не удаляются и не блокируются. Вы можете проходить программу столько раз, сколько захотите — в своём темпе.</p></div></div>
+  <div class="fq"><button class="fq-q">Какие способы оплаты доступны?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Visa, Mastercard, МИР, СБП (Система быстрых платежей), Apple Pay, Google Pay. Данные карты не хранятся на нашей стороне — оплата через защищённый платёжный сервис. Оплата из-за рубежа тоже доступна — иностранные карты принимаются.</p></div></div>
+  <div class="fq"><button class="fq-q">Можно ли оплатить в рассрочку?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>На данный момент рассрочка не предусмотрена. Но обратите внимание на «За пределами заболеваний» за 1 490 ₽ — отличная точка входа. А комплект из трёх программ со скидкой 4 650 ₽ — максимально выгодное предложение.</p></div></div>
+  <div class="fq"><button class="fq-q">Есть ли возврат денег, если не подойдёт?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Мы уверены в качестве программ — 92% участников отмечают значимые изменения. Если у вас возникнут сложности, напишите в поддержку — мы всегда находим решение. Нам важно, чтобы каждый участник получил результат.</p></div></div>
+  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">Персональная сессия</p>
+  <div class="fq"><button class="fq-q">Как проходит сессия с Дарьей?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Онлайн через Zoom или Telegram-звонок. Длительность 60–90 минут. Это не обычная консультация и не «разговор о проблемах» — это точечная работа с корнем вашего запроса. Результат ощущается уже на сессии. После оплаты мы свяжемся для согласования удобного времени.</p></div></div>
+  <div class="fq"><button class="fq-q">С какими запросами можно прийти на сессию?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>С любым, который не даёт покоя. Частые темы: постоянная тревога, невозможность расслабиться, прокрастинация, сложности в отношениях, карьерные тупики, повторяющиеся сценарии, психосоматика, ощущение «застревания», потеря мотивации, страхи, внутренние конфликты.</p></div></div>
+  <div class="fq"><button class="fq-q">Чем сессия отличается от психотерапии?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Сессия — это не терапия и не замена работы с психологом. Это точечная, быстрая работа с конкретным запросом через методы нейробиологии и психосоматики. В классической терапии вы обсуждаете проблему неделями — здесь вы получаете конкретный сдвиг за одну встречу.</p></div></div>
+  <div class="fq"><button class="fq-q">Записывается ли сессия?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Да, запись сессии остаётся у вас навсегда. Это важно — во время сессии происходит глубокая работа, многое раскрывается. Запись позволяет пересматривать ключевые моменты и продолжать интеграцию инсайтов.</p></div></div>
+  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">Организационные вопросы</p>
+  <div class="fq"><button class="fq-q">Что делать, если я пропущу живую встречу?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Все живые встречи записываются. Если вы не смогли присутствовать — запись будет в закрытом канале. Посмотрите в удобное время и выполните практику самостоятельно. Ничего не пропадает.</p></div></div>
+  <div class="fq"><button class="fq-q">Подходят ли программы для подростков?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Программы рассчитаны на взрослых (18+). Если хотите помочь подростку — лучше начать с персональной сессии, где Дарья подберёт подходящий формат работы.</p></div></div>
+  <div class="fq"><button class="fq-q">Есть ли противопоказания?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Программы безопасны для абсолютного большинства. При серьёзных психиатрических диагнозах (шизофрения, биполярное расстройство в острой фазе, тяжёлая клиническая депрессия) рекомендуем сначала проконсультироваться с лечащим врачом. При беременности — без ограничений, но дыхательные практики выполняйте в комфортном темпе.</p></div></div>
+  <div class="fq"><button class="fq-q">Как связаться с поддержкой?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Напишите в Telegram: <a href="https://t.me/TheBodyMindCode_support" target="_blank" style="color:var(--sage);font-weight:600;text-decoration:none">@TheBodyMindCode_support</a>. Отвечаем ежедневно, обычно в течение нескольких часов. Помогаем с доступом, техническими вопросами и подбором программы.</p></div></div>
+</div>
+</section>
 
-            <div class="comparison-grid">
-                <div class="comparison-card before">
-                    <span class="comparison-label">
-                        <svg><use href="#icon-x"/></svg>
-                        До
-                    </span>
-                    <ul class="comparison-list">
-                        <li><svg><use href="#icon-x"/></svg> 6000+ мыслей в день без контроля</li>
-                        <li><svg><use href="#icon-x"/></svg> Фоновая тревога 24/7</li>
-                        <li><svg><use href="#icon-x"/></svg> DMN активна постоянно</li>
-                        <li><svg><use href="#icon-x"/></svg> Повышенный кортизол</li>
-                        <li><svg><use href="#icon-x"/></svg> Увеличенная миндалина</li>
-                        <li><svg><use href="#icon-x"/></svg> Усталость без причины</li>
-                        <li><svg><use href="#icon-x"/></svg> Невозможность сфокусироваться</li>
-                    </ul>
-                </div>
-                <div class="comparison-arrow">
-                    <svg><use href="#icon-arrow-right"/></svg>
-                </div>
-                <div class="comparison-card after">
-                    <span class="comparison-label">
-                        <svg><use href="#icon-check"/></svg>
-                        После
-                    </span>
-                    <ul class="comparison-list">
-                        <li><svg><use href="#icon-check"/></svg> Осознанный выбор, о чём думать</li>
-                        <li><svg><use href="#icon-check"/></svg> Спокойствие как фон</li>
-                        <li><svg><use href="#icon-check"/></svg> DMN под контролем</li>
-                        <li><svg><use href="#icon-check"/></svg> Нормальный уровень кортизола</li>
-                        <li><svg><use href="#icon-check"/></svg> Уменьшенная миндалина</li>
-                        <li><svg><use href="#icon-check"/></svg> Энергия и ясность</li>
-                        <li><svg><use href="#icon-check"/></svg> Глубокий фокус по запросу</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+<div class="ft-links">
+  <a href="https://t.me/TheBodyMindCode_support" target="_blank">Поддержка</a>
+  <a href="https://instagram.com/thebodymindcode" target="_blank">Instagram</a>
+  <a href="#shop">Программы</a>
+</div>
+<p class="ft-copy">© 2026 Архитектура сознания. ИП Ростовцева Дарья Валерьевна · ИНН: 241103415641</p>
+</footer>
 
-    <!-- Why Section -->
-    <section class="why">
-        <div class="why-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-award"/></svg>
-                    Преимущества
-                </span>
-                <h2 class="section-title">Почему выбирают нас</h2>
-            </div>
+<script>
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">
-                        <svg><use href="#icon-brain"/></svg>
-                    </div>
-                    <h3>Научная основа</h3>
-                    <p>Методы основаны на исследованиях Harvard, Yale, HeartMath Institute</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <svg><use href="#icon-book"/></svg>
-                    </div>
-                    <h3>Чёткая система</h3>
-                    <p>Пошаговая программа с прогрессией. Каждый шаг на своём месте</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <svg><use href="#icon-users"/></svg>
-                    </div>
-                    <h3>Поддержка</h3>
-                    <p>Закрытые чаты, эфиры, ответы на вопросы. Вы не одни в процессе</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <svg><use href="#icon-infinity"/></svg>
-                    </div>
-                    <h3>Вечный доступ</h3>
-                    <p>Один раз — навсегда. Без подписок и ограничений по времени</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// Results bars
+const barObs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');barObs.unobserve(e.target)}})},{threshold:.3});
+document.querySelectorAll('.r-card').forEach(el=>barObs.observe(el));
 
-    <!-- Products -->
-    <section class="products" id="products">
-        <div class="products-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-sparkle"/></svg>
-                    Программы
-                </span>
-                <h2 class="section-title">Выберите свой путь</h2>
-                <p class="section-subtitle">Каждый продукт — научно обоснованная система трансформации</p>
-            </div>
+// Science bars
+const sciObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.querySelectorAll('.b-fill').forEach(b=>{b.style.width=b.style.getPropertyValue('--w')});sciObs.unobserve(el.target)}})},{threshold:.3});
+document.querySelectorAll('.brain-stats').forEach(el=>sciObs.observe(el));
 
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <article class="product-card featured">
-                    <div class="product-icon">
-                        <svg><use href="#icon-brain"/></svg>
-                    </div>
-                    <span class="product-category">28-дневная программа</span>
-                    <h3 class="product-title">Протокол остановки ума</h3>
-                    <p class="product-description">
-                        16 минут в день, которые физически перестраивают мозг. 
-                        Для тех, кто устал от бесконечного внутреннего диалога.
-                    </p>
-                    <ul class="product-features">
-                        <li><svg><use href="#icon-check"/></svg> 7 видео-практик с сопровождением</li>
-                        <li><svg><use href="#icon-check"/></svg> Научный PDF-мануал 40+ страниц</li>
-                        <li><svg><use href="#icon-check"/></svg> Закрытый чат участников</li>
-                        <li><svg><use href="#icon-check"/></svg> Вечный доступ к материалам</li>
-                    </ul>
-                    <div class="price-block">
-                        <span class="price-old">5 900 ₽</span>
-                        <span class="price-new">2 990 <span class="price-currency">₽</span></span>
-                    </div>
-                    <div class="button-group">
-                        <a href="https://thebodymindcode.github.io/protocol" target="_blank" class="btn-details">Подробнее</a>
-                        <a href="https://payform.ru/ktai8Xf/" class="btn-buy">
-                            Купить
-                            <svg><use href="#icon-arrow-right"/></svg>
-                        </a>
-                    </div>
-                </article>
+// FAQ
+document.querySelectorAll('.fq-q').forEach(b=>{b.addEventListener('click',()=>{const p=b.parentElement,a=p.classList.contains('open');document.querySelectorAll('.fq').forEach(i=>i.classList.remove('open'));if(!a)p.classList.add('open')})});
 
-                <!-- Product 2 -->
-                <article class="product-card">
-                    <div class="product-icon">
-                        <svg><use href="#icon-compass"/></svg>
-                    </div>
-                    <span class="product-category">Онлайн-практикум</span>
-                    <h3 class="product-title">Код нового года</h3>
-                    <p class="product-description">
-                        3 дня глубокой трансформации. Создайте персональную фразу-код, 
-                        которая будет работать на вас весь год.
-                    </p>
-                    <div class="product-note">
-                        <svg><use href="#icon-info"/></svg>
-                        <span>Актуально в любое время года — практикум работает с психологией «нового цикла». Неважно, январь это или июль: ваш новый год начинается тогда, когда вы принимаете решение измениться.</span>
-                    </div>
-                    <ul class="product-features">
-                        <li><svg><use href="#icon-check"/></svg> 3 живых созвона по 60 минут</li>
-                        <li><svg><use href="#icon-check"/></svg> Персональная фраза-код</li>
-                        <li><svg><use href="#icon-check"/></svg> 6 глубоких практик</li>
-                        <li><svg><use href="#icon-check"/></svg> Утренний ритуал на год</li>
-                    </ul>
-                    <div class="price-block">
-                        <span class="price-old">7 900 ₽</span>
-                        <span class="price-new">3 990 <span class="price-currency">₽</span></span>
-                    </div>
-                    <div class="button-group">
-                        <a href="https://thebodymindcode.github.io/NewYearCode/" target="_blank" class="btn-details">Подробнее</a>
-                        <a href="https://payform.ru/4kai934/" class="btn-buy">
-                            Купить
-                            <svg><use href="#icon-arrow-right"/></svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Product 3: Код денег -->
-                <article class="product-card">
-                    <div class="product-icon">
-                        <svg><use href="#icon-trending"/></svg>
-                    </div>
-                    <span class="product-category">14-дневный интенсив</span>
-                    <h3 class="product-title">Код денег</h3>
-                    <p class="product-description">
-                        Измени свой денежный код за 14 дней. Разберись, почему деньги не задерживаются, и перепиши внутренние установки.
-                    </p>
-                    <div class="product-note">
-                        <svg><use href="#icon-info"/></svg>
-                        <span>Старт 22 января. 5 живых встреч + ежедневные практики между ними. Работаем с подсознательными блоками и саботажем.</span>
-                    </div>
-                    <ul class="product-features">
-                        <li><svg><use href="#icon-check"/></svg> 5 живых встреч в Zoom</li>
-                        <li><svg><use href="#icon-check"/></svg> 19 уникальных практик</li>
-                        <li><svg><use href="#icon-check"/></svg> Рабочая тетрадь 225+ полей</li>
-                        <li><svg><use href="#icon-check"/></svg> Вечный доступ к материалам</li>
-                    </ul>
-                    <div class="price-block">
-                        <span class="price-new">5 900 <span class="price-currency">₽</span></span>
-                    </div>
-                    <div class="button-group">
-                        <a href="https://thebodymindcode.github.io/themoneycode/" target="_blank" class="btn-details">Подробнее</a>
-                        <a href="https://payform.ru/6haon9d/" class="btn-buy">
-                            Купить
-                            <svg><use href="#icon-arrow-right"/></svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Product 4 -->
-                <article class="product-card">
-                    <div class="product-icon">
-                        <svg><use href="#icon-sparkle"/></svg>
-                    </div>
-                    <span class="product-category">Персональная работа</span>
-                    <h3 class="product-title">Сессия с Дарьей</h3>
-                    <p class="product-description">
-                        60–90 минут, которые показывают то, что вы не видели годами. 
-                        Не разговор о проблемах — работа с корнем.
-                    </p>
-                    <ul class="product-features">
-                        <li><svg><use href="#icon-check"/></svg> Диагностика скрытых блоков</li>
-                        <li><svg><use href="#icon-check"/></svg> Трансформация на сессии</li>
-                        <li><svg><use href="#icon-check"/></svg> Инструменты для самостоятельной работы</li>
-                        <li><svg><use href="#icon-check"/></svg> Запись сессии навсегда</li>
-                    </ul>
-                    <div class="price-block">
-                        <span class="price-old">15 000 ₽</span>
-                        <span class="price-new">8 500 <span class="price-currency">₽</span></span>
-                    </div>
-                    <div class="button-group">
-                        <a href="https://thebodymindcode.github.io/session1/" target="_blank" class="btn-details">Подробнее</a>
-                        <a href="https://payform.ru/8da7uRf/" class="btn-buy">
-                            Записаться
-                            <svg><use href="#icon-arrow-right"/></svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bundle Section -->
-    <section class="bundle">
-        <div class="bundle-container">
-            <span class="bundle-tag">🎁 МАКСИМАЛЬНАЯ ВЫГОДА</span>
-            <h2 class="bundle-title">Всё в одном</h2>
-            <p class="bundle-description">Полный набор инструментов трансформации: протокол + практикум + персональная сессия</p>
-            
-            <div class="bundle-items">
-                <div class="bundle-item">🧠 Протокол остановки ума</div>
-                <div class="bundle-item">✨ Код нового года</div>
-                <div class="bundle-item">💫 Сессия с Дарьей</div>
-            </div>
-            
-            <div class="bundle-price">
-                <span class="bundle-price-old">15 480 ₽</span>
-                <div class="bundle-price-row">
-                    <span class="bundle-price-new">10 830 <span>₽</span></span>
-                    <span class="bundle-savings">Экономия 4 650 ₽</span>
-                </div>
-            </div>
-            
-            <a href="https://payform.ru/okam9WI/" class="bundle-btn">
-                Купить набор →
-            </a>
-        </div>
-    </section>
-    <section class="triggers">
-        <div class="triggers-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-shield"/></svg>
-                    Гарантии
-                </span>
-                <h2 class="section-title">Безопасность и комфорт</h2>
-            </div>
-
-            <div class="triggers-grid">
-                <div class="trigger-card">
-                    <div class="trigger-icon">
-                        <svg><use href="#icon-lock"/></svg>
-                    </div>
-                    <h3 class="trigger-title">Безопасная оплата</h3>
-                    <p class="trigger-text">Защищённые платежи через сертифицированные системы. Данные карты не хранятся.</p>
-                </div>
-                <div class="trigger-card">
-                    <div class="trigger-icon">
-                        <svg><use href="#icon-zap"/></svg>
-                    </div>
-                    <h3 class="trigger-title">Мгновенный доступ</h3>
-                    <p class="trigger-text">Сразу после оплаты вы получаете доступ ко всем материалам. Никакого ожидания.</p>
-                </div>
-                <div class="trigger-card">
-                    <div class="trigger-icon">
-                        <svg><use href="#icon-message"/></svg>
-                    </div>
-                    <h3 class="trigger-title">Поддержка днём</h3>
-                    <p class="trigger-text">Ответим на любой вопрос в Telegram в дневное время. Всегда готовы помочь.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq">
-        <div class="faq-container">
-            <div class="section-header">
-                <span class="section-tag">
-                    <svg><use href="#icon-message"/></svg>
-                    FAQ
-                </span>
-                <h2 class="section-title">Часто задаваемые вопросы</h2>
-            </div>
-
-            <!-- О практике -->
-            <div class="faq-section">
-                <h3 class="faq-section-title">
-                    <svg><use href="#icon-clock"/></svg>
-                    О практике
-                </h3>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Сколько времени нужно в день?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Протокол занимает 16 минут в день. Это меньше, чем вы тратите на скроллинг ленты. Большинство участников практикуют утром и отмечают, что эти минуты экономят часы за счёт повышенной концентрации.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>У меня нет времени — я очень занят</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">16 минут — это меньше, чем один ролик на YouTube. Большинство участников практикуют утром, до того как начнётся суета. Эти минуты не тратят время — они его создают, потому что повышают концентрацию и убирают «мыслительную жвачку».</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>У меня нет опыта медитации. Подойдёт ли мне?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Да. Все практики с голосовым сопровождением — просто включаете и следуете инструкциям. Опыт не требуется. Система создана так, чтобы подходить и новичкам, и практикующим.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Я пробовал медитировать — у меня не получается</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Мысли уходят у всех — даже у монахов с 30-летним опытом. Разница в том, что вы это замечаете и возвращаетесь. Каждое возвращение — это «повторение» для префронтальной коры. 50 раз отвлеклись и вернулись = 50 повторений.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Что если я пропущу день?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Один пропущенный день — не катастрофа. Просто продолжайте на следующий. Исследования показывают: регулярность важнее идеальности. 5-6 дней в неделю на протяжении месяца дадут результат.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Когда лучше практиковать — утром или вечером?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Утро предпочтительнее: сила воли максимальна, меньше шансов пропустить, эффект ясности распространяется на весь день. Но регулярная вечерняя практика лучше, чем нерегулярная утренняя.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- О результатах -->
-            <div class="faq-section">
-                <h3 class="faq-section-title">
-                    <svg><use href="#icon-trending"/></svg>
-                    О результатах
-                </h3>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Когда я почувствую результат?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Эффект от дыхательной техники — сразу, после первой практики. Устойчивые изменения — через 2-3 недели. Структурные изменения мозга, видимые на МРТ — через 4-8 недель.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Это эффект плацебо?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Исследования используют контрольные группы и измеряют объективные показатели: МРТ-снимки мозга, уровень кортизола, вариабельность сердечного ритма. Изменения в структуре мозга — не плацебо, их видно на сканах.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Результаты сохранятся после окончания программы?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">За 4 недели формируется привычка и новые нейронные связи. Большинство участников продолжают практиковать самостоятельно. Даже 5 минут в день поддерживают результат.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Это поможет с тревогой?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Практики снижают общий уровень тревоги и активность миндалины. При клинических расстройствах рекомендуем работать со специалистом параллельно.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Поможет ли это улучшить сон?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Да, это один из первых результатов — обычно уже на 1-2 неделе. Практики снижают активность «блуждающего ума» и нормализуют уровень кортизола.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Технические вопросы -->
-            <div class="faq-section">
-                <h3 class="faq-section-title">
-                    <svg><use href="#icon-lock"/></svg>
-                    Технические вопросы
-                </h3>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Как быстро я получу доступ после оплаты?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Мгновенно. Сразу после оплаты вы получите ссылку на закрытый Telegram-канал с материалами.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Доступ ограничен по времени?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Нет. Один раз — навсегда. Все материалы остаются с вами без ограничений. Никаких подписок.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Какие способы оплаты доступны?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Банковские карты (Visa, Mastercard, МИР), СБП, Apple Pay, Google Pay. Данные карты не хранятся.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Можно ли оплатить из-за рубежа?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Да, принимаем карты международных платёжных систем. Если возникнут сложности — напишите в поддержку.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- О сессии -->
-            <div class="faq-section">
-                <h3 class="faq-section-title">
-                    <svg><use href="#icon-sparkle"/></svg>
-                    О персональной сессии
-                </h3>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Как проходит персональная сессия?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Онлайн, через Zoom или Telegram. 60–90 минут. После оплаты мы свяжемся для согласования времени. Это точечная работа с корнем вашего запроса.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>С какими запросами можно прийти?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Тревога, прокрастинация, сложности в отношениях, карьерные блоки, неуверенность, эмоциональные качели, страхи, повторяющиеся паттерны.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Сколько сессий нужно?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Многие получают значимый результат за одну сессию. Это не терапия, где нужно ходить месяцами. Точечная работа — точечный результат.</div>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Чем это отличается от психолога?</span>
-                            <svg class="faq-icon"><use href="#icon-plus"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">Сессия — это не терапия. Это точечная работа с конкретным запросом через тело и подсознание. Не «разговор о проблемах», а выход на корень и трансформация в моменте.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <h2 class="cta-title">Готовы начать трансформацию?</h2>
-        <p class="cta-text">Выберите программу и сделайте первый шаг к ясности и спокойствию уже сегодня.</p>
-        <a href="#products" class="cta-button">
-            <svg><use href="#icon-arrow-up"/></svg>
-            Выбрать программу
-        </a>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-logo">
-            <svg><use href="#icon-sparkle"/></svg>
-            Архитектура сознания
-        </div>
-        <div class="footer-links">
-            <a href="https://t.me/TheBodyMindCode_support" target="_blank">Поддержка</a>
-            <a href="https://instagram.com/thebodymindcode" target="_blank">Instagram</a>
-        </div>
-        <p class="footer-copy">
-            © 2026. Все права защищены.<br>
-            ИП Ростовцева Дарья Валерьевна · ИНН: 241103415641
-        </p>
-    </footer>
-
-    <script>
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Close all in same section
-                const section = item.closest('.faq-section');
-                section.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                
-                // Open current if wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    </script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+</script>
 </body>
 </html>
