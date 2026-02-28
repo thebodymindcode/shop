@@ -3,941 +3,549 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Программы | Архитектура сознания</title>
+<title>9 фактов о теле — Архитектура сознания</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
-
-/* ── PALETTE ── */
 :root{
-  --white:#FFFFFF;
-  --bg:#FAFBF8;
-  --bg2:#F3F4EF;
-  --sage:#3B7A5A;
-  --sage-dark:#2D5F45;
-  --sage-light:#E8F0EA;
-  --sage-pale:rgba(59,122,90,.06);
-  --gold:#C49A52;
-  --gold-light:#D4AF6E;
-  --text:#111;
-  --text2:#555;
-  --text3:#999;
-  --border:rgba(0,0,0,.06);
-  --r:14px;
-  --shadow:0 1px 3px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
-  --shadow-hover:0 4px 12px rgba(0,0,0,.06),0 20px 48px rgba(0,0,0,.1);
+  --bg:#F8F5F0;
+  --bg2:#F0EAE0;
+  --bg3:#E8E2D6;
+  --card:#FFFFFF;
+  --sage:#3D7A55;
+  --sage-d:#2D6343;
+  --sage-l:#5E9172;
+  --sage-pale:rgba(61,122,85,0.05);
+  --sage-brd:rgba(61,122,85,0.14);
+  --sage-brd-h:rgba(61,122,85,0.35);
+  --warm:#8B6B4A;
+  --warm-pale:rgba(139,107,74,0.05);
+  --rose:#A05C58;
+  --text:#1A1E1B;
+  --body:#2E3530;
+  --muted:#4A524C;
+  --dim:#6B756D;
+  --border:rgba(61,122,85,0.1);
+  --S:'Cormorant Garamond',Georgia,serif;
+  --R:'Raleway',system-ui,sans-serif;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--R);background:var(--bg);color:var(--body);font-size:18px;line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--S);font-weight:500;line-height:1.15;color:var(--text)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.015;pointer-events:none;z-index:10000}
+.cw{max-width:1100px;margin:0 auto;padding:0 32px}
 
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
-.nav-c{max-width:1280px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-size:.9rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
-.brand i{font-style:normal;color:var(--sage)}
-.nav-r{display:flex;align-items:center;gap:6px}
-.nav-r a{font-size:.78rem;font-weight:500;color:var(--text2);text-decoration:none;padding:8px 14px;border-radius:8px;transition:.2s}
-.nav-r a:hover{color:var(--text);background:var(--bg)}
-.nav-r .cta{background:var(--sage);color:#fff;font-weight:600;padding:9px 20px;border-radius:10px}
-.nav-r .cta:hover{background:var(--sage-dark);color:#fff}
-.mob-menu{display:none;background:none;border:none;cursor:pointer;padding:6px}
-.mob-menu svg{width:22px;height:22px;color:var(--text)}
+/* NAV */
+nav{padding:18px 0;background:transparent}
+.nav-i{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 32px}
+.nav-logo{font-family:var(--S);font-size:1.05rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text);text-decoration:none}
 
-/* ── HERO — minimal ── */
-.hero{max-width:1280px;margin:0 auto;padding:56px 32px 16px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.1}
-.hero h1 span{color:var(--sage)}
-.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
-.hero-stats .s{text-align:center}
-.hero-stats .s b{display:block;font-size:1.3rem;font-weight:800;color:var(--sage);letter-spacing:-.03em}
-.hero-stats .s small{font-size:.68rem;color:var(--text3);font-weight:500}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 32px 110px;position:relative;background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 45% at 50% 20%,rgba(61,122,85,.06),transparent 60%);pointer-events:none}
+.breath{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.br{border-radius:50%;border:1px solid rgba(61,122,85,.06);animation:breathe 8s ease-in-out infinite;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.br1{width:300px;height:300px}.br2{width:400px;height:400px;animation-delay:-2.5s;border-color:rgba(61,122,85,.04)}.br3{width:500px;height:500px;animation-delay:-5s;border-color:rgba(61,122,85,.025)}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(.9);opacity:.25}50%{transform:translate(-50%,-50%) scale(1.1);opacity:.65}}
+.hero-badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);padding:10px 26px;border:1px solid var(--sage-brd);margin-bottom:44px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero h1{font-size:clamp(2.8rem,7.5vw,5.5rem);font-weight:400;color:var(--text);margin-bottom:14px;letter-spacing:-.02em;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero-sub{font-size:clamp(1.08rem,2vw,1.25rem);color:var(--muted);max-width:640px;margin:22px auto 0;line-height:1.85;font-weight:400;opacity:0;animation:fadeUp .8s .6s forwards}
+.scroll-h{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 1.2s forwards}
+.scroll-h span{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--dim)}
+.scroll-l{width:1px;height:30px;background:linear-gradient(to bottom,var(--sage),transparent);animation:sp 2.5s ease infinite}
+@keyframes sp{0%,100%{opacity:.2}50%{opacity:.7}}
 
-/* ── TRUST BAR ── */
-.trust-bar{max-width:1280px;margin:0 auto;padding:20px 32px;display:flex;gap:20px;flex-wrap:wrap}
-.trust-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:var(--bg2);font-size:.72rem;color:var(--text2);font-weight:500}
-.trust-pill svg{width:14px;height:14px;color:var(--sage);flex-shrink:0}
+/* INTRO */
+.intro{padding:110px 32px 70px;text-align:center}
+.intro p{max-width:660px;margin:0 auto;font-size:1.18rem;line-height:1.9;color:var(--body)}
+.intro .bright{color:var(--text);font-weight:600;font-size:1.25rem}
 
-/* ── PRODUCTS SECTION ── */
-.products{max-width:1280px;margin:0 auto;padding:24px 32px 80px}
+/* DIVIDER */
+.dv{width:100%;max-width:260px;height:1px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--sage-brd),transparent);position:relative}
+.dv::after{content:'✦';position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--sage);background:var(--bg);padding:0 14px}
+.dv.b2::after{background:var(--bg2)}
 
-/* ── PRODUCT CARD — magazine style ── */
-.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+/* FACT SECTIONS */
+.fact{padding:100px 0;position:relative}
+.fi{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.fi.rev{direction:rtl}.fi.rev>*{direction:ltr}
+.fn{font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.fn::after{content:'';flex:1;height:1px;background:linear-gradient(to right,var(--sage-brd),transparent)}
+.ft{font-family:var(--S);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:500;color:var(--text);line-height:1.22;margin-bottom:24px}
+.fb{font-size:1.05rem;line-height:1.85;color:var(--body)}
+.fb p{margin-bottom:16px}
+.fb strong{color:var(--text);font-weight:600}
 
-.card{
-  background:var(--white);border:1px solid var(--border);border-radius:20px;
-  padding:0;overflow:hidden;transition:all .35s cubic-bezier(.25,.8,.25,1);
-  display:flex;flex-direction:column;position:relative;
-}
-.card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:transparent}
+/* HIGHLIGHT */
+.hl{border-left:3px solid;border-image:linear-gradient(to bottom,var(--sage),var(--warm)) 1;padding:24px 30px;margin:28px 0;background:linear-gradient(135deg,var(--sage-pale),var(--warm-pale));border-radius:0 10px 10px 0}
+.hl p{font-family:var(--S);font-size:1.35rem;font-style:italic;color:var(--text);line-height:1.55;margin:0}
 
-/* Card top — colored header strip */
-.card-head{padding:28px 28px 20px;position:relative}
-.card-head::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
-.card.c-green .card-head::before{background:linear-gradient(90deg,#3B7A5A,#5AA67A)}
-.card.c-gold .card-head::before{background:linear-gradient(90deg,#C49A52,#D4AF6E)}
-.card.c-blue .card-head::before{background:linear-gradient(90deg,#4A7FB5,#6BA0D4)}
-.card.c-rose .card-head::before{background:linear-gradient(90deg,#B85C5C,#D47A7A)}
+/* INFO CARD */
+.ic{background:var(--card);border:1px solid var(--sage-brd);padding:40px;position:relative;overflow:hidden}
+.ic::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--sage),transparent);opacity:.35}
+.bn{font-family:var(--S);font-size:4.5rem;font-weight:600;color:var(--sage);line-height:1}
+.sl{font-size:.95rem;color:var(--dim);margin-top:6px;font-weight:500}
+.ss{font-size:.78rem;color:var(--dim);margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-weight:500}
 
-/* Badge */
-.card-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.card.c-green .card-badge{background:var(--sage-pale);color:var(--sage)}
-.card.c-gold .card-badge{background:rgba(196,154,82,.08);color:var(--gold)}
-.card.c-blue .card-badge{background:rgba(74,127,181,.08);color:#4A7FB5}
-.card.c-rose .card-badge{background:rgba(184,92,92,.08);color:#B85C5C}
-.card.c-violet .card-head::before{background:linear-gradient(90deg,#6C5CE7,#A29BFE)}
-.card.c-violet .card-badge{background:rgba(108,92,231,.08);color:#6C5CE7}
+/* PROGRESS BARS */
+.pb{margin-bottom:22px}
+.pb-l{display:flex;justify-content:space-between;margin-bottom:7px;font-size:.9rem;font-weight:600;color:var(--body)}
+.pb-l span:last-child{color:var(--sage);font-weight:700}
+.pb-t{height:6px;background:rgba(61,122,85,.06);border-radius:6px;overflow:hidden}
+.pb-f{height:100%;border-radius:6px;width:0%;transition:width 1.8s cubic-bezier(.22,1,.36,1)}
+.pb-f.sg{background:linear-gradient(90deg,var(--sage),var(--sage-l))}
+.pb-f.wm{background:linear-gradient(90deg,var(--warm),#A88560)}
+.pb-f.rs{background:linear-gradient(90deg,var(--rose),#C07A76)}
+.pb-f.dm{background:linear-gradient(90deg,#90A090,#B0C0B0)}
+.visible .pb-f{width:var(--w)}
 
-/* ── VIP GOLD CARD ── */
-.card.c-vip .card-head::before{background:linear-gradient(90deg,#C49A52,#D4AF6E,#E8C97A,#D4AF6E,#C49A52);background-size:200% 100%;animation:goldShimmer 3s ease infinite}
-@keyframes goldShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.card.c-vip .card-badge{background:rgba(196,154,82,.1);color:#C49A52}
-.card.c-vip{border:2px solid rgba(196,154,82,.3);background:linear-gradient(180deg,#FFFDF7 0%,#FFF9EE 100%)}
-.card.c-vip:hover{border-color:#C49A52;box-shadow:0 8px 40px rgba(196,154,82,.18),0 20px 48px rgba(0,0,0,.08)}
-.card.c-vip .card-head::before{height:5px}
-.vip-crown{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:linear-gradient(135deg,#C49A52,#D4AF6E);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;position:absolute;top:14px;right:14px;z-index:2;box-shadow:0 4px 12px rgba(196,154,82,.3)}
-.vip-feature{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:rgba(196,154,82,.06);border-radius:10px;margin-bottom:8px}
-.vip-feature svg{width:18px;height:18px;color:#C49A52;flex-shrink:0;margin-top:1px}
-.vip-feature .vf-title{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:2px}
-.vip-feature .vf-desc{font-size:.74rem;color:var(--text2);line-height:1.5}
-.btn-gold{flex:1;padding:13px;text-align:center;background:linear-gradient(135deg,#C49A52,#D4AF6E);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;border-radius:12px;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 16px rgba(196,154,82,.25)}
-.btn-gold:hover{background:linear-gradient(135deg,#B08A42,#C49A52);transform:translateY(-1px);box-shadow:0 8px 28px rgba(196,154,82,.35)}
-.btn-gold svg{width:14px;height:14px;flex-shrink:0}
+/* CIRCLE */
+.cc{position:relative;width:210px;height:210px;margin:0 auto}
+.cc svg{transform:rotate(-90deg)}
+.cc .trk{fill:none;stroke:rgba(61,122,85,.06);stroke-width:8}
+.cc .fl{fill:none;stroke:url(#cG);stroke-width:8;stroke-linecap:round;stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset 2.2s cubic-bezier(.22,1,.36,1)}
+.visible .cc .fl{stroke-dashoffset:var(--off)}
+.cc-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.cc-c .n{font-family:var(--S);font-size:3.5rem;font-weight:600;color:var(--text)}
+.cc-c .u{font-size:.9rem;color:var(--dim);margin-top:-2px}
 
-.card-badge svg{width:10px;height:10px}
+/* BRIDGE */
+.bridge{padding:130px 32px;text-align:center;background:var(--bg2)}
+.bridge-i{max-width:780px;margin:0 auto}
+.bridge-lb{font-size:.7rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--sage);margin-bottom:22px}
+.bridge h2{font-family:var(--S);font-size:clamp(2rem,5vw,3.2rem);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:36px}
+.bridge h2 em{color:var(--sage);font-style:italic}
+.bridge p{font-size:1.15rem;margin-bottom:20px;line-height:1.85}
+.bridge strong{color:var(--text)}
+.bridge .fin{color:var(--text);font-size:1.3rem;font-weight:600;margin-top:10px}
 
-.card h3{font-size:1.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;line-height:1.2}
-.card-desc{font-size:.88rem;color:var(--text2);line-height:1.55;margin-bottom:20px}
+/* CTA */
+.cta-w{padding:110px 32px;text-align:center;background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.cta-c{max-width:580px;margin:0 auto;background:var(--card);border:1px solid var(--sage-brd-h);padding:60px 48px;position:relative;box-shadow:0 14px 50px rgba(61,122,85,.06)}
+.cta-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--sage),transparent)}
+.cta-c h2{font-family:var(--S);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:500;color:var(--text);margin-bottom:16px}
+.cta-c .sub{font-size:1.08rem;color:var(--muted);margin-bottom:36px;line-height:1.8}
+.btn{display:inline-block;padding:20px 52px;background:var(--sage);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;font-family:var(--R);transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .6s}
+.btn:hover::before{left:100%}
+.btn:hover{background:var(--sage-d);transform:translateY(-3px);box-shadow:0 18px 44px rgba(61,122,85,.2)}
+.cta-meta{font-size:.95rem;color:var(--dim);margin-top:22px;font-weight:500}
+.cta-ff{display:flex;gap:22px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.cta-f{display:flex;align-items:center;gap:7px;font-size:.9rem;color:var(--muted);font-weight:500}
+.cta-f svg{color:var(--sage);flex-shrink:0}
 
-/* ── INFOGRAPHIC STATS ROW ── */
-.info-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
-.info-chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:8px;background:var(--bg);font-size:.72rem;font-weight:600;color:var(--text2);white-space:nowrap}
-.info-chip svg{width:13px;height:13px;color:var(--sage);flex-shrink:0}
-.info-chip.gold svg{color:var(--gold)}
+/* Transition — persuasion */
+.trans{padding:0;position:relative;background:var(--bg)}
+.trans-inner{max-width:680px;margin:0 auto;padding:90px 36px 60px}
+.trans p{font-size:1.18rem;color:var(--body);line-height:1.9;margin-bottom:40px}
+.trans p:last-child{margin-bottom:0}
+.trans p strong{color:var(--text);font-weight:700}
+.trans .t-accent{color:var(--sage);font-weight:600}
+.trans .t-break{display:block;width:40px;height:2px;background:linear-gradient(90deg,var(--sage),var(--warm));margin:52px 0;border-radius:2px;opacity:.5}
+.trans .t-final{font-family:var(--S);font-size:clamp(1.4rem,3vw,1.85rem);color:var(--text);font-weight:500;line-height:1.45;font-style:italic;padding:32px 0 0;border-top:1px solid var(--border)}
 
-/* ── WHAT'S INCLUDED — visual list ── */
-.includes{list-style:none;margin-bottom:auto;padding-bottom:20px}
-.includes li{display:flex;align-items:flex-start;gap:8px;padding:7px 0;font-size:.82rem;color:var(--text2);line-height:1.5}
-.includes li svg{width:16px;height:16px;color:var(--sage);flex-shrink:0;margin-top:2px}
+footer{text-align:center;padding:50px 32px;border-top:1px solid var(--border);font-size:.85rem;color:var(--dim)}
+footer a{color:var(--sage);text-decoration:none}
 
-/* ── CARD FOOTER ── */
-.card-foot{padding:0 28px 28px;margin-top:auto}
-.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
-.price-old{font-size:.88rem;color:var(--text3);text-decoration:line-through;font-weight:500}
-.price{font-size:1.8rem;font-weight:800;letter-spacing:-.03em;color:var(--text)}
-.price small{font-size:.85rem;font-weight:500;color:var(--text3)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.rv.visible{opacity:1;transform:translateY(0)}
+.counter{font-variant-numeric:tabular-nums}
 
-.btns{display:flex;gap:8px}
-.btn-primary{flex:1;padding:13px;text-align:center;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;border-radius:12px;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:5px}
-.btn-primary:hover{background:var(--sage-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(59,122,90,.25)}
-.btn-primary svg{width:14px;height:14px}
-.btn-ghost{flex:1;padding:13px;text-align:center;border:1px solid var(--border);color:var(--text2);text-decoration:none;font-weight:600;font-size:.82rem;border-radius:12px;transition:all .25s}
-.btn-ghost:hover{border-color:var(--sage);color:var(--sage)}
-
-/* ── FEATURED CARD (full width) ── */
-.card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--sage)}
-.card.featured .card-head{padding:32px 32px 24px}
-.card.featured .card-foot{padding:0 32px 32px}
-.featured-tag{position:absolute;top:20px;right:20px;background:var(--sage);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:8px}
-.featured-right{padding:32px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
-.featured-right .card-foot{padding:0}
-
-/* ── BUNDLE ── */
-.bundle{max-width:1280px;margin:0 auto;padding:0 32px 80px}
-.bundle-box{background:var(--bg2);border-radius:20px;padding:48px;display:flex;align-items:center;gap:48px}
-.bundle-left{flex:1}
-.bundle-tag{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.bundle-tag::before{content:'';width:20px;height:2px;background:var(--sage)}
-.bundle-left h2{font-size:1.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
-.bundle-left p{color:var(--text2);font-size:.92rem;margin-bottom:24px}
-.bundle-items{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
-.bundle-item{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--white);border-radius:10px;font-size:.85rem;font-weight:500;color:var(--text)}
-.bundle-item svg{width:16px;height:16px;color:var(--sage)}
-.bundle-right{text-align:center;min-width:260px}
-.bundle-price-old{font-size:1rem;color:var(--text3);text-decoration:line-through;margin-bottom:4px}
-.bundle-price{font-size:2.8rem;font-weight:800;letter-spacing:-.04em;margin-bottom:4px}
-.bundle-price small{font-size:1rem;font-weight:500;color:var(--text3)}
-.bundle-save{display:inline-block;padding:5px 14px;border-radius:100px;background:rgba(59,122,90,.1);color:var(--sage);font-size:.78rem;font-weight:700;margin-bottom:20px}
-.bundle-btn{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;border-radius:14px;transition:all .25s;box-shadow:0 4px 16px rgba(59,122,90,.2)}
-.bundle-btn:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,122,90,.3)}
-.bundle-btn svg{width:16px;height:16px}
-
-/* ── RESULTS INFOGRAPHIC ── */
-.results{max-width:1280px;margin:0 auto;padding:0 32px 80px}
-.results h2{font-size:1.6rem;font-weight:800;letter-spacing:-.03em;margin-bottom:32px;text-align:center}
-.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.r-card{background:var(--bg);border-radius:16px;padding:28px;text-align:center}
-.r-icon{width:48px;height:48px;border-radius:12px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.r-icon svg{width:22px;height:22px;color:var(--sage)}
-.r-val{font-size:2rem;font-weight:800;color:var(--sage);letter-spacing:-.03em;margin-bottom:4px}
-.r-label{font-size:.78rem;color:var(--text2);font-weight:500}
-.r-bar{height:4px;border-radius:2px;background:rgba(0,0,0,.06);margin-top:12px;overflow:hidden}
-.r-bar-fill{height:100%;border-radius:2px;background:var(--sage);transition:width 1.4s ease;width:0}
-.r-card.vis .r-bar-fill{width:var(--w)}
-
-/* ── SCIENCE STRIP ── */
-.science-strip{background:var(--bg2);padding:48px 32px}
-.science-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.science-inner h3{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
-.science-inner p{font-size:.88rem;color:var(--text2);margin-bottom:10px;line-height:1.6}
-.science-ref{font-size:.72rem;color:var(--text3);font-style:italic;margin-top:8px}
-.brain-stats{display:flex;flex-direction:column;gap:16px}
-.b-row{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--text2);font-weight:500}
-.b-row .val{font-weight:700;color:var(--sage)}
-.b-row .neg{color:#B85C5C}
-.b-bar{height:5px;border-radius:3px;background:rgba(0,0,0,.05);overflow:hidden;margin-top:4px}
-.b-fill{height:100%;border-radius:3px;transition:width 1.2s ease;width:0}
-.b-fill.g{background:var(--sage)}
-.b-fill.r{background:#D47A7A}
-
-/* ── REVIEWS ── */
-.reviews{padding:64px 32px;max-width:1280px;margin:0 auto}
-.reviews h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:24px}
-.rv-track{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 0}
-.rv-track::-webkit-scrollbar{display:none}
-.rv-item{flex-shrink:0;width:260px;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--white);transition:.3s}
-.rv-item:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-.rv-item img{width:100%;display:block}
-
-/* ── WHY BUY ── */
-.why-buy{padding:80px 32px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
-.wb-inner{max-width:1100px;margin:0 auto}
-.wb-header{text-align:center;margin-bottom:48px}
-.wb-tag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px}
-.wb-tag::before,.wb-tag::after{content:'';width:24px;height:1.5px;background:var(--sage);opacity:.4}
-.wb-header h2{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2}
-.wb-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px}
-.wb-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s}
-.wb-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:transparent}
-.wb-num{font-size:.65rem;font-weight:800;color:var(--sage);letter-spacing:.05em;margin-bottom:10px;opacity:.6}
-.wb-card h3{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px;color:var(--text)}
-.wb-card p{font-size:.84rem;color:var(--text2);line-height:1.65}
-.wb-bottom{text-align:center}
-.wb-quote{max-width:600px;margin:0 auto 28px;padding:32px;background:var(--white);border-radius:20px;border:1px solid var(--border)}
-.wb-quote p{font-size:.95rem;color:var(--text2);line-height:1.7}
-.wb-quote strong{color:var(--text);font-weight:700}
-.wb-cta{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;border-radius:14px;transition:all .25s;box-shadow:0 4px 16px rgba(59,122,90,.2)}
-.wb-cta:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,122,90,.3)}
-@media(max-width:768px){.wb-grid{grid-template-columns:1fr}.why-buy{padding:60px 20px}}
-
-/* ── FAQ ── */
-.faq{max-width:760px;margin:0 auto;padding:64px 32px}
-.faq h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:24px;text-align:center}
-.fq{border-bottom:1px solid var(--border)}
-.fq-q{width:100%;background:none;border:none;padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;font-size:.88rem;color:var(--text);font-weight:600;text-align:left;transition:.2s}
-.fq-q:hover{color:var(--sage)}
-.fq-q svg{width:18px;height:18px;color:var(--text3);transition:transform .3s;flex-shrink:0;margin-left:12px}
-.fq.open .fq-q svg{transform:rotate(45deg);color:var(--sage)}
-.fq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.fq.open .fq-a{max-height:500px}
-.fq-a p{padding:0 0 18px;font-size:.84rem;color:var(--text2);line-height:1.65}
-
-/* ── FOOTER ── */
-footer{border-top:1px solid var(--border);padding:32px;text-align:center}
-.ft-links{display:flex;justify-content:center;gap:24px;margin-bottom:12px}
-.ft-links a{font-size:.78rem;color:var(--text3);text-decoration:none;font-weight:500;transition:.2s}
-.ft-links a:hover{color:var(--sage)}
-.ft-copy{font-size:.68rem;color:var(--text3);opacity:.7}
-
-/* ── ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.22,1,.36,1)}
-.reveal.vis{opacity:1;transform:none}
-.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .p-grid{grid-template-columns:1fr}
-  .card.featured{grid-template-columns:1fr}
-  .featured-right{border-left:none;border-top:1px solid var(--border)}
-  .bundle-box{flex-direction:column;text-align:center;padding:36px}
-  .bundle-items{align-items:center}
-  .results-grid{grid-template-columns:1fr 1fr}
-  .science-inner{grid-template-columns:1fr}
-}
-@media(max-width:768px){
-  .nav-r a:not(.cta){display:none}.mob-menu{display:block}
-  .hero{padding:36px 20px 12px;flex-direction:column;align-items:flex-start}
-  .hero-stats{gap:16px}
-  .products,.bundle,.results,.reviews,.faq{padding-left:20px;padding-right:20px}
-  .p-grid{gap:12px}
-  .card h3{font-size:1.2rem}
-  .card-head{padding:24px 24px 16px}
-  .card-foot{padding:0 24px 24px}
-  .btns{flex-direction:column}
-  .bundle-box{padding:28px}
-  .results-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .r-val{font-size:1.6rem}
-  .trust-bar{padding:16px 20px}
-  .rv-item{width:220px}
-  .vip-features-grid{grid-template-columns:1fr !important;padding:0 24px 8px !important}
-  .vip-features-grid .vip-feature{grid-column:auto !important}
-  .card.c-vip .card-head{padding:52px 24px 20px !important}
-  .card.c-vip .card-foot{padding:16px 24px 28px !important}
-}
-@media(max-width:480px){
-  .results-grid{grid-template-columns:1fr}
-  .hero h1{font-size:1.6rem}
-  .hero-stats{gap:12px}
-}
+@media(max-width:900px){.fi,.fi.rev{grid-template-columns:1fr;direction:ltr;gap:40px}.fi.rev>*{direction:ltr}.hero{padding:40px 24px 90px}.cw{padding:0 24px}}
+@media(max-width:600px){.fact{padding:70px 0}.fi{padding:0 20px}.ic{padding:28px 22px}.cta-c{padding:44px 24px}.cta-ff{flex-direction:column;align-items:center;gap:10px}.bridge{padding:90px 20px}.trans-inner{padding:70px 24px 50px}.hero h1{font-size:clamp(2.2rem,10vw,3.2rem)!important}body{font-size:17px}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav><div class="nav-c">
-  <a href="#" class="brand"><i>●</i> Архитектура сознания</a>
-  <div class="nav-r">
-    <a href="#results">Результаты</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://t.me/TheBodyMindCode_support" target="_blank">Поддержка</a>
-    <a href="#shop" class="cta">Программы ↓</a>
-    <button class="mob-menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  </div>
-</div></nav>
+<svg style="position:absolute;width:0;height:0"><defs>
+  <linearGradient id="cG" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3D7A55"/><stop offset="100%" stop-color="#8B6B4A"/></linearGradient>
+</defs></svg>
 
-<!-- HERO — 2 строки, сразу к делу -->
-<div class="hero">
-  <h1>Научные программы<br>для <span>перестройки мозга</span></h1>
-  <div class="hero-stats">
-    <div class="s"><b>800+</b><small>участников</small></div>
-    <div class="s"><b>92%</b><small>результат</small></div>
-    <div class="s"><b>10+</b><small>лет практики</small></div>
-  </div>
+<nav><div class="nav-i"><a href="#" class="nav-logo">Архитектура сознания</a></div></nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="breath"><div class="br br1"></div><div class="br br2"></div><div class="br br3"></div></div>
+  <div class="hero-badge">Архитектура сознания</div>
+  <h1>Почему тело болеет,<br>даже когда вы делаете<br>всё <em>«правильно»</em></h1>
+  <p class="hero-sub">9 фактов о связи тела и сознания, которые объясняют хронические состояния, усталость и ощущение, что жизнь проходит мимо</p>
+  <div class="scroll-h"><span>Читать</span><div class="scroll-l"></div></div>
+</section>
+
+<!-- INTRO -->
+<div class="intro rv">
+  <p>Вы следите за здоровьем. Сдаёте анализы. Ходите к врачам. Пьёте витамины. Контролируете диету.</p>
+  <br>
+  <p>И при этом — тело живёт своей жизнью. Симптомы возвращаются. Энергии нет. Ощущение, что вы «справляетесь», а не живёте.</p>
+  <br>
+  <p class="bright">Что, если проблема не в том, что вы делаете — а в том, откуда?</p>
 </div>
+<div class="dv"></div>
 
-<!-- TRUST -->
-<div class="trust-bar">
-  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Результат виден на МРТ</div>
-  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Вечный доступ</div>
-  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Закрытое сообщество</div>
-  <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Безопасная оплата</div>
-</div>
-
-<!-- ═══ PRODUCTS ═══ -->
-<section id="shop" class="products">
-<div class="p-grid">
-
-  <!-- ★ FEATURED: Протокол -->
-  <article class="card featured c-green reveal">
+<!-- ФАКТ 1 -->
+<section class="fact rv">
+  <div class="fi">
     <div>
-      <div class="card-head">
-        <span class="featured-tag">★ Хит продаж</span>
-        <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>28-дневная программа</div>
-        <h3>Протокол остановки ума</h3>
-        <div style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:var(--sage-pale);font-size:.68rem;font-weight:600;color:var(--sage);margin-bottom:10px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>160 участников прошли</div>
-        <p class="card-desc">16 минут в день, которые физически перестраивают мозг. Для тех, кто устал от бесконечного внутреннего диалога, тревоги и прокрастинации.</p>
-        <div class="info-row">
-          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>16 мин/день</span>
-          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Видео</span>
-          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>PDF 40 стр</span>
-          <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Вечный доступ</span>
+      <div class="fn">Факт 01</div>
+      <div class="ft">75–90% визитов к врачу связаны со стрессом. Не с бактериями.</div>
+      <div class="fb">
+        <p>Когда мы говорим «стресс» — мы представляем дедлайны и пробки. Но тело понимает стресс иначе.</p>
+        <p>Для тела стресс — это <strong>любой режим, в котором нужно выживать</strong>. Контроль, напряжение, «держаться», «справляться» — всё это биохимически один и тот же сигнал: опасность.</p>
+        <p>И тело реагирует: кортизол, адреналин, воспаление. Не потому, что вы больны. А потому, что <strong>вы в режиме борьбы</strong>.</p>
+      </div>
+      <div class="hl"><p>Тело не ломается. Оно реагирует. Точно и биохимически — на то, как вы живёте.</p></div>
+    </div>
+    <div>
+      <div class="ic" style="text-align:center">
+        <div class="cc">
+          <svg width="210" height="210" viewBox="0 0 210 210"><circle class="trk" cx="105" cy="105" r="90"/><circle class="fl" cx="105" cy="105" r="90" style="--off:141"/></svg>
+          <div class="cc-c"><div class="n counter" data-target="75">0</div><div class="u">–90% визитов</div></div>
         </div>
-      </div>
-      <div class="card-foot">
-        <div class="price-row"><span class="price-old">5 900 ₽</span><span class="price">2 990 <small>₽</small></span></div>
-        <div class="btns">
-          <a href="https://payform.ru/ktai8Xf/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="https://thebodymindcode.github.io/protocol" target="_blank" class="btn-ghost">Подробнее</a>
-        </div>
+        <p style="margin-top:20px;font-size:1rem;color:var(--dim)">связаны со стрессом, а не с инфекцией</p>
+        <div class="ss">American Institute of Stress · Benson, Harvard Medical School</div>
       </div>
     </div>
-    <div class="featured-right">
-      <ul class="includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>7 видео-практик с пошаговым сопровождением</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Научный PDF-мануал 40+ страниц</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытый чат участников в Telegram</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Еженедельные отчёты прогресса</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Доступ навсегда — без подписок</li>
-      </ul>
-      <div class="card-foot">
-        <div style="padding:16px;background:var(--sage-pale);border-radius:12px;margin-bottom:16px">
-          <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:.72rem;font-weight:600;color:var(--text2)">Тревога</span><span style="font-size:.72rem;font-weight:700;color:var(--sage)">↓ 78%</span></div>
-          <div style="height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><div style="width:78%;height:100%;border-radius:2px;background:var(--sage)"></div></div>
-          <div style="display:flex;justify-content:space-between;margin:10px 0 6px"><span style="font-size:.72rem;font-weight:600;color:var(--text2)">Ясность мышления</span><span style="font-size:.72rem;font-weight:700;color:var(--sage)">↑ 85%</span></div>
-          <div style="height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><div style="width:85%;height:100%;border-radius:2px;background:var(--sage)"></div></div>
-          <div style="display:flex;justify-content:space-between;margin:10px 0 6px"><span style="font-size:.72rem;font-weight:600;color:var(--text2)">Качество сна</span><span style="font-size:.72rem;font-weight:700;color:var(--sage)">↑ 67%</span></div>
-          <div style="height:4px;border-radius:2px;background:rgba(0,0,0,.06);overflow:hidden"><div style="width:67%;height:100%;border-radius:2px;background:var(--sage)"></div></div>
-          <p style="font-size:.62rem;color:var(--text3);margin-top:8px;text-align:center">По результатам опроса 800+ участников</p>
-        </div>
-      </div>
-    </div>
-  </article>
+  </div>
+</section>
 
-  <!-- Код денег -->
-  <article class="card c-blue reveal d1">
-    <div class="card-head">
-      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 10-12h-7l1-8z"/></svg>14-дневный интенсив</div>
-      <h3>Код денег</h3>
-      <p class="card-desc">Измени денежный код за 14 дней. Разберись, почему деньги не задерживаются, и перепиши внутренние установки.</p>
-      <div class="info-row">
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>14 дней</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>5 Zoom-встреч</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>19 практик</span>
+<!-- ФАКТ 2 -->
+<section class="fact rv" style="background:var(--bg2)">
+  <div class="fi rev">
+    <div>
+      <div class="fn">Факт 02</div>
+      <div class="ft">У вашего тела два режима. И вы застряли в первом.</div>
+      <div class="fb">
+        <p>Вегетативная нервная система управляет всем, что вы не контролируете сознательно: сердцебиение, пищеварение, иммунитет, сон, гормоны.</p>
+        <p>У неё два режима:<br><strong>Симпатический</strong> — «бей или беги». Мобилизация, напряжение, выживание.<br><strong>Парасимпатический</strong> — «отдыхай и восстанавливайся». Исцеление, регенерация.</p>
+        <p><strong>Тело восстанавливается только во втором.</strong> Но большинство людей проводят в первом 80–90% времени бодрствования.</p>
       </div>
-      <ul class="includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>5 живых встреч в Zoom</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Рабочая тетрадь 225+ полей</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>19 уникальных практик</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Вечный доступ</li>
-      </ul>
+      <div class="hl"><p>Тело не может исцеляться в режиме борьбы. Это физиология, а не психология.</p></div>
     </div>
-    <div class="card-foot">
-      <div class="price-row"><span class="price">5 900 <small>₽</small></span></div>
-      <div class="btns">
-        <a href="https://payform.ru/6haon9d/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="https://thebodymindcode.github.io/themoneycode/" target="_blank" class="btn-ghost">Подробнее</a>
-      </div>
-    </div>
-  </article>
-
-  <!-- Код нового года -->
-  <article class="card c-gold reveal d2">
-    <div class="card-head">
-      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>Онлайн-практикум</div>
-      <h3>Код нового года</h3>
-      <p class="card-desc">3 дня глубокой трансформации. Создайте персональную фразу-код, которая будет работать на вас весь год.</p>
-      <div class="info-row">
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>3 дня</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Живые Zoom</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>6 практик</span>
-      </div>
-      <ul class="includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>3 живых созвона по 60 минут</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Персональная фраза-код</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Утренний ритуал на год</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Вечный доступ к записям</li>
-      </ul>
-    </div>
-    <div class="card-foot">
-      <div class="price-row"><span class="price-old">7 900 ₽</span><span class="price">3 990 <small>₽</small></span></div>
-      <div class="btns">
-        <a href="https://payform.ru/4kai934/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="https://thebodymindcode.github.io/NewYearCode/" target="_blank" class="btn-ghost">Подробнее</a>
-      </div>
-    </div>
-  </article>
-
-  <!-- За пределами заболеваний -->
-  <article class="card c-rose reveal d1">
-    <div class="card-head">
-      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>Zoom-встреча</div>
-      <h3>За пределами заболеваний</h3>
-      <p class="card-desc">90 минут, после которых тело перестанет быть проблемой. Живая практика + конкретный инструмент на каждый день.</p>
-      <div class="info-row">
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>90 минут</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Живой Zoom</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Запись навсегда</span>
-      </div>
-      <ul class="includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>90 минут живой работы</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Практика прямо на звонке</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Конспект и материалы</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Запись навсегда</li>
-      </ul>
-    </div>
-    <div class="card-foot">
-      <div class="price-row"><span class="price">1 490 <small>₽</small></span></div>
-      <div class="btns">
-        <a href="https://payform.ru/jjaA66G/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="https://thebodymindcode.github.io/Beyond/" target="_blank" class="btn-ghost">Подробнее</a>
-      </div>
-    </div>
-  </article>
-
-  <!-- Внутренний Авторитет — ЗАПИСИ -->
-  <article class="card c-violet reveal d2" style="position:relative;overflow:hidden">
-    <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#6C5CE7,#A29BFE);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;z-index:2">▶ Доступ к записям</div>
-    <div class="card-head">
-      <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Программа</div>
-      <h3>Внутренний Авторитет</h3>
-      <p class="card-desc">Вернуть себе право решать. 3 встречи за 7 дней + техника программирования мозга. Перестаньте спрашивать разрешения — начните доверять себе.</p>
-      <div class="info-row">
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>3 встречи</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Записи встреч</span>
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>Тетрадь 30 дней</span>
-      </div>
-      <ul class="includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Записи 3 встреч (90 + 90 + 60 мин)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Техника программирования мозга</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>PDF-мануал + рабочая тетрадь</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытый чат + записи навсегда</li>
-      </ul>
-    </div>
-    <div class="card-foot">
-      <div class="price-row"><span class="price">4 900 <small>₽</small></span></div>
-      <div class="btns">
-        <a href="https://thebodymindcode.github.io/authority/" class="btn-primary">Купить <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="https://thebodymindcode.github.io/authority/" target="_blank" class="btn-ghost">Подробнее</a>
-      </div>
-    </div>
-  </article>
-
-  <!-- Сессия — full width dark -->
-  <article class="card c-green reveal" style="grid-column:1/-1;background:#1a1f1c;color:#fff;border:none">
-    <div class="card-head" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:36px">
-      <div>
-        <div class="card-badge" style="background:rgba(59,122,90,.2);color:#7ABA93">Персональная работа</div>
-        <h3 style="color:#fff;font-size:1.6rem">Сессия с Дарьей</h3>
-        <div style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:6px;background:rgba(255,100,100,.15);font-size:.68rem;font-weight:700;color:#FF6B6B;margin-bottom:10px">🔥 Осталось 3 места на март</div>
-        <p class="card-desc" style="color:rgba(255,255,255,.55)">60–90 минут, которые показывают то, что вы не видели годами. Точечная работа с корнем: тревога, прокрастинация, карьерные блоки, повторяющиеся паттерны.</p>
-        <div class="info-row">
-          <span class="info-chip" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#7ABA93"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>60–90 мин</span>
-          <span class="info-chip" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#7ABA93"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>1 на 1</span>
-          <span class="info-chip" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#7ABA93"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Запись навсегда</span>
-        </div>
-      </div>
-      <div>
-        <ul class="includes" style="margin-bottom:20px">
-          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Диагностика скрытых блоков</li>
-          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Трансформация прямо на сессии</li>
-          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Инструменты для самостоятельной работы</li>
-          <li style="color:rgba(255,255,255,.65)"><svg viewBox="0 0 24 24" fill="none" stroke="#7ABA93" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Запись сессии навсегда</li>
-        </ul>
-        <div class="price-row"><span class="price-old" style="color:rgba(255,255,255,.35)">15 000 ₽</span><span class="price" style="color:#fff">8 500 <small style="color:rgba(255,255,255,.4)">₽</small></span></div>
-        <div class="btns">
-          <a href="https://payform.ru/8da7uRf/" class="btn-primary" style="background:#7ABA93;color:#1a1f1c">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="https://thebodymindcode.github.io/session1/" target="_blank" class="btn-ghost" style="border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.6)">Подробнее</a>
+    <div>
+      <div class="ic">
+        <svg width="100%" height="230" viewBox="0 0 400 230">
+          <rect x="10" y="10" width="182" height="210" rx="4" fill="rgba(160,92,88,.04)" stroke="rgba(160,92,88,.15)" stroke-width="1"/>
+          <text x="101" y="38" text-anchor="middle" fill="var(--rose)" font-size="13" font-weight="700" font-family="var(--R)" letter-spacing="2">ВЫЖИВАНИЕ</text>
+          <text x="101" y="56" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Симпатическая НС</text>
+          <g fill="var(--body)" font-size="12" font-family="var(--R)">
+            <text x="30" y="86">↑ Кортизол</text><text x="30" y="108">↑ Воспаление</text><text x="30" y="130">↑ Сахар в крови</text><text x="30" y="152">↓ Пищеварение</text><text x="30" y="174">↓ Иммунитет</text><text x="30" y="196">↓ Регенерация</text>
+          </g>
+          <circle cx="170" cy="148" r="14" fill="rgba(160,92,88,.06)" stroke="rgba(160,92,88,.2)" stroke-width="1"><animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;.15;.6" dur="2s" repeatCount="indefinite"/></circle>
+          <rect x="208" y="10" width="182" height="210" rx="4" fill="rgba(61,122,85,.04)" stroke="rgba(61,122,85,.15)" stroke-width="1"/>
+          <text x="299" y="38" text-anchor="middle" fill="var(--sage)" font-size="13" font-weight="700" font-family="var(--R)" letter-spacing="2">ВОССТАНОВЛЕНИЕ</text>
+          <text x="299" y="56" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Парасимпатическая НС</text>
+          <g fill="var(--body)" font-size="12" font-family="var(--R)">
+            <text x="228" y="86">↓ Кортизол</text><text x="228" y="108">↓ Воспаление</text><text x="228" y="130">↑ Пищеварение</text><text x="228" y="152">↑ Иммунитет</text><text x="228" y="174">↑ Регенерация</text><text x="228" y="196">↑ Сон и покой</text>
+          </g>
+          <circle cx="368" cy="148" r="14" fill="rgba(61,122,85,.04)" stroke="rgba(61,122,85,.15)" stroke-width="1"><animate attributeName="r" values="12;16;12" dur="4s" repeatCount="indefinite"/></circle>
+        </svg>
+        <div style="margin-top:16px">
+          <div class="pb"><div class="pb-l"><span>Время в режиме «выживания»</span><span>80–90%</span></div><div class="pb-t"><div class="pb-f rs" style="--w:85%"></div></div></div>
+          <div class="pb"><div class="pb-l"><span>Время в режиме «восстановления»</span><span>10–20%</span></div><div class="pb-t"><div class="pb-f sg" style="--w:15%"></div></div></div>
         </div>
       </div>
     </div>
-  </article>
-
-  <!-- ★ VIP — Личная работа с Дарьей -->
-  <article class="card c-vip reveal" style="grid-column:1/-1;border:2px solid rgba(196,154,82,.3);background:linear-gradient(180deg,#FFFDF7 0%,#FFF9EE 100%);position:relative;overflow:hidden">
-    <div class="vip-crown">👑 Глубокая работа</div>
-    <div style="position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;background:rgba(255,100,100,.12);font-size:.6rem;font-weight:800;color:#D44;letter-spacing:.04em;z-index:2">🔥 Осталось 2 места</div>
-    <div class="card-head" style="padding:36px 32px 24px;padding-top:52px">
-      <div class="card-badge" style="background:rgba(196,154,82,.1);color:#C49A52"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>VIP-формат · 1 месяц</div>
-      <h3 style="font-size:1.6rem;margin-bottom:6px">VIP-сопровождение</h3>
-      <p style="font-size:.95rem;color:var(--text2);font-weight:500;margin-bottom:14px">Персональная трансформация с Дарьей</p>
-      <p class="card-desc" style="font-size:.88rem;line-height:1.65;max-width:640px">Это не курс и не программа. Это месяц глубокой индивидуальной работы, где Дарья работает лично с вами — с вашим мозгом, вашими паттернами, вашим телом. Для тех, кто хочет максимальный результат в кратчайшие сроки.</p>
-      <div class="info-row" style="margin-top:16px">
-        <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>1 месяц</span>
-        <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>1 на 1</span>
-        <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Навсегда</span>
-      </div>
-    </div>
-
-    <div style="padding:0 32px 8px;display:grid;grid-template-columns:1fr 1fr;gap:10px" class="vip-features-grid">
-      <div class="vip-feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-        <div><div class="vf-title">4 персональные сессии 1 на 1</div><div class="vf-desc">Глубокая работа с корнем — точечная трансформация на каждой встрече</div></div>
-      </div>
-      <div class="vip-feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-        <div><div class="vf-title">Глубинный разбор по Human Design</div><div class="vf-desc">Персональная карта вашей энергетики, стратегии и авторитета</div></div>
-      </div>
-      <div class="vip-feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-        <div><div class="vf-title">Индивидуальная практика программирования мозга</div><div class="vf-desc">Создаётся лично для вас — под ваш запрос и вашу нейрофизиологию</div></div>
-      </div>
-      <div class="vip-feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-        <div><div class="vf-title">Личный чат с Дарьей — 30 дней</div><div class="vf-desc">Прямой доступ. Вопросы, поддержка, корректировка практики</div></div>
-      </div>
-      <div class="vip-feature" style="grid-column:1/-1">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-        <div><div class="vf-title">Доступ ко всем программам — навсегда</div><div class="vf-desc">Протокол, Код денег, Код нового года, За пределами заболеваний, Внутренний Авторитет — всё включено</div></div>
-      </div>
-    </div>
-
-    <div class="card-foot" style="padding:20px 32px 32px">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
-        <span style="font-size:.72rem;color:var(--text3);font-weight:500">один раз — доступ навсегда</span>
-      </div>
-      <div class="price-row"><span class="price" style="font-size:2.2rem">80 000 <small>₽</small></span></div>
-      <div class="btns">
-        <a href="https://payform.ru/dtaGdlM/" class="btn-gold">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-    </div>
-  </article>
-
-</div>
-</section>
-<!-- COMPARISON TABLE -->
-<section style="max-width:1280px;margin:0 auto;padding:0 32px 48px">
-<div class="reveal" style="text-align:center;margin-bottom:32px">
-  <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px"><span style="width:24px;height:1.5px;background:var(--sage);opacity:.4;display:inline-block"></span>Сравнение<span style="width:24px;height:1.5px;background:var(--sage);opacity:.4;display:inline-block"></span></p>
-  <h2 style="font-size:clamp(1.3rem,3vw,1.6rem);font-weight:800;letter-spacing:-.03em">Что входит в каждую программу</h2>
-</div>
-<div class="reveal" style="overflow-x:auto;scrollbar-width:thin;-webkit-overflow-scrolling:touch">
-<table style="width:100%;border-collapse:separate;border-spacing:0;font-size:.78rem;min-width:800px">
-<thead>
-<tr>
-  <th style="text-align:left;padding:14px 16px;background:var(--bg2);border-radius:12px 0 0 0;font-weight:700;color:var(--text);font-size:.72rem;letter-spacing:.02em;position:sticky;left:0;z-index:1">Что входит</th>
-  <th style="padding:14px 10px;background:var(--bg2);text-align:center;font-weight:700;color:#B85C5C;font-size:.66rem;line-height:1.3">За пределами<br>заболеваний<br><span style="font-weight:800;font-size:.78rem">1 490 ₽</span></th>
-  <th style="padding:14px 10px;background:var(--sage);text-align:center;font-weight:700;color:#fff;font-size:.66rem;line-height:1.3;position:relative">Протокол<br>остановки ума<br><span style="font-weight:800;font-size:.78rem">2 990 ₽</span><div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--sage-dark);color:#fff;font-size:.5rem;font-weight:800;padding:2px 8px;border-radius:4px;letter-spacing:.06em;white-space:nowrap">ХИТ</div></th>
-  <th style="padding:14px 10px;background:var(--bg2);text-align:center;font-weight:700;color:var(--gold);font-size:.66rem;line-height:1.3">Код<br>нового года<br><span style="font-weight:800;font-size:.78rem">3 990 ₽</span></th>
-  <th style="padding:14px 10px;background:var(--bg2);text-align:center;font-weight:700;color:#6C5CE7;font-size:.66rem;line-height:1.3">Внутренний<br>Авторитет<br><span style="font-weight:800;font-size:.78rem">4 900 ₽</span></th>
-  <th style="padding:14px 10px;background:var(--bg2);text-align:center;font-weight:700;color:#4A7FB5;font-size:.66rem;line-height:1.3">Код<br>денег<br><span style="font-weight:800;font-size:.78rem">5 900 ₽</span></th>
-  <th style="padding:14px 10px;background:var(--bg2);text-align:center;font-weight:700;color:var(--text);font-size:.66rem;line-height:1.3">Сессия<br>с Дарьей<br><span style="font-weight:800;font-size:.78rem">8 500 ₽</span></th>
-  <th style="padding:14px 10px;background:linear-gradient(135deg,#C49A52,#D4AF6E);text-align:center;font-weight:700;color:#fff;font-size:.66rem;line-height:1.3;border-radius:0 12px 0 0">VIP<br>сопровождение<br><span style="font-weight:800;font-size:.78rem">80 000 ₽</span></th>
-</tr>
-</thead>
-<tbody>
-<tr style="background:var(--white)">
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--white);z-index:1">Длительность</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2)">90 мин</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2);background:rgba(59,122,90,.03)">28 дней</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2)">3 дня</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2)">7 дней</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2)">14 дней</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2)">60–90 мин</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text2);background:rgba(196,154,82,.04);font-weight:600">1 месяц</td>
-</tr>
-<tr>
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--bg);z-index:1">Видео / записи</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(59,122,90,.03)"><span style="color:var(--sage);font-weight:700">7 видео</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">Всё</span></td>
-</tr>
-<tr style="background:var(--white)">
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--white);z-index:1">Живые встречи</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);background:rgba(59,122,90,.03)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">3 Zoom</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">3 Zoom</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">5 Zoom</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">1 на 1</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">4 × 1 на 1</span></td>
-</tr>
-<tr>
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--bg);z-index:1">PDF-мануал</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(59,122,90,.03)"><span style="color:var(--sage);font-weight:600">40 стр</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">Все</span></td>
-</tr>
-<tr style="background:var(--white)">
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--white);z-index:1">Рабочая тетрадь</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);background:rgba(59,122,90,.03)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">30 дней</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">225+ полей</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">Все</span></td>
-</tr>
-<tr>
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--bg);z-index:1">Закрытый чат</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(59,122,90,.03)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage)">✓</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">Личный 30 дн</span></td>
-</tr>
-<tr style="background:var(--white)">
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--white);z-index:1">Персональная работа</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);background:rgba(59,122,90,.03)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border)"><span style="color:var(--sage);font-weight:600">1 сессия</span></td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">4 сессии + HD</span></td>
-</tr>
-<tr>
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--bg);z-index:1">Human Design</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);background:rgba(59,122,90,.03)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">✓</span></td>
-</tr>
-<tr style="background:var(--white)">
-  <td style="padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;color:var(--text);position:sticky;left:0;background:var(--white);z-index:1">Все программы</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);background:rgba(59,122,90,.03)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3)">—</td>
-  <td style="padding:10px 8px;text-align:center;border-bottom:1px solid var(--border);background:rgba(196,154,82,.04)"><span style="color:#C49A52;font-weight:700">✓ ВСЁ</span></td>
-</tr>
-<tr>
-  <td style="padding:12px 16px;font-weight:700;color:var(--text);border-radius:0 0 0 12px;position:sticky;left:0;background:var(--bg);z-index:1">Вечный доступ</td>
-  <td style="padding:12px 8px;text-align:center"><span style="color:var(--sage);font-weight:700">✓</span></td>
-  <td style="padding:12px 8px;text-align:center;background:rgba(59,122,90,.03)"><span style="color:var(--sage);font-weight:700">✓</span></td>
-  <td style="padding:12px 8px;text-align:center"><span style="color:var(--sage);font-weight:700">✓</span></td>
-  <td style="padding:12px 8px;text-align:center"><span style="color:var(--sage);font-weight:700">✓</span></td>
-  <td style="padding:12px 8px;text-align:center"><span style="color:var(--sage);font-weight:700">✓</span></td>
-  <td style="padding:12px 8px;text-align:center"><span style="color:var(--sage);font-weight:700">✓</span></td>
-  <td style="padding:12px 8px;text-align:center;background:rgba(196,154,82,.04);border-radius:0 0 12px 0"><span style="color:#C49A52;font-weight:700">✓</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p style="text-align:center;margin-top:16px;font-size:.72rem;color:var(--text3)">← На мобильном таблицу можно листать →</p>
+  </div>
 </section>
 
-<section class="bundle reveal">
-<div class="bundle-box">
-  <div class="bundle-left">
-    <div class="bundle-tag">Выгодное предложение</div>
-    <h2>Всё в одном пакете</h2>
-    <p>Получите максимум: программа + практикум + персональная сессия</p>
-    <div class="bundle-items">
-      <div class="bundle-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Протокол остановки ума</div>
-      <div class="bundle-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Код нового года</div>
-      <div class="bundle-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Сессия с Дарьей</div>
-    </div>
-  </div>
-  <div class="bundle-right">
-    <div class="bundle-price-old">15 480 ₽</div>
-    <div class="bundle-price">10 830 <small>₽</small></div>
-    <div class="bundle-save">Экономия 4 650 ₽</div><br>
-    <a href="https://payform.ru/okam9WI/" class="bundle-btn">Забрать комплект <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-</div>
-</section>
-
-<!-- RESULTS INFOGRAPHIC -->
-<section id="results" class="results">
-<h2 class="reveal">Результаты участников</h2>
-<div class="results-grid">
-  <div class="r-card reveal d1" style="--w:92%">
-    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-    <div class="r-val">92%</div>
-    <div class="r-label">снижение уровня тревоги</div>
-    <div class="r-bar"><div class="r-bar-fill"></div></div>
-  </div>
-  <div class="r-card reveal d2" style="--w:85%">
-    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-    <div class="r-val">4–8</div>
-    <div class="r-label">недель до изменений на МРТ</div>
-    <div class="r-bar"><div class="r-bar-fill"></div></div>
-  </div>
-  <div class="r-card reveal d3" style="--w:78%">
-    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-    <div class="r-val">800+</div>
-    <div class="r-label">участников программ</div>
-    <div class="r-bar"><div class="r-bar-fill"></div></div>
-  </div>
-  <div class="r-card reveal d4" style="--w:67%">
-    <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-    <div class="r-val">40+</div>
-    <div class="r-label">страниц научного мануала</div>
-    <div class="r-bar"><div class="r-bar-fill"></div></div>
-  </div>
-</div>
-</section>
-
-<!-- SCIENCE — ENHANCED -->
-<div class="science-strip">
-<div style="max-width:1100px;margin:0 auto">
-  <div style="text-align:center;margin-bottom:36px" class="reveal">
-    <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px"><span style="width:24px;height:1.5px;background:var(--sage);opacity:.4;display:inline-block"></span>Доказательная база<span style="width:24px;height:1.5px;background:var(--sage);opacity:.4;display:inline-block"></span></p>
-    <h2 style="font-size:clamp(1.4rem,3vw,1.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.2">Почему это работает:<br>нейробиология, а не мотивация</h2>
-  </div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px" class="reveal">
-    <div style="background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border)">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:10px;background:var(--sage-light);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2" style="width:20px;height:20px"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
-        <h3 style="font-size:1.05rem;font-weight:800;letter-spacing:-.02em">Что такое DMN?</h3>
+<!-- ФАКТ 3 -->
+<section class="fact rv">
+  <div class="fi">
+    <div>
+      <div class="fn">Факт 03</div>
+      <div class="ft">Блуждающий нерв — магистраль между мозгом и телом. И он молчит.</div>
+      <div class="fb">
+        <p><strong>Vagus nerve</strong> — самый длинный нерв в теле. Он соединяет мозг с сердцем, лёгкими, кишечником, печенью, иммунной системой.</p>
+        <p>Его тонус определяет, насколько быстро вы восстанавливаетесь после стресса. <strong>Высокий тонус</strong> = быстрое восстановление. <strong>Низкий</strong> = хроническое воспаление, плохой сон, тревога.</p>
+        <p>У большинства людей с хроническими состояниями тонус блуждающего нерва <strong>снижен</strong>.</p>
       </div>
-      <p style="font-size:.86rem;color:var(--text2);line-height:1.65;margin-bottom:12px">В 2001 году нейробиолог <strong style="color:var(--text)">Marcus Raichle</strong> открыл Default Mode Network — сеть мозга, которая активна когда вы НЕ заняты. Она тратит до <strong style="color:var(--text)">20% всей энергии мозга</strong> на бесконечный внутренний монолог: «А вдруг?», «Зачем я так сказал?», «Что будет если?»</p>
-      <p style="font-size:.86rem;color:var(--text2);line-height:1.65">Именно DMN генерирует тревогу, руминацию и прокрастинацию. Целенаправленная практика физически снижает её активность — <strong style="color:var(--text)">это видно на МРТ через 4–8 недель</strong>.</p>
+      <div class="hl"><p>Тело не получает сигнал «всё безопасно». Поэтому не включает восстановление.</p></div>
     </div>
-    <div style="background:var(--white);border-radius:16px;padding:28px;border:1px solid var(--border)">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="width:40px;height:40px;border-radius:10px;background:var(--sage-light);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2" style="width:20px;height:20px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3 style="font-size:1.05rem;font-weight:800;letter-spacing:-.02em">Что меняется в мозге</h3>
+    <div>
+      <div class="ic" style="text-align:center">
+        <svg width="220" height="310" viewBox="0 0 220 310" style="margin:0 auto;display:block">
+          <ellipse cx="110" cy="38" rx="42" ry="30" fill="rgba(61,122,85,.04)" stroke="rgba(61,122,85,.18)" stroke-width="1"/>
+          <text x="110" y="42" text-anchor="middle" fill="var(--sage)" font-size="13" font-weight="600" font-family="var(--R)">Мозг</text>
+          <path d="M110,68 Q110,88 104,110 Q96,140 110,165 Q124,185 116,215 Q108,248 110,275" fill="none" stroke="var(--sage)" stroke-width="2.5" stroke-dasharray="7 5" opacity=".45"><animate attributeName="stroke-dashoffset" values="0;-24" dur="2.5s" repeatCount="indefinite"/></path>
+          <ellipse cx="55" cy="125" rx="30" ry="18" fill="rgba(61,122,85,.03)" stroke="rgba(61,122,85,.12)" stroke-width="1"/><text x="55" y="129" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Сердце</text><line x1="104" y1="110" x2="78" y2="118" stroke="rgba(61,122,85,.15)" stroke-width="1"/>
+          <ellipse cx="165" cy="165" rx="32" ry="18" fill="rgba(61,122,85,.03)" stroke="rgba(61,122,85,.12)" stroke-width="1"/><text x="165" y="169" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Лёгкие</text><line x1="118" y1="163" x2="141" y2="163" stroke="rgba(61,122,85,.15)" stroke-width="1"/>
+          <ellipse cx="50" cy="218" rx="34" ry="20" fill="rgba(139,107,74,.04)" stroke="rgba(139,107,74,.12)" stroke-width="1"/><text x="50" y="222" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Кишечник</text><line x1="110" y1="215" x2="78" y2="215" stroke="rgba(139,107,74,.12)" stroke-width="1"/>
+          <ellipse cx="170" cy="252" rx="30" ry="18" fill="rgba(139,107,74,.04)" stroke="rgba(139,107,74,.12)" stroke-width="1"/><text x="170" y="256" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Иммунитет</text><line x1="116" y1="248" x2="147" y2="248" stroke="rgba(139,107,74,.12)" stroke-width="1"/>
+          <text x="182" y="110" fill="var(--sage)" font-size="11" font-weight="600" font-family="var(--R)" opacity=".55">Vagus</text><text x="182" y="124" fill="var(--sage)" font-size="11" font-weight="600" font-family="var(--R)" opacity=".55">nerve</text>
+          <circle r="4" fill="var(--sage)" opacity=".5"><animateMotion dur="3.5s" repeatCount="indefinite" path="M110,68 Q110,88 104,110 Q96,140 110,165 Q124,185 116,215 Q108,248 110,275"/></circle>
+        </svg>
+        <div class="ss">Porges, 2011 · Bonaz et al., Nature Reviews, 2018</div>
       </div>
-      <div class="brain-stats">
-        <div><div class="b-row">Префронтальная кора (решения, фокус) <span class="val">↑ +15%</span></div><div class="b-bar"><div class="b-fill g" style="--w:85%"></div></div></div>
-        <div style="margin-top:12px"><div class="b-row">Гиппокамп (память, обучение) <span class="val">↑ +12%</span></div><div class="b-bar"><div class="b-fill g" style="--w:75%"></div></div></div>
-        <div style="margin-top:12px"><div class="b-row">Островковая кора (интуиция, тело) <span class="val">↑ +22%</span></div><div class="b-bar"><div class="b-fill g" style="--w:80%"></div></div></div>
-        <div style="margin-top:12px"><div class="b-row">Миндалина (тревога, страх) <span class="neg">↓ −18%</span></div><div class="b-bar"><div class="b-fill r" style="--w:35%"></div></div></div>
-        <div style="margin-top:12px"><div class="b-row">Активность DMN (внутренний шум) <span class="neg">↓ −40%</span></div><div class="b-bar"><div class="b-fill r" style="--w:25%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ФАКТ 4 -->
+<section class="fact rv" style="background:var(--bg2)">
+  <div class="fi rev">
+    <div>
+      <div class="fn">Факт 04</div>
+      <div class="ft">Хронический стресс физически меняет тело. За недели.</div>
+      <div class="fb">
+        <p>6 недель хронического стресса достаточно, чтобы изменить:</p>
+        <p>→ <strong>Кишечную проницаемость</strong> — «дырявый кишечник», аллергии, аутоиммунные реакции<br>→ <strong>Объём гиппокампа</strong> — память ухудшается, тревога растёт<br>→ <strong>Микрофлору</strong> — меняется за 2 недели стресса<br>→ <strong>Теломеры</strong> — клетки стареют быстрее<br>→ <strong>Воспалительные маркеры</strong> — IL-6, C-реактивный белок повышаются</p>
       </div>
-      <p style="font-size:.64rem;color:var(--text3);margin-top:14px;font-style:italic">Hölzel et al., Psychiatry Research, 2011 · Данные МРТ после 8 недель практики</p>
+      <div class="hl"><p>Стресс — это не «в голове». Это биохимия, которая физически перестраивает тело.</p></div>
+    </div>
+    <div>
+      <div class="ic">
+        <div style="text-align:center;margin-bottom:28px"><div class="bn">6</div><div class="sl">недель хронического стресса меняют тело</div></div>
+        <div class="pb"><div class="pb-l"><span>Проницаемость кишечника</span><span>↑ увеличивается</span></div><div class="pb-t"><div class="pb-f rs" style="--w:72%"></div></div></div>
+        <div class="pb"><div class="pb-l"><span>Объём гиппокампа</span><span>↓ уменьшается</span></div><div class="pb-t"><div class="pb-f dm" style="--w:28%"></div></div></div>
+        <div class="pb"><div class="pb-l"><span>Воспалительные маркеры</span><span>↑ растут</span></div><div class="pb-t"><div class="pb-f rs" style="--w:65%"></div></div></div>
+        <div class="pb"><div class="pb-l"><span>Старение клеток</span><span>↑ ускоряется</span></div><div class="pb-t"><div class="pb-f wm" style="--w:48%"></div></div></div>
+        <div class="ss">Epel et al., PNAS, 2004 · McEwen, NEJM, 1998</div>
+      </div>
     </div>
   </div>
-
-  <!-- Research cards -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px" class="reveal">
-    <div style="background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center">
-      <div style="font-size:1.6rem;font-weight:800;color:var(--sage);letter-spacing:-.03em;margin-bottom:4px">47%</div>
-      <div style="font-size:.74rem;color:var(--text2);line-height:1.4;margin-bottom:8px">времени ум блуждает</div>
-      <div style="font-size:.6rem;color:var(--text3);font-style:italic">Killingsworth & Gilbert<br>Science, 2010</div>
-    </div>
-    <div style="background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center">
-      <div style="font-size:1.6rem;font-weight:800;color:var(--sage);letter-spacing:-.03em;margin-bottom:4px">4–8</div>
-      <div style="font-size:.74rem;color:var(--text2);line-height:1.4;margin-bottom:8px">недель до изменений на МРТ</div>
-      <div style="font-size:.6rem;color:var(--text3);font-style:italic">Hölzel et al.<br>Psychiatry Research, 2011</div>
-    </div>
-    <div style="background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center">
-      <div style="font-size:1.6rem;font-weight:800;color:var(--sage);letter-spacing:-.03em;margin-bottom:4px">2–5 с</div>
-      <div style="font-size:.74rem;color:var(--text2);line-height:1.4;margin-bottom:8px">тело «знает» ответ до сознания</div>
-      <div style="font-size:.6rem;color:var(--text3);font-style:italic">Damasio<br>Somatic markers, 1994</div>
-    </div>
-    <div style="background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center">
-      <div style="font-size:1.6rem;font-weight:800;color:var(--sage);letter-spacing:-.03em;margin-bottom:4px">20%</div>
-      <div style="font-size:.74rem;color:var(--text2);line-height:1.4;margin-bottom:8px">энергии мозга тратит DMN</div>
-      <div style="font-size:.6rem;color:var(--text3);font-style:italic">Raichle<br>Neuron, 2001</div>
-    </div>
-  </div>
-
-  <p style="text-align:center;font-size:.76rem;color:var(--text3);max-width:600px;margin:0 auto" class="reveal">Все программы основаны на рецензируемых исследованиях Harvard, Yale и HeartMath Institute. Не эзотерика — нейропластичность, измеримые изменения, конкретные техники.</p>
-</div>
-</div>
-
-<!-- REVIEWS -->
-<section class="reviews">
-<h2 class="reveal">Отзывы участников</h2>
-<div class="rv-track reveal">
-  <div class="rv-item"><img src="reviews/01.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/02.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/03.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/04.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/05.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/06.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/07.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/08.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/09.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/010.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/011.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/012.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/013.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/014.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/015.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/016.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/017.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/018.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/019.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/020.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/021.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/022.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/023.jpg" alt="Отзыв" loading="lazy"></div>
-  <div class="rv-item"><img src="reviews/024.jpg" alt="Отзыв" loading="lazy"></div>
-</div>
-<p style="text-align:center;margin-top:12px;font-size:.75rem;color:var(--text3)">← Листайте →</p>
 </section>
 
-<!-- WHY BUY — self-selling block -->
-<section class="why-buy">
-<div class="wb-inner reveal">
-  <div class="wb-header">
-    <p class="wb-tag">Честно о главном</p>
-    <h2>Почему участники говорят:<br>«жалею, что не начала раньше»</h2>
-  </div>
-
-  <div class="wb-grid">
-    <div class="wb-card">
-      <div class="wb-num">01</div>
-      <h3>Вы уже всё попробовали</h3>
-      <p>Книги, медитации, аффирмации, терапия — и ничего не изменилось. Потому что вы работали с симптомами, а не с причиной. Наши программы бьют в корень: Default Mode Network — та часть мозга, которая генерирует бесконечный внутренний шум. Когда вы перестраиваете нейронные связи — проблема уходит навсегда, а не до следующего триггера.</p>
+<!-- ФАКТ 5 -->
+<section class="fact rv">
+  <div class="fi">
+    <div>
+      <div class="fn">Факт 05</div>
+      <div class="ft">90% серотонина производится в кишечнике. Не в мозге.</div>
+      <div class="fb">
+        <p>«Гормон счастья» — серотонин — на 90% вырабатывается в кишечнике. Дофамин — на 50%. Кишечник содержит <strong>100 миллионов нейронов</strong> — больше, чем спинной мозг.</p>
+        <p>Учёные называют его <strong>«вторым мозгом»</strong>. Он связан с настоящим мозгом через блуждающий нерв.</p>
+        <p>Когда вы в режиме стресса — пищеварение замедляется, микрофлора меняется, производство серотонина <strong>падает</strong>. Результат: тревога, плохой сон, подавленность.</p>
+      </div>
+      <div class="hl"><p>Депрессия и тревога часто начинаются в животе. Буквально.</p></div>
     </div>
-    <div class="wb-card">
-      <div class="wb-num">02</div>
-      <h3>Это не мотивация — это нейронаука</h3>
-      <p>Мы не говорим «просто думай позитивно». Каждая программа основана на рецензируемых исследованиях — МРТ, кортизол, вариабельность сердечного ритма. Префронтальная кора растёт, миндалина уменьшается. Вы не «стараетесь быть спокойнее» — ваш мозг буквально становится другим. Это подтверждено сканами.</p>
-    </div>
-    <div class="wb-card">
-      <div class="wb-num">03</div>
-      <h3>Программа для каждой задачи</h3>
-      <p><strong>Тревога и внутренний шум</strong> → «Протокол остановки ума» за 28 дней. <strong>Денежные блоки</strong> → «Код денег» за 14 дней с живыми встречами и рабочей тетрадью. <strong>Цели и намерения</strong> → «Код нового года» — 3 дня глубокой трансформации. <strong>Здоровье и тело</strong> → «За пределами заболеваний» — 90 минут, которые всё меняют. <strong>Право решать</strong> → «Внутренний Авторитет» — перестать спрашивать разрешения. <strong>Точечная работа</strong> → Персональная сессия с Дарьей 1 на 1.</p>
-    </div>
-    <div class="wb-card">
-      <div class="wb-num">04</div>
-      <h3>Один раз — и навсегда</h3>
-      <p>Нет подписок. Нет ежемесячных платежей. Нет «базовый/премиум/VIP». Вы платите один раз и получаете всё: видео, мануалы, закрытый чат, обновления. Навсегда. Это касается каждой программы — от «Протокола» до «Кода денег». Не расход — инвестиция, которая окупается каждый день.</p>
-    </div>
-    <div class="wb-card">
-      <div class="wb-num">05</div>
-      <h3>800+ людей уже это сделали</h3>
-      <p>Через программы прошли 800+ участников. 92% отмечают изменения в тревоге, сне, фокусе, отношениях с деньгами и телом. Листайте отзывы выше — реальные скриншоты из чатов, не постановка. Среди участников — предприниматели, врачи, айтишники, мамы в декрете, студенты. Работает для всех.</p>
-    </div>
-    <div class="wb-card">
-      <div class="wb-num">06</div>
-      <h3>Дешевле одной сессии терапевта</h3>
-      <p>«За пределами заболеваний» — 1 490 ₽ за 90-минутную трансформацию. «Протокол» — 2 990 ₽ за 28-дневную систему с 7 видео-практиками. «Код нового года» — 3 990 ₽ за 3 дня с живыми созвонами. «Внутренний Авторитет» — 4 900 ₽ за живую программу с техникой программирования мозга. «Код денег» — 5 900 ₽ за 14-дневный интенсив с 19 практиками. Всё с пожизненным доступом.</p>
+    <div>
+      <div class="ic" style="text-align:center">
+        <svg width="100%" height="220" viewBox="0 0 380 220">
+          <ellipse cx="100" cy="55" rx="55" ry="38" fill="rgba(61,122,85,.03)" stroke="rgba(61,122,85,.12)" stroke-width="1"/><text x="100" y="50" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="600" font-family="var(--R)">Мозг</text><text x="100" y="68" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">10% серотонина</text>
+          <ellipse cx="280" cy="55" rx="58" ry="38" fill="rgba(139,107,74,.05)" stroke="rgba(139,107,74,.15)" stroke-width="1"/><text x="280" y="50" text-anchor="middle" fill="var(--warm)" font-size="13" font-weight="600" font-family="var(--R)">Кишечник</text><text x="280" y="68" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">90% серотонина</text>
+          <line x1="155" y1="55" x2="222" y2="55" stroke="rgba(61,122,85,.15)" stroke-width="1.5" stroke-dasharray="6 4"><animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/></line>
+          <text x="188" y="48" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="var(--R)">vagus nerve</text>
+          <!-- Serotonin bars -->
+          <rect x="50" y="120" width="110" height="80" rx="4" fill="rgba(61,122,85,.03)" stroke="rgba(61,122,85,.08)" stroke-width="1"/>
+          <text x="105" y="140" text-anchor="middle" fill="var(--dim)" font-size="10" font-weight="700" font-family="var(--R)">СЕРОТОНИН</text>
+          <rect x="70" y="152" width="22" height="36" rx="2" fill="rgba(61,122,85,.15)"/><text x="81" y="200" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="var(--R)">мозг</text>
+          <rect x="108" y="122" width="22" height="66" rx="2" fill="rgba(61,122,85,.35)"><animate attributeName="height" values="62;70;62" dur="3s" repeatCount="indefinite"/></rect><text x="119" y="200" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="var(--R)">кишечн.</text>
+          <!-- Neurons -->
+          <rect x="220" y="120" width="110" height="80" rx="4" fill="rgba(139,107,74,.03)" stroke="rgba(139,107,74,.08)" stroke-width="1"/>
+          <text x="275" y="140" text-anchor="middle" fill="var(--dim)" font-size="10" font-weight="700" font-family="var(--R)">НЕЙРОНЫ</text>
+          <rect x="240" y="156" width="22" height="32" rx="2" fill="rgba(139,107,74,.2)"/><text x="251" y="200" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="var(--R)">спинной</text>
+          <rect x="278" y="148" width="22" height="40" rx="2" fill="rgba(139,107,74,.35)"/><text x="289" y="200" text-anchor="middle" fill="var(--dim)" font-size="9" font-family="var(--R)">кишечн.</text>
+          <text x="289" y="214" text-anchor="middle" fill="var(--warm)" font-size="9" font-weight="700" font-family="var(--R)">100 млн</text>
+        </svg>
+        <div class="ss">Yano et al., Cell, 2015 · Gershon, Columbia University</div>
+      </div>
     </div>
   </div>
-
-  <div class="wb-bottom">
-    <div class="wb-quote">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:28px;height:28px;color:var(--sage);opacity:.4;margin-bottom:12px"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
-      <p>Тревога, деньги, здоровье, цели — у каждой проблемы есть своя программа.<br>Выберите ту, которая про вас прямо сейчас.<br><strong>Единственное, о чём жалеют участники — что не начали раньше.</strong></p>
-    </div>
-    <a href="#shop" class="wb-cta">Выбрать программу ↑</a>
-  </div>
-</div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="faq">
-<h2 class="reveal">Частые вопросы</h2>
-<div class="reveal">
-  <p style="text-align:center;color:var(--text3);font-size:.84rem;margin-bottom:24px">Не нашли ответ? Напишите в <a href="https://t.me/TheBodyMindCode_support" target="_blank" style="color:var(--sage);text-decoration:none;font-weight:600">поддержку</a></p>
-  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">О программах</p>
-  <div class="fq"><button class="fq-q">Нужен ли опыт медитации или практик?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Нет, никакой подготовки не нужно. Абсолютное большинство участников начинают с нуля. Все программы построены пошагово — от самого простого к сложному. Каждая практика объясняется подробно с видео-инструкцией. Вы не можете сделать что-то «неправильно».</p></div></div>
-  <div class="fq"><button class="fq-q">Когда я почувствую первый результат?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Зависит от практики. Эффект от дыхательной техники ощущается сразу — буквально через 3–5 минут. Устойчивые изменения в самочувствии и уровне тревоги — через 2–3 недели регулярной практики. Структурные изменения мозга, видимые на МРТ — через 4–8 недель. 92% участников отмечают значимые изменения уже в первый месяц.</p></div></div>
-  <div class="fq"><button class="fq-q">Это научно обосновано или эзотерика?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Все программы основаны на рецензируемых научных исследованиях — нейробиологии, психофизиологии и когнитивной науке. Мы используем объективные показатели: МРТ-сканирование, измерение кортизола, вариабельность сердечного ритма (HRV). Ключевые исследования: Killingsworth &amp; Gilbert (Science, 2010), Hölzel et al. (Psychiatry Research, 2011), работы Marcus Raichle по Default Mode Network. Никакой эзотерики — только нейронаука.</p></div></div>
-  <div class="fq"><button class="fq-q">Сколько времени в день нужно уделять?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Протокол остановки ума — 16 минут в день. Код денег — 30–40 минут (практика + рабочая тетрадь) плюс живые Zoom-встречи. Код нового года — 3 дня по 60 минут. «Внутренний Авторитет» — 2 встречи по 90 минут + 10–15 минут ежедневной практики. «За пределами заболеваний» — одна встреча 90 минут. Программы сделаны так, чтобы вписываться в обычный распорядок дня.</p></div></div>
-  <div class="fq"><button class="fq-q">Чем «Протокол» отличается от обычной медитации?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Обычная медитация работает с вниманием — это полезно, но медленно. Протокол целенаправленно воздействует на Default Mode Network мозга — сеть, ответственную за навязчивый внутренний диалог. Мы используем комбинацию дыхательных техник, нейробиологических протоколов и когнитивных практик. Результат: не просто расслабление, а физическая перестройка нейронных связей за 28 дней.</p></div></div>
-  <div class="fq"><button class="fq-q">Подойдёт ли «Код денег» тем, у кого нет проблем с заработком?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Да. Программа работает не с «как зарабатывать больше», а с внутренними установками и паттернами, которые влияют на отношения с деньгами. Даже если вы хорошо зарабатываете, могут оставаться глубинные блоки: чувство вины за деньги, невозможность накапливать, подсознательный саботаж перед ростом дохода.</p></div></div>
-  <div class="fq"><button class="fq-q">Что такое «фраза-код» в практикуме «Код нового года»?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Это персональная формулировка, которую вы создаёте через серию глубоких практик. Она не придумывается — она «достаётся» из подсознания через специальную технику. Фраза-код становится вашим внутренним ориентиром и утренним ритуалом на весь год. Практикум актуален в любое время года — он работает с психологией «нового цикла».</p></div></div>
-  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">Оплата и доступ</p>
-  <div class="fq"><button class="fq-q">Как быстро я получу доступ после оплаты?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Мгновенно. Сразу после оплаты вы получаете ссылку на закрытый Telegram-канал с материалами программы. Обычно доступ приходит в течение 1–2 минут. Если что-то не пришло — напишите в поддержку, решим за 5 минут.</p></div></div>
-  <div class="fq"><button class="fq-q">Доступ ограничен по времени?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Нет. Один раз оплатили — доступ навсегда. Без подписок, ежемесячных платежей и скрытых условий. Материалы не удаляются и не блокируются. Вы можете проходить программу столько раз, сколько захотите — в своём темпе.</p></div></div>
-  <div class="fq"><button class="fq-q">Какие способы оплаты доступны?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Visa, Mastercard, МИР, СБП (Система быстрых платежей), Apple Pay, Google Pay. Данные карты не хранятся на нашей стороне — оплата через защищённый платёжный сервис. Оплата из-за рубежа тоже доступна — иностранные карты принимаются.</p></div></div>
-  <div class="fq"><button class="fq-q">Можно ли оплатить в рассрочку?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>На данный момент рассрочка не предусмотрена. Но обратите внимание на «За пределами заболеваний» за 1 490 ₽ — отличная точка входа. А комплект из трёх программ со скидкой 4 650 ₽ — максимально выгодное предложение.</p></div></div>
-  <div class="fq"><button class="fq-q">Есть ли возврат денег, если не подойдёт?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Мы уверены в качестве программ — 92% участников отмечают значимые изменения. Если у вас возникнут сложности, напишите в поддержку — мы всегда находим решение. Нам важно, чтобы каждый участник получил результат.</p></div></div>
-  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">Персональная сессия</p>
-  <div class="fq"><button class="fq-q">Как проходит сессия с Дарьей?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Онлайн через Zoom или Telegram-звонок. Длительность 60–90 минут. Это не обычная консультация и не «разговор о проблемах» — это точечная работа с корнем вашего запроса. Результат ощущается уже на сессии. После оплаты мы свяжемся для согласования удобного времени.</p></div></div>
-  <div class="fq"><button class="fq-q">С какими запросами можно прийти на сессию?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>С любым, который не даёт покоя. Частые темы: постоянная тревога, невозможность расслабиться, прокрастинация, сложности в отношениях, карьерные тупики, повторяющиеся сценарии, психосоматика, ощущение «застревания», потеря мотивации, страхи, внутренние конфликты.</p></div></div>
-  <div class="fq"><button class="fq-q">Чем сессия отличается от психотерапии?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Сессия — это не терапия и не замена работы с психологом. Это точечная, быстрая работа с конкретным запросом через методы нейробиологии и психосоматики. В классической терапии вы обсуждаете проблему неделями — здесь вы получаете конкретный сдвиг за одну встречу.</p></div></div>
-  <div class="fq"><button class="fq-q">Записывается ли сессия?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Да, запись сессии остаётся у вас навсегда. Это важно — во время сессии происходит глубокая работа, многое раскрывается. Запись позволяет пересматривать ключевые моменты и продолжать интеграцию инсайтов.</p></div></div>
-  <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);margin:24px 0 12px;padding-top:8px">Организационные вопросы</p>
-  <div class="fq"><button class="fq-q">Что делать, если я пропущу живую встречу?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Все живые встречи записываются. Если вы не смогли присутствовать — запись будет в закрытом канале. Посмотрите в удобное время и выполните практику самостоятельно. Ничего не пропадает.</p></div></div>
-  <div class="fq"><button class="fq-q">Подходят ли программы для подростков?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Программы рассчитаны на взрослых (18+). Если хотите помочь подростку — лучше начать с персональной сессии, где Дарья подберёт подходящий формат работы.</p></div></div>
-  <div class="fq"><button class="fq-q">Есть ли противопоказания?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Программы безопасны для абсолютного большинства. При серьёзных психиатрических диагнозах (шизофрения, биполярное расстройство в острой фазе, тяжёлая клиническая депрессия) рекомендуем сначала проконсультироваться с лечащим врачом. При беременности — без ограничений, но дыхательные практики выполняйте в комфортном темпе.</p></div></div>
-  <div class="fq"><button class="fq-q">Как связаться с поддержкой?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="fq-a"><p>Напишите в Telegram: <a href="https://t.me/TheBodyMindCode_support" target="_blank" style="color:var(--sage);font-weight:600;text-decoration:none">@TheBodyMindCode_support</a>. Отвечаем ежедневно, обычно в течение нескольких часов. Помогаем с доступом, техническими вопросами и подбором программы.</p></div></div>
-</div>
+<!-- ФАКТ 6 -->
+<section class="fact rv" style="background:var(--bg2)">
+  <div class="fi rev">
+    <div>
+      <div class="fn">Факт 06</div>
+      <div class="ft">Тело помнит то, что вы давно забыли.</div>
+      <div class="fb">
+        <p>Мышцы, фасции, внутренние органы — всё хранит «память» о состояниях, в которых вы находились годами.</p>
+        <p><strong>Сжатые плечи</strong> — годы «нужно держаться». <strong>Спазмы в животе</strong> — «нельзя расслабиться». <strong>Зажатая спина</strong> — несение нагрузки, которую давно пора отпустить.</p>
+        <p>Хроническое мышечное напряжение нарушает кровоснабжение, нервную проводимость и уровень воспаления в конкретных зонах тела.</p>
+      </div>
+      <div class="hl"><p>Тело не «болит просто так». Оно продолжает реагировать на ситуацию, которой уже нет.</p></div>
+    </div>
+    <div>
+      <div class="ic" style="text-align:center">
+        <svg width="200" height="300" viewBox="0 0 200 300" style="margin:0 auto;display:block">
+          <ellipse cx="100" cy="35" rx="20" ry="24" fill="rgba(61,122,85,.02)" stroke="rgba(61,122,85,.1)" stroke-width="1"/>
+          <rect x="72" y="60" width="56" height="80" rx="10" fill="rgba(61,122,85,.02)" stroke="rgba(61,122,85,.08)" stroke-width="1"/>
+          <rect x="76" y="140" width="20" height="90" rx="5" fill="rgba(61,122,85,.015)" stroke="rgba(61,122,85,.06)" stroke-width="1"/>
+          <rect x="104" y="140" width="20" height="90" rx="5" fill="rgba(61,122,85,.015)" stroke="rgba(61,122,85,.06)" stroke-width="1"/>
+          <ellipse cx="100" cy="68" rx="34" ry="12" fill="rgba(160,92,88,.08)" stroke="rgba(160,92,88,.2)" stroke-width="1.5"><animate attributeName="ry" values="10;15;10" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></ellipse>
+          <text x="156" y="68" fill="var(--rose)" font-size="11" font-weight="600" font-family="var(--R)">Плечи</text><text x="156" y="82" fill="var(--dim)" font-size="9" font-family="var(--R)">«нужно держаться»</text>
+          <ellipse cx="100" cy="102" rx="24" ry="14" fill="rgba(160,92,88,.08)" stroke="rgba(160,92,88,.2)" stroke-width="1.5"><animate attributeName="ry" values="12;17;12" dur="3.5s" repeatCount="indefinite" begin=".6s"/><animate attributeName="opacity" values=".4;1;.4" dur="3.5s" repeatCount="indefinite" begin=".6s"/></ellipse>
+          <text x="156" y="102" fill="var(--rose)" font-size="11" font-weight="600" font-family="var(--R)">Живот</text><text x="156" y="116" fill="var(--dim)" font-size="9" font-family="var(--R)">«нельзя расслабиться»</text>
+          <ellipse cx="100" cy="134" rx="22" ry="10" fill="rgba(139,107,74,.06)" stroke="rgba(139,107,74,.18)" stroke-width="1.5"><animate attributeName="ry" values="8;13;8" dur="4s" repeatCount="indefinite" begin="1.2s"/></ellipse>
+          <text x="156" y="136" fill="var(--warm)" font-size="11" font-weight="600" font-family="var(--R)">Спина</text><text x="156" y="150" fill="var(--dim)" font-size="9" font-family="var(--R)">«несу нагрузку»</text>
+          <text x="100" y="258" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Тело хранит напряжение</text>
+          <text x="100" y="276" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">в конкретных зонах</text>
+        </svg>
+        <div class="ss">Van der Kolk, «The Body Keeps the Score», 2014</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-<div class="ft-links">
-  <a href="https://t.me/TheBodyMindCode_support" target="_blank">Поддержка</a>
-  <a href="https://instagram.com/thebodymindcode" target="_blank">Instagram</a>
-  <a href="#shop">Программы</a>
-</div>
-<p class="ft-copy">© 2026 Архитектура сознания. ИП Ростовцева Дарья Валерьевна · ИНН: 241103415641</p>
-</footer>
+<!-- ФАКТ 7 -->
+<section class="fact rv">
+  <div class="fi">
+    <div>
+      <div class="fn">Факт 07</div>
+      <div class="ft">«Режим выживания» отключает всё, что делает жизнь жизнью.</div>
+      <div class="fb">
+        <p>Когда тело в режиме угрозы, оно перенаправляет ресурсы. Отключает всё «ненужное для выживания»:</p>
+        <p>→ <strong>Пищеварение</strong> замедляется<br>→ <strong>Иммунитет</strong> снижается<br>→ <strong>Репродукция</strong> угнетается<br>→ <strong>Творчество</strong> блокируется</p>
+        <p>И самое важное: <strong>способность чувствовать удовольствие</strong> снижается. Серотонин, дофамин, окситоцин — всё подавлено.</p>
+      </div>
+      <div class="hl"><p>Вы не «перестали радоваться». Тело экономит ресурсы на выживание. Радость — предмет роскоши для организма в режиме борьбы.</p></div>
+    </div>
+    <div>
+      <div class="ic">
+        <svg width="100%" height="280" viewBox="0 0 380 280">
+          <text x="190" y="26" text-anchor="middle" fill="var(--text)" font-size="14" font-weight="700" font-family="var(--R)" letter-spacing="2">РЕЖИМ ВЫЖИВАНИЯ</text>
+          <line x1="40" y1="42" x2="340" y2="42" stroke="var(--border)" stroke-width="1"/>
+          <g font-family="var(--R)" font-size="13">
+            <text x="40" y="78" fill="var(--body)" font-weight="500">Пищеварение</text><rect x="190" y="66" width="150" height="16" rx="8" fill="rgba(160,92,88,.06)"/><rect x="190" y="66" width="30" height="16" rx="8" fill="rgba(160,92,88,.35)"><animate attributeName="width" values="30;24;30" dur="2.5s" repeatCount="indefinite"/></rect><text x="350" y="78" text-anchor="end" fill="var(--rose)" font-size="12" font-weight="700">↓</text>
+            <text x="40" y="118" fill="var(--body)" font-weight="500">Иммунитет</text><rect x="190" y="106" width="150" height="16" rx="8" fill="rgba(160,92,88,.06)"/><rect x="190" y="106" width="38" height="16" rx="8" fill="rgba(160,92,88,.35)"><animate attributeName="width" values="38;30;38" dur="3s" repeatCount="indefinite"/></rect><text x="350" y="118" text-anchor="end" fill="var(--rose)" font-size="12" font-weight="700">↓</text>
+            <text x="40" y="158" fill="var(--body)" font-weight="500">Регенерация</text><rect x="190" y="146" width="150" height="16" rx="8" fill="rgba(160,92,88,.06)"/><rect x="190" y="146" width="22" height="16" rx="8" fill="rgba(160,92,88,.35)"/><text x="350" y="158" text-anchor="end" fill="var(--rose)" font-size="12" font-weight="700">↓↓</text>
+            <text x="40" y="198" fill="var(--body)" font-weight="500">Удовольствие</text><rect x="190" y="186" width="150" height="16" rx="8" fill="rgba(160,92,88,.06)"/><rect x="190" y="186" width="16" height="16" rx="8" fill="rgba(160,92,88,.35)"/><text x="350" y="198" text-anchor="end" fill="var(--rose)" font-size="12" font-weight="700">↓↓↓</text>
+            <text x="40" y="238" fill="var(--body)" font-weight="500">Кортизол</text><rect x="190" y="226" width="150" height="16" rx="8" fill="rgba(61,122,85,.06)"/><rect x="190" y="226" width="135" height="16" rx="8" fill="rgba(160,92,88,.25)"><animate attributeName="width" values="125;145;125" dur="3s" repeatCount="indefinite"/></rect><text x="350" y="238" text-anchor="end" fill="var(--rose)" font-size="12" font-weight="700">↑↑↑</text>
+          </g>
+          <text x="190" y="272" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">Тело перенаправляет все ресурсы на борьбу</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ФАКТ 8 -->
+<section class="fact rv" style="background:var(--bg2)">
+  <div class="fi rev">
+    <div>
+      <div class="fn">Факт 08</div>
+      <div class="ft">Мысли меняют тело. Это не метафора — это эпигенетика.</div>
+      <div class="fb">
+        <p>Эпигенетика — наука о том, как среда и поведение включают и выключают гены. <strong>Не меняя ДНК.</strong></p>
+        <p>Хронический стресс включает гены воспаления. Состояние покоя и безопасности — включает гены восстановления.</p>
+        <p>Исследования Герберта Бенсона (Harvard) показали: 8 недель практики расслабления <strong>изменили экспрессию более 2 200 генов</strong>. Гены воспаления — снизили активность. Гены регенерации — включились.</p>
+      </div>
+      <div class="hl"><p>Вы буквально можете включать и выключать гены тем, как живёте. Каждый день.</p></div>
+    </div>
+    <div>
+      <div class="ic">
+        <div style="text-align:center;margin-bottom:28px"><div class="bn" style="font-size:3.8rem">2 200</div><div class="sl">генов изменили экспрессию за 8 недель</div></div>
+        <svg width="100%" height="130" viewBox="0 0 380 130">
+          <text x="95" y="18" text-anchor="middle" fill="var(--rose)" font-size="12" font-weight="700" font-family="var(--R)">Стресс</text>
+          <rect x="20" y="30" width="150" height="16" rx="8" fill="rgba(160,92,88,.06)"/><rect x="20" y="30" width="120" height="16" rx="8" fill="rgba(160,92,88,.2)"/>
+          <text x="20" y="64" fill="var(--dim)" font-size="10" font-family="var(--R)">Гены воспаления: ↑ ВКЛ</text>
+          <rect x="20" y="78" width="150" height="16" rx="8" fill="rgba(61,122,85,.06)"/><rect x="20" y="78" width="35" height="16" rx="8" fill="rgba(61,122,85,.15)"/>
+          <text x="20" y="112" fill="var(--dim)" font-size="10" font-family="var(--R)">Гены восстановления: ↓ ВЫКЛ</text>
+          <text x="285" y="18" text-anchor="middle" fill="var(--sage)" font-size="12" font-weight="700" font-family="var(--R)">Покой</text>
+          <rect x="210" y="30" width="150" height="16" rx="8" fill="rgba(160,92,88,.06)"/><rect x="210" y="30" width="35" height="16" rx="8" fill="rgba(160,92,88,.12)"/>
+          <text x="210" y="64" fill="var(--dim)" font-size="10" font-family="var(--R)">Гены воспаления: ↓ снижены</text>
+          <rect x="210" y="78" width="150" height="16" rx="8" fill="rgba(61,122,85,.06)"/><rect x="210" y="78" width="130" height="16" rx="8" fill="rgba(61,122,85,.25)"/>
+          <text x="210" y="112" fill="var(--dim)" font-size="10" font-family="var(--R)">Гены восстановления: ↑ ВКЛ</text>
+        </svg>
+        <div class="ss">Benson et al., Harvard, PLOS ONE, 2013 · Kaliman et al., 2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ФАКТ 9 -->
+<section class="fact rv">
+  <div class="fi">
+    <div>
+      <div class="fn">Факт 09</div>
+      <div class="ft">Тело умеет восстанавливаться. Ему нужен другой сигнал.</div>
+      <div class="fb">
+        <p>Всё, что стресс разрушает — тело может восстановить. Кишечник обновляется за <strong>3–5 дней</strong>. Печень регенерирует. Нейронные связи перестраиваются. Воспаление снижается.</p>
+        <p>Но только если <strong>тело получает сигнал безопасности</strong>.</p>
+        <p>Не «я знаю, что всё хорошо» — это мысль. А телесный, физиологический сигнал: дыхание замедляется, мышцы расслабляются, блуждающий нерв активируется.</p>
+        <p><strong>Переключение из режима борьбы в режим восстановления</strong> — это конкретный навык, который можно освоить.</p>
+      </div>
+      <div class="hl"><p>Исцеление — не случайность и не чудо. Это физиология тела, которому наконец дали сигнал: «Можно восстанавливаться».</p></div>
+    </div>
+    <div>
+      <div class="ic" style="text-align:center">
+        <svg width="100%" height="220" viewBox="0 0 400 220">
+          <text x="110" y="24" text-anchor="middle" fill="var(--dim)" font-size="13" font-weight="700" font-family="var(--R)">Режим борьбы</text>
+          <circle cx="110" cy="110" r="60" fill="none" stroke="rgba(160,92,88,.15)" stroke-width="2" stroke-dasharray="12 8"/>
+          <text x="110" y="105" text-anchor="middle" fill="var(--rose)" font-size="13" font-weight="600" font-family="var(--R)">Разрушение</text>
+          <text x="110" y="122" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">воспаление, износ</text>
+          <text x="200" y="115" text-anchor="middle" fill="var(--dim)" font-size="24" font-family="var(--R)">→</text>
+          <text x="290" y="24" text-anchor="middle" fill="var(--sage)" font-size="13" font-weight="700" font-family="var(--R)">Режим безопасности</text>
+          <circle cx="290" cy="110" r="60" fill="rgba(61,122,85,.04)" stroke="rgba(61,122,85,.25)" stroke-width="2"><animate attributeName="r" values="56;65;56" dur="4s" repeatCount="indefinite"/></circle>
+          <text x="290" y="105" text-anchor="middle" fill="var(--sage)" font-size="13" font-weight="600" font-family="var(--R)">Восстановление</text>
+          <text x="290" y="122" text-anchor="middle" fill="var(--dim)" font-size="11" font-family="var(--R)">регенерация, покой</text>
+          <text x="200" y="200" text-anchor="middle" fill="var(--dim)" font-size="12" font-family="var(--R)">Переключение — телесный навык, не мысль</text>
+        </svg>
+        <div class="ss">Porges, Polyvagal Theory, 2011 · Lazar et al., Harvard, 2011</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<div class="dv b2"></div>
+<section class="bridge rv">
+  <div class="bridge-i">
+    <div class="bridge-lb">Итого</div>
+    <h2>Тело — не враг. Оно ждёт <em>другого сигнала.</em></h2>
+    <p>Большинство людей годами живут в режиме борьбы — с&nbsp;симптомами, с&nbsp;телом, с&nbsp;жизнью. Контролируют, справляются, «держатся».</p>
+    <p>А тело реагирует единственным способом, который знает: <strong>воспаление, боль, усталость, болезнь</strong>.</p>
+    <p class="fin">Но всё это можно изменить. Не за годы терапии. А через конкретный, физиологический сдвиг.</p>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<section class="trans rv">
+  <div class="trans-inner">
+
+    <p>Как вы поняли, то, что происходит с&nbsp;вашим телом — это не&nbsp;результат плохих привычек, «неправильного» питания или того, что&nbsp;вы мало стараетесь.</p>
+
+    <p>И уж точно не&nbsp;результат того, что&nbsp;вы «запустили себя», мало занимаетесь спортом, мало спите или&nbsp;не&nbsp;того едите.</p>
+
+    <p>Причиной вашего состояния не&nbsp;является конкретный диагноз, дефицит витаминов или возраст. <strong>Причина — в&nbsp;режиме, в&nbsp;котором живёт ваша нервная система.</strong></p>
+
+    <p>Причиной является то, как ваше тело реагирует на&nbsp;мир. Какие сигналы идут по&nbsp;блуждающему нерву. Какой режим — <span class="t-accent">выживание или&nbsp;восстановление</span> — стал для&nbsp;тела нормой.</p>
+
+    <p>И если вы хотите изменить своё состояние — нужно менять не привычки. <strong>Нужно переключить тело из&nbsp;режима борьбы в&nbsp;режим восстановления.</strong></p>
+
+    <div class="t-break"></div>
+
+    <p>Для этого вам не&nbsp;понадобятся годы терапии. Не&nbsp;нужно «принимать себя», часами медитировать, искать причины в&nbsp;детстве или&nbsp;сдавать ещё один анализ.</p>
+
+    <p>С вами всё в&nbsp;порядке. Ваше тело работает именно так, как должно — <strong>в&nbsp;тех условиях, которые вы ему создали</strong>. Измените условия — и&nbsp;тело начнёт восстанавливаться. Само.</p>
+
+    <p>Для этого достаточно <span class="t-accent">одной точной встречи</span>. 90&nbsp;минут. Живой разбор того, как именно работает ваша нервная система — и&nbsp;что конкретно нужно сделать, чтобы тело перестало воевать и&nbsp;начало восстанавливаться.</p>
+
+    <p>Не общие советы. Не&nbsp;«попробуйте подышать». А&nbsp;конкретная практика, которую вы заберёте с&nbsp;собой и&nbsp;почувствуете результат в&nbsp;первую&nbsp;же неделю.</p>
+
+    <div class="t-break"></div>
+
+    <p class="t-final">Если вы устали справляться с&nbsp;телом вместо того чтобы жить — это&nbsp;ваш следующий шаг.</p>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-w rv">
+  <div class="cta-c">
+    <h2>За пределами заболеваний</h2>
+    <p class="sub">90-минутная встреча о&nbsp;том, как перестать воевать с&nbsp;телом — и&nbsp;начать с&nbsp;ним разговаривать. Живая практика, которую вы заберёте с&nbsp;собой. Запись в&nbsp;подарок.</p>
+    <a href="https://thebodymindcode.github.io/Beyond/" class="btn">Записаться на встречу →</a>
+    <div class="cta-meta">Zoom · Прямой эфир · Запись навсегда</div>
+    <div class="cta-ff">
+      <div class="cta-f"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 90 минут</div>
+      <div class="cta-f"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Живая практика</div>
+      <div class="cta-f"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Конспект</div>
+      <div class="cta-f"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Запись навсегда</div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Архитектура Сознания · <a href="https://instagram.com/thebodymindcode" target="_blank">@thebodymindcode</a></p></footer>
 
 <script>
-// Reveal on scroll
-const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// Results bars
-const barObs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');barObs.unobserve(e.target)}})},{threshold:.3});
-document.querySelectorAll('.r-card').forEach(el=>barObs.observe(el));
-
-// Science bars
-const sciObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.querySelectorAll('.b-fill').forEach(b=>{b.style.width=b.style.getPropertyValue('--w')});sciObs.unobserve(el.target)}})},{threshold:.3});
-document.querySelectorAll('.brain-stats').forEach(el=>sciObs.observe(el));
-
-// FAQ
-document.querySelectorAll('.fq-q').forEach(b=>{b.addEventListener('click',()=>{const p=b.parentElement,a=p.classList.contains('open');document.querySelectorAll('.fq').forEach(i=>i.classList.remove('open'));if(!a)p.classList.add('open')})});
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+const obs=new IntersectionObserver(e=>e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('visible');i.target.querySelectorAll('.counter').forEach(animateCounter)}}),{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function animateCounter(el){if(el.dataset.done)return;el.dataset.done='1';const t=+el.dataset.target,d=2200,s=performance.now();(function u(n){const p=Math.min((n-s)/d,1),e=1-Math.pow(1-p,4);el.textContent=Math.round(e*t).toLocaleString('ru-RU');if(p<1)requestAnimationFrame(u)})(s)}
 </script>
 </body>
 </html>
