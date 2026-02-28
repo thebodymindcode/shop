@@ -270,6 +270,10 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
   .r-val{font-size:1.6rem}
   .trust-bar{padding:16px 20px}
   .rv-item{width:220px}
+  .vip-features-grid{grid-template-columns:1fr !important;padding:0 24px 8px !important}
+  .vip-features-grid .vip-feature{grid-column:auto !important}
+  .card.c-vip .card-head{padding:52px 24px 20px !important}
+  .card.c-vip .card-foot{padding:16px 24px 28px !important}
 }
 @media(max-width:480px){
   .results-grid{grid-template-columns:1fr}
@@ -447,14 +451,14 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
     <div class="card-head">
       <div class="card-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Программа</div>
       <h3>Внутренний Авторитет</h3>
-      <p class="card-desc">Вернуть себе право решать. 2 встречи + техника программирования мозга. Перестаньте спрашивать разрешения — начните доверять себе.</p>
+      <p class="card-desc">Вернуть себе право решать. 3 встречи за 7 дней + техника программирования мозга. Перестаньте спрашивать разрешения — начните доверять себе.</p>
       <div class="info-row">
-        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>2 × 90 мин</span>
+        <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>3 встречи</span>
         <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Записи встреч</span>
         <span class="info-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>Тетрадь 30 дней</span>
       </div>
       <ul class="includes">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Записи 2 встреч по 90 минут</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Записи 3 встреч (90 + 90 + 60 мин)</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Техника программирования мозга</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>PDF-мануал + рабочая тетрадь</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытый чат + записи навсегда</li>
@@ -500,56 +504,51 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
   </article>
 
   <!-- ★ VIP — Личная работа с Дарьей -->
-  <article class="card c-vip featured reveal" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;border:2px solid rgba(196,154,82,.3);background:linear-gradient(180deg,#FFFDF7 0%,#FFF9EE 100%);position:relative;overflow:hidden">
+  <article class="card c-vip reveal" style="grid-column:1/-1;border:2px solid rgba(196,154,82,.3);background:linear-gradient(180deg,#FFFDF7 0%,#FFF9EE 100%);position:relative;overflow:hidden">
     <div class="vip-crown">👑 Глубокая работа</div>
     <div style="position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;background:rgba(255,100,100,.12);font-size:.6rem;font-weight:800;color:#D44;letter-spacing:.04em;z-index:2">🔥 Осталось 2 места</div>
-    <!-- Decorative gold corner accents -->
-    <div style="position:absolute;top:0;left:0;width:60px;height:60px;border-top:3px solid #C49A52;border-left:3px solid #C49A52;border-radius:20px 0 0 0;opacity:.4"></div>
-    <div style="position:absolute;bottom:0;right:0;width:60px;height:60px;border-bottom:3px solid #C49A52;border-right:3px solid #C49A52;border-radius:0 0 20px 0;opacity:.4"></div>
-    <div>
-      <div class="card-head" style="padding:36px 36px 24px">
-        <div class="card-badge" style="background:rgba(196,154,82,.1);color:#C49A52"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>VIP-формат · 1 месяц</div>
-        <h3 style="font-size:1.7rem;margin-bottom:10px">VIP-сопровождение</h3>
-        <p style="font-size:1rem;color:var(--text2);font-weight:500;margin-bottom:16px">Персональная трансформация с Дарьей</p>
-        <p class="card-desc" style="font-size:.92rem;line-height:1.65">Это не курс и не программа. Это месяц глубокой индивидуальной работы, где Дарья работает лично с вами — с вашим мозгом, вашими паттернами, вашим телом. 4 персональные сессии, разбор по Human Design, индивидуальная практика программирования мозга и личный чат на 30 дней. Для тех, кто хочет максимальный результат в кратчайшие сроки.</p>
-        <div class="info-row" style="margin-top:16px">
-          <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>1 месяц</span>
-          <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>1 на 1</span>
-          <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Навсегда</span>
-        </div>
+    <div class="card-head" style="padding:36px 32px 24px;padding-top:52px">
+      <div class="card-badge" style="background:rgba(196,154,82,.1);color:#C49A52"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>VIP-формат · 1 месяц</div>
+      <h3 style="font-size:1.6rem;margin-bottom:6px">VIP-сопровождение</h3>
+      <p style="font-size:.95rem;color:var(--text2);font-weight:500;margin-bottom:14px">Персональная трансформация с Дарьей</p>
+      <p class="card-desc" style="font-size:.88rem;line-height:1.65;max-width:640px">Это не курс и не программа. Это месяц глубокой индивидуальной работы, где Дарья работает лично с вами — с вашим мозгом, вашими паттернами, вашим телом. Для тех, кто хочет максимальный результат в кратчайшие сроки.</p>
+      <div class="info-row" style="margin-top:16px">
+        <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>1 месяц</span>
+        <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>1 на 1</span>
+        <span class="info-chip" style="background:rgba(196,154,82,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="#C49A52" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Навсегда</span>
       </div>
     </div>
-    <div style="padding:36px;display:flex;flex-direction:column;border-left:1px solid rgba(196,154,82,.15)">
-      <div style="margin-bottom:auto">
-        <div class="vip-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-          <div><div class="vf-title">4 персональные сессии 1 на 1</div><div class="vf-desc">Глубокая работа с корнем — не поверхностные разговоры, а точечная трансформация на каждой встрече</div></div>
-        </div>
-        <div class="vip-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-          <div><div class="vf-title">Глубинный разбор по Human Design</div><div class="vf-desc">Персональная карта вашей энергетики, стратегии и авторитета — чтобы решения давались легко</div></div>
-        </div>
-        <div class="vip-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-          <div><div class="vf-title">Индивидуальная практика программирования мозга</div><div class="vf-desc">Создаётся лично для вас — под ваш запрос, ваш ритм, вашу нейрофизиологию</div></div>
-        </div>
-        <div class="vip-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-          <div><div class="vf-title">Личный чат с Дарьей — 30 дней</div><div class="vf-desc">Прямой доступ. Вопросы, поддержка, корректировка практики — без очередей и расписаний</div></div>
-        </div>
-        <div class="vip-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
-          <div><div class="vf-title">Доступ ко всем программам</div><div class="vf-desc">Протокол, Код денег, Код нового года, За пределами заболеваний, Внутренний Авторитет — всё включено навсегда</div></div>
-        </div>
+
+    <div style="padding:0 32px 8px;display:grid;grid-template-columns:1fr 1fr;gap:10px" class="vip-features-grid">
+      <div class="vip-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+        <div><div class="vf-title">4 персональные сессии 1 на 1</div><div class="vf-desc">Глубокая работа с корнем — точечная трансформация на каждой встрече</div></div>
       </div>
-      <div style="margin-top:24px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
-          <span style="font-size:.72rem;color:var(--text3);font-weight:500">один раз — доступ навсегда</span>
-        </div>
-        <div class="price-row"><span class="price" style="font-size:2.2rem">80 000 <small>₽</small></span></div>
-        <div class="btns">
-          <a href="https://payform.ru/dtaGdlM/" class="btn-gold">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
+      <div class="vip-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+        <div><div class="vf-title">Глубинный разбор по Human Design</div><div class="vf-desc">Персональная карта вашей энергетики, стратегии и авторитета</div></div>
+      </div>
+      <div class="vip-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+        <div><div class="vf-title">Индивидуальная практика программирования мозга</div><div class="vf-desc">Создаётся лично для вас — под ваш запрос и вашу нейрофизиологию</div></div>
+      </div>
+      <div class="vip-feature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+        <div><div class="vf-title">Личный чат с Дарьей — 30 дней</div><div class="vf-desc">Прямой доступ. Вопросы, поддержка, корректировка практики</div></div>
+      </div>
+      <div class="vip-feature" style="grid-column:1/-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+        <div><div class="vf-title">Доступ ко всем программам — навсегда</div><div class="vf-desc">Протокол, Код денег, Код нового года, За пределами заболеваний, Внутренний Авторитет — всё включено</div></div>
+      </div>
+    </div>
+
+    <div class="card-foot" style="padding:20px 32px 32px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+        <span style="font-size:.72rem;color:var(--text3);font-weight:500">один раз — доступ навсегда</span>
+      </div>
+      <div class="price-row"><span class="price" style="font-size:2.2rem">80 000 <small>₽</small></span></div>
+      <div class="btns">
+        <a href="https://payform.ru/dtaGdlM/" class="btn-gold">Записаться <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </article>
