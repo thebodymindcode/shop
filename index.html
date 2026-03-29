@@ -9,8 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
+html{scroll-behavior:smooth;overflow-x:hidden;font-size:16px}
+body{overflow-x:hidden;word-wrap:break-word;overflow-wrap:break-word;font-family:'Inter',system-ui,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased;line-height:1.6}
 
 /* ── PALETTE ── */
 :root{
@@ -219,7 +219,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-
 .wb-quote strong{color:var(--text);font-weight:700}
 .wb-cta{display:inline-flex;align-items:center;gap:8px;padding:15px 36px;background:var(--sage);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;border-radius:14px;transition:all .25s;box-shadow:0 4px 16px rgba(59,122,90,.2)}
 .wb-cta:hover{background:var(--sage-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,122,90,.3)}
-@media(max-width:768px){.wb-grid{grid-template-columns:1fr}.why-buy{padding:60px 20px}}
+/* handled in main 768px query */
 
 /* ── FAQ ── */
 .faq{max-width:760px;margin:0 auto;padding:64px 32px}
@@ -256,30 +256,129 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
   .science-inner{grid-template-columns:1fr}
 }
 @media(max-width:768px){
+  /* GLOBAL */
+  html,body{overflow-x:hidden!important;width:100%!important}
+  *{max-width:100%!important;box-sizing:border-box!important}
+  img,svg,video{max-width:100%!important;height:auto!important}
+  section,div{word-wrap:break-word!important;overflow-wrap:break-word!important}
+
+  /* NAV */
   .nav-r a:not(.cta){display:none}.mob-menu{display:block}
-  .hero{padding:36px 20px 12px;flex-direction:column;align-items:flex-start}
-  .hero-stats{gap:16px}
-  .products,.bundle,.results,.reviews,.faq{padding-left:20px;padding-right:20px}
-  .p-grid{gap:12px}
-  .card h3{font-size:1.2rem}
-  .card-head{padding:24px 24px 16px}
-  .card-foot{padding:0 24px 24px}
-  .btns{flex-direction:column}
-  .bundle-box{padding:28px}
-  .results-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .r-val{font-size:1.6rem}
-  .trust-bar{padding:16px 20px}
-  .rv-item{width:220px}
-  .vip-features-grid{grid-template-columns:1fr !important;padding:0 24px 8px !important}
-  .vip-features-grid .vip-feature{grid-column:auto !important}
-  .card.c-vip .card-head{padding:52px 24px 20px !important}
-  .card.c-vip .card-foot{padding:16px 24px 28px !important}
+  nav .nav-c{padding:0 16px!important}
+
+  /* HERO */
+  .hero{padding:28px 16px 12px!important;flex-direction:column!important;align-items:flex-start!important}
+  .hero h1{font-size:1.5rem!important;line-height:1.25!important}
+  .hero-stats{gap:12px!important}
+  .hero-stats .s b{font-size:1.1rem!important}
+  .hero-stats .s small{font-size:.6rem!important}
+
+  /* SECTIONS PADDING */
+  .products,.bundle,.results,.reviews,.faq,.science,.why-buy{padding-left:16px!important;padding-right:16px!important}
+
+  /* TRUST BAR */
+  .trust-bar{padding:12px 16px!important;overflow:hidden!important}
+  .trust-bar>div{gap:8px!important}
+  .trust-bar span{font-size:.65rem!important}
+
+  /* PRODUCT GRID */
+  .p-grid{gap:12px!important;grid-template-columns:1fr!important}
+
+  /* ALL CARDS */
+  .card{overflow:hidden!important}
+  .card h3{font-size:1.15rem!important}
+  .card-head{padding:20px 16px 14px!important}
+  .card-foot{padding:0 16px 20px!important}
+  .card-desc{font-size:.82rem!important;line-height:1.6!important}
+  .card-badge{font-size:.58rem!important;padding:3px 8px!important}
+  .btns{flex-direction:column!important;gap:8px!important}
+  .btn-primary,.btn-ghost{font-size:.72rem!important;padding:12px 16px!important;width:100%!important;text-align:center!important;justify-content:center!important}
+  .info-row{gap:6px!important;flex-wrap:wrap!important}
+  .info-chip{font-size:.65rem!important;padding:4px 8px!important}
+  .includes li{font-size:.82rem!important;padding:6px 0!important}
+  .price{font-size:1.5rem!important}
+  .price-old{font-size:.85rem!important}
+
+  /* DARK SESSION CARD - THE MAIN PROBLEM */
+  .card.c-green .card-head{display:block!important;padding:24px 16px 16px!important}
+  .card.c-green .card-head>div{margin-bottom:20px!important}
+  [style*="grid-template-columns:1fr 1fr"][style*="gap:32px"]{display:block!important}
+
+  /* VIP CARD */
+  .vip-features-grid{grid-template-columns:1fr!important;padding:0 16px 8px!important}
+  .vip-features-grid .vip-feature{grid-column:auto!important}
+  .card.c-vip .card-head{padding:44px 16px 16px!important}
+  .card.c-vip .card-foot{padding:12px 16px 24px!important}
+
+  /* RESULTS */
+  .results-grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .r-val{font-size:1.4rem!important}
+  .r-label{font-size:.65rem!important}
+
+  /* SCIENCE SECTION */
+  .science-inner{grid-template-columns:1fr!important;gap:24px!important}
+  .science{padding:40px 16px!important}
+  .b-item{font-size:.8rem!important}
+
+  /* REVIEWS */
+  .rv-item{width:200px!important}
+  .rv-item p{font-size:.82rem!important}
+
+  /* WHY BUY */
+  .wb-grid{grid-template-columns:1fr!important}
+  .why-buy{padding:40px 16px!important}
+
+  /* FAQ */
+  .fq-item{padding:14px!important}
+  .fq-q{font-size:.88rem!important;gap:8px!important}
+  .fq-a{font-size:.82rem!important}
+
+  /* BUNDLE */
+  .bundle-box{padding:20px 16px!important;flex-direction:column!important;text-align:center!important}
+  .bundle-items{align-items:center!important}
+
+  /* FORCE ALL INLINE GRIDS TO COLLAPSE */
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;display:block!important}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important;display:block!important}
+  [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+  [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}
+  [style*="gap:32px"]{gap:16px!important}
+  [style*="gap:24px"]{gap:14px!important}
+  [style*="padding:36px"]{padding:20px 16px!important}
+  [style*="padding: 36px"]{padding:20px 16px!important}
+  [style*="padding:0 32px"]{padding:0 16px!important}
+  [style*="padding:28px"]{padding:18px 14px!important}
+
+  /* COMPARISON TABLE - min-width:900px is the #1 culprit */
+  table{min-width:0!important;font-size:.6rem!important;width:100%!important}
+  table th,table td{padding:6px 4px!important;font-size:.55rem!important;line-height:1.2!important;word-break:break-word!important}
+  table th span,table td span{font-size:.6rem!important}
+  table th:first-child{min-width:70px!important;max-width:90px!important;font-size:.52rem!important}
+  [style*="min-width:900px"]{min-width:0!important;width:100%!important}
+  [style*="overflow-x:auto"]{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;max-width:100%!important}
+
+  /* SCIENCE SECTION - inline grid 1fr 1fr */
+  .science-strip{overflow:hidden!important}
+  .science-strip [style*="grid-template-columns"]{grid-template-columns:1fr!important;display:grid!important}
+  .science-strip [style*="padding:28px"]{padding:18px 14px!important}
+
+  /* RESEARCH STATS - repeat(4,1fr) */
+  .science-strip [style*="repeat(4"]{grid-template-columns:1fr 1fr!important}
+
+  /* SECTION with max-width:1280px */
+  [style*="max-width:1280px"]{padding:0 16px!important}
+  [style*="max-width:1100px"]{padding:0 4px!important}
 }
 @media(max-width:480px){
-  .results-grid{grid-template-columns:1fr}
-  .hero h1{font-size:1.6rem}
-  .hero-stats{gap:12px}
+  .results-grid{grid-template-columns:1fr!important}
+  .hero h1{font-size:1.4rem!important}
+  .hero-stats{gap:10px!important}
+  .hero-stats .s b{font-size:1rem!important}
+  .card h3{font-size:1.05rem!important}
+  .card-head{padding:16px 14px 12px!important}
+  .card-foot{padding:0 14px 18px!important}
 }
+/* handled above */
 </style>
 </head>
 <body>
