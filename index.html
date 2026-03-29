@@ -708,196 +708,331 @@ footer{border-top:1px solid var(--border);padding:32px;text-align:center}
 
 </div>
 </section>
+
 <!-- COMPARISON — PREMIUM NAVIGATOR -->
-<section style="max-width:1200px;margin:0 auto;padding:0 24px 64px">
-<div class="reveal" style="text-align:center;margin-bottom:48px">
-  <p style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:8px">Навигатор</p>
-  <h2 style="font-size:clamp(1.3rem,3vw,1.6rem);font-weight:800;letter-spacing:-.03em">Что выбрать?</h2>
-  <p style="font-size:.88rem;color:var(--text2);max-width:480px;margin:8px auto 0">Все программы с вечным доступом. Начните с одной записи или возьмите систему.</p>
+<section style="background:linear-gradient(180deg,#f8f9f8 0%,#f0f3f0 100%);padding:80px 24px;margin-bottom:0">
+<div style="max-width:1200px;margin:0 auto">
+
+<div class="reveal" style="text-align:center;margin-bottom:56px">
+  <p style="font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:10px">Навигатор по программам</p>
+  <h2 style="font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px">Выберите свою точку входа</h2>
+  <p style="font-size:.92rem;color:var(--text2);max-width:520px;margin:0 auto;line-height:1.7">Все программы — с вечным доступом и материалами. Начните с записи за 1 490 ₽ или возьмите систему.</p>
 </div>
 
 <style>
-.cmp-tier{margin-bottom:36px}
-.cmp-tier-label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin-bottom:16px;padding-left:2px;display:flex;align-items:center;gap:8px}
-.cmp-tier-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.cmp-list{display:flex;flex-direction:column;gap:0}
-.cmp-item{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:18px 20px;border:1px solid var(--border);border-bottom:none;background:var(--white);transition:all .25s}
-.cmp-item:first-child{border-radius:14px 14px 0 0}
-.cmp-item:last-child{border-bottom:1px solid var(--border);border-radius:0 0 14px 14px}
-.cmp-item:only-child{border-radius:14px;border-bottom:1px solid var(--border)}
-.cmp-item:hover{background:var(--bg);z-index:1;box-shadow:0 4px 16px rgba(0,0,0,.04)}
-.cmp-item.hit{border:2px solid var(--sage);border-radius:14px!important;margin:-1px 0;z-index:2;box-shadow:0 4px 20px rgba(59,122,90,.08)}
-.cmp-item.hit+.cmp-item{border-top:1px solid var(--border)}
-.cmp-item.vip{background:linear-gradient(135deg,#FFFDF7,#FFF9EE);border:2px solid rgba(196,154,82,.25);border-radius:14px!important}
-.cmp-left{display:flex;align-items:center;gap:14px;min-width:0}
-.cmp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.cmp-info{min-width:0}
-.cmp-name{font-size:.92rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cmp-meta{font-size:.72rem;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.cmp-tag{font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px;white-space:nowrap}
-.cmp-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.cmp-price{font-size:1rem;font-weight:800;color:var(--text);white-space:nowrap}
-.cmp-btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:8px;font-size:.65rem;font-weight:600;text-decoration:none;white-space:nowrap;transition:all .2s}
-.cmp-btn.green{background:var(--sage);color:#fff}
-.cmp-btn.green:hover{background:var(--sage-dark)}
-.cmp-btn.outline{background:var(--bg2);color:var(--sage)}
-.cmp-btn.outline:hover{background:var(--sage);color:#fff}
-.cmp-btn.gold{background:linear-gradient(135deg,#C49A52,#D4AF6E);color:#fff}
-.cmp-btn.gold:hover{opacity:.9}
-.cmp-hit-badge{position:absolute;top:-9px;left:16px;font-size:.48rem;font-weight:800;padding:3px 10px;border-radius:4px;background:var(--sage-dark);color:#fff;letter-spacing:.08em}
+.nav-sec{margin-bottom:48px}
+.nav-sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid rgba(59,122,90,.12)}
+.nav-sec-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.nav-sec-title{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.nav-sec-price{margin-left:auto;font-size:.72rem;font-weight:600;color:var(--text3)}
+
+.nv-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.nv-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
+.nv-card{background:#fff;border-radius:16px;padding:28px 24px;border:1px solid var(--border);position:relative;transition:all .35s cubic-bezier(.22,1,.36,1);overflow:hidden}
+.nv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:16px 16px 0 0;transition:height .3s}
+.nv-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.nv-card:hover::before{height:4px}
+
+.nv-card.c-rose::before{background:linear-gradient(90deg,#B85C5C,#D47A7A)}
+.nv-card.c-sage::before{background:linear-gradient(90deg,var(--sage),var(--sage-dark))}
+.nv-card.c-gold::before{background:linear-gradient(90deg,#C49A52,#D4AF6E)}
+.nv-card.c-violet::before{background:linear-gradient(90deg,#6C5CE7,#A29BFE)}
+.nv-card.c-blue::before{background:linear-gradient(90deg,#4A7FB5,#6B9FD4)}
+.nv-card.c-green::before{background:linear-gradient(90deg,#3B7A5A,#5A9E7A)}
+
+.nv-card.hit{border:2px solid var(--sage);background:linear-gradient(180deg,#fff 0%,rgba(59,122,90,.02) 100%)}
+.nv-card.vip{border:2px solid rgba(196,154,82,.35);background:linear-gradient(135deg,#FFFDF7 0%,#FFF8EE 100%)}
+
+.nv-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.nv-name{font-size:1.1rem;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1.2}
+.nv-badge{flex-shrink:0;font-size:.52rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;white-space:nowrap}
+
+.nv-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.nv-chip{display:inline-flex;align-items:center;gap:4px;font-size:.62rem;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--bg2);color:var(--text2)}
+.nv-chip svg{width:11px;height:11px;stroke:var(--sage);stroke-width:2.5;fill:none}
+
+.nv-desc{font-size:.82rem;color:var(--text2);line-height:1.65;margin-bottom:18px}
+
+.nv-features{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.nv-feat{font-size:.64rem;font-weight:600;padding:5px 10px;border-radius:20px;border:1px solid var(--border);color:var(--text2);background:#fff}
+
+.nv-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--border)}
+.nv-price{font-size:1.3rem;font-weight:800;color:var(--text);letter-spacing:-.02em}
+.nv-price small{font-size:.7rem;font-weight:500;color:var(--text3)}
+.nv-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:10px;font-size:.7rem;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:all .25s}
+.nv-btn.outline{background:var(--bg2);color:var(--sage)}
+.nv-btn.outline:hover{background:var(--sage);color:#fff}
+.nv-btn.green{background:var(--sage);color:#fff;box-shadow:0 4px 12px rgba(59,122,90,.2)}
+.nv-btn.green:hover{background:var(--sage-dark);transform:translateY(-1px)}
+.nv-btn.gold-btn{background:linear-gradient(135deg,#C49A52,#D4AF6E);color:#fff;box-shadow:0 4px 12px rgba(196,154,82,.25)}
+.nv-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5}
+
+.nv-label{position:absolute;top:16px;right:16px;font-size:.5rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px;color:#fff;z-index:2}
+
 @media(max-width:768px){
-  .cmp-item{grid-template-columns:1fr;gap:12px;padding:16px}
-  .cmp-right{justify-content:space-between;width:100%}
-  .cmp-name{font-size:.86rem;white-space:normal}
-  .cmp-meta{font-size:.66rem}
-  .cmp-price{font-size:.9rem}
-  .cmp-btn{padding:8px 14px;font-size:.6rem}
-  .cmp-tag{font-size:.5rem}
+  .nv-grid-3,.nv-grid-2{grid-template-columns:1fr!important}
+  .nv-card{padding:22px 18px!important}
+  .nv-name{font-size:1rem!important}
+  .nv-desc{font-size:.8rem!important}
+  .nav-sec-head{flex-wrap:wrap}
 }
 </style>
 
-<!-- TIER 1: Записи -->
-<div class="cmp-tier">
-  <div class="cmp-tier-label">Записи встреч · 1 490 ₽</div>
-  <div class="cmp-list">
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:#B85C5C"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">За пределами заболеваний</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(184,92,92,.08);color:#B85C5C">Тело</span>90 мин · Запись + конспект + книга</div>
-        </div>
+<!-- ═══ ЗАПИСИ ВСТРЕЧ ═══ -->
+<div class="nav-sec reveal">
+  <div class="nav-sec-head">
+    <div class="nav-sec-icon" style="background:rgba(184,92,92,.08)">▶</div>
+    <div>
+      <div class="nav-sec-title" style="color:#B85C5C">Записи встреч</div>
+      <div style="font-size:.7rem;color:var(--text3);margin-top:2px">Одна тема — глубоко. Запись + конспект + практика</div>
+    </div>
+    <div class="nav-sec-price">по 1 490 ₽</div>
+  </div>
+
+  <div class="nv-grid-3">
+    <!-- За пределами заболеваний -->
+    <div class="nv-card c-rose">
+      <div class="nv-top">
+        <div class="nv-name">За пределами<br>заболеваний</div>
+        <div class="nv-badge" style="background:rgba(184,92,92,.08);color:#B85C5C">Тело</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">1 490 ₽</div>
-        <a href="https://payform.ru/jjaA66G/" target="_blank" class="cmp-btn outline">Купить</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>90 мин</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Навсегда</span>
+      </div>
+      <div class="nv-desc">Почему тело болеет, когда врачи говорят «всё в норме». Механика здоровья + практика переключения нервной системы.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ Запись 90 мин</span>
+        <span class="nv-feat">✦ Конспект</span>
+        <span class="nv-feat">✦ Книга в подарок</span>
+        <span class="nv-feat">✦ Практика</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">1 490 <small>₽</small></div>
+        <a href="https://payform.ru/jjaA66G/" target="_blank" class="nv-btn outline">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:#B85C5C"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Выбор</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(184,92,92,.08);color:#B85C5C">Действие</span>90 мин · 5 механизмов + практика + конспект</div>
-        </div>
+
+    <!-- Выбор -->
+    <div class="nv-card c-rose">
+      <div class="nv-top">
+        <div class="nv-name">Выбор</div>
+        <div class="nv-badge" style="background:rgba(184,92,92,.08);color:#B85C5C">Действие</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">1 490 ₽</div>
-        <a href="https://payform.ru/o2aQPRM/" target="_blank" class="cmp-btn outline">Купить</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>90 мин</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Навсегда</span>
+      </div>
+      <div class="nv-desc">Почему одни люди делают, а другие годами собираются. 5 механизмов, которые удерживают на месте.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ Запись 90 мин</span>
+        <span class="nv-feat">✦ Конспект</span>
+        <span class="nv-feat">✦ Практика</span>
+        <span class="nv-feat">✦ Чек-лист</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">1 490 <small>₽</small></div>
+        <a href="https://payform.ru/o2aQPRM/" target="_blank" class="nv-btn outline">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:#B85C5C"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Красота без оправданий</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(184,92,92,.08);color:#B85C5C">Образ</span>90 мин · 3 механизма + 2 практики + конспект</div>
-        </div>
+
+    <!-- Красота без оправданий -->
+    <div class="nv-card c-rose">
+      <div class="nv-top">
+        <div class="nv-name">Красота без<br>оправданий</div>
+        <div class="nv-badge" style="background:rgba(184,92,92,.08);color:#B85C5C">Образ</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">1 490 ₽</div>
-        <a href="https://payform.ru/rmaY81X/" target="_blank" class="cmp-btn outline">Купить</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>90 мин</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Навсегда</span>
+      </div>
+      <div class="nv-desc">Где было принято решение, что красота — не для вас. Три механизма защиты + две практики с телом.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ Запись 90 мин</span>
+        <span class="nv-feat">✦ Конспект</span>
+        <span class="nv-feat">✦ 2 практики</span>
+        <span class="nv-feat">✦ Карточка «2 мин утром»</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">1 490 <small>₽</small></div>
+        <a href="https://payform.ru/rmaY81X/" target="_blank" class="nv-btn outline">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TIER 2: Программы -->
-<div class="cmp-tier">
-  <div class="cmp-tier-label">Программы · от 2 990 ₽</div>
-  <div class="cmp-list">
-    <div class="cmp-item hit" style="position:relative">
-      <div class="cmp-hit-badge">ХИТ</div>
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:var(--sage)"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Протокол остановки ума</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:var(--sage-pale);color:var(--sage)">28 дней</span>7 видео · мануал 40 стр · трекер · чат · 164 участника</div>
-        </div>
+<!-- ═══ ПРОГРАММЫ ═══ -->
+<div class="nav-sec reveal">
+  <div class="nav-sec-head">
+    <div class="nav-sec-icon" style="background:rgba(59,122,90,.08)">⚡</div>
+    <div>
+      <div class="nav-sec-title" style="color:var(--sage)">Программы</div>
+      <div style="font-size:.7rem;color:var(--text3);margin-top:2px">Система на несколько дней или недель. Zoom-встречи + практики + материалы</div>
+    </div>
+    <div class="nav-sec-price">от 2 990 ₽</div>
+  </div>
+
+  <div class="nv-grid-2">
+    <!-- Протокол остановки ума — ХИТ -->
+    <div class="nv-card c-sage hit" style="position:relative">
+      <div class="nv-label" style="background:var(--sage-dark)">ХИТ · 164 участника</div>
+      <div class="nv-top" style="margin-top:20px">
+        <div class="nv-name">Протокол остановки ума</div>
+        <div class="nv-badge" style="background:rgba(59,122,90,.08);color:var(--sage)">28 дней</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">2 990 ₽</div>
-        <a href="https://payform.ru/poa2szv/" target="_blank" class="cmp-btn green">Купить</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>16 мин/день</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>7 видео</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>Мануал 40 стр</span>
+      </div>
+      <div class="nv-desc">Научно обоснованная система для перестройки мозга. Результат виден на МРТ через 4 недели. Тишина в голове.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ 7 видео-практик</span>
+        <span class="nv-feat">✦ Научный мануал</span>
+        <span class="nv-feat">✦ Трекер прогресса</span>
+        <span class="nv-feat">✦ Закрытый чат</span>
+        <span class="nv-feat">✦ Доступ навсегда</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">2 990 <small>₽</small></div>
+        <a href="https://payform.ru/poa2szv/" target="_blank" class="nv-btn green">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:var(--gold)"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Код нового года</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(196,154,82,.08);color:var(--gold)">3 дня</span>3 Zoom-встречи · фраза-код на год · рабочая тетрадь</div>
-        </div>
+
+    <!-- Код нового года -->
+    <div class="nv-card c-gold">
+      <div class="nv-top">
+        <div class="nv-name">Код нового года</div>
+        <div class="nv-badge" style="background:rgba(196,154,82,.08);color:var(--gold)">3 дня</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">3 990 ₽</div>
-        <a href="https://payform.ru/c5abgLf/" target="_blank" class="cmp-btn outline">Купить</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>3 Zoom</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>Фраза-код</span>
       </div>
-    </div>
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:#6C5CE7"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Внутренний Авторитет</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(108,92,231,.08);color:#6C5CE7">7 дней</span>3 Zoom + закрытый чат + техника программирования мозга</div>
-        </div>
+      <div class="nv-desc">3 дня трансформации. Деактивация старых программ + создание персональной фразы-кода на год.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ 3 живые встречи</span>
+        <span class="nv-feat">✦ Фраза-код</span>
+        <span class="nv-feat">✦ Рабочая тетрадь</span>
+        <span class="nv-feat">✦ Доступ навсегда</span>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">4 900 ₽</div>
-        <a href="https://payform.ru/p7aGdbG/" target="_blank" class="cmp-btn outline">Купить</a>
+      <div class="nv-bottom">
+        <div class="nv-price">3 990 <small>₽</small></div>
+        <a href="https://payform.ru/c5abgLf/" target="_blank" class="nv-btn outline">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:#4A7FB5"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Код денег</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(74,127,181,.08);color:#4A7FB5">14 дней</span>5 Zoom · 19 практик · денежный код · закрытый чат</div>
-        </div>
+
+    <!-- Внутренний Авторитет -->
+    <div class="nv-card c-violet">
+      <div class="nv-top">
+        <div class="nv-name">Внутренний Авторитет</div>
+        <div class="nv-badge" style="background:rgba(108,92,231,.08);color:#6C5CE7">7 дней</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">5 900 ₽</div>
-        <a href="https://payform.ru/6haon9d/" target="_blank" class="cmp-btn outline">Купить</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>3 Zoom</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Закрытый чат</span>
+      </div>
+      <div class="nv-desc">Как перестать подстраиваться и начать принимать решения из себя. 7 дней системной работы.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ 3 живые встречи</span>
+        <span class="nv-feat">✦ Практики</span>
+        <span class="nv-feat">✦ Закрытый чат</span>
+        <span class="nv-feat">✦ Доступ навсегда</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">4 900 <small>₽</small></div>
+        <a href="https://payform.ru/p7aGdbG/" target="_blank" class="nv-btn outline">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <!-- Код денег -->
+    <div class="nv-card c-blue">
+      <div class="nv-top">
+        <div class="nv-name">Код денег</div>
+        <div class="nv-badge" style="background:rgba(74,127,181,.08);color:#4A7FB5">14 дней</div>
+      </div>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>5 Zoom</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Закрытый чат</span>
+      </div>
+      <div class="nv-desc">Перепрошивка денежных установок за 14 дней. Разберитесь, почему деньги не задерживаются.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ 5 живых встреч</span>
+        <span class="nv-feat">✦ Перепрошивка</span>
+        <span class="nv-feat">✦ Закрытый чат</span>
+        <span class="nv-feat">✦ Доступ навсегда</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">5 900 <small>₽</small></div>
+        <a href="https://payform.ru/6haon9d/" target="_blank" class="nv-btn outline">Купить <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TIER 3: Персональная работа -->
-<div class="cmp-tier">
-  <div class="cmp-tier-label" style="color:#C49A52">Персональная работа с Дарьей</div>
-  <div class="cmp-list">
-    <div class="cmp-item">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:var(--sage)"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">Сессия с Дарьей</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(59,122,90,.08);color:var(--sage)">1 на 1</span>60–90 мин · Точечная работа с корнем · Запись навсегда</div>
-        </div>
+<!-- ═══ ПЕРСОНАЛЬНАЯ РАБОТА ═══ -->
+<div class="nav-sec reveal">
+  <div class="nav-sec-head">
+    <div class="nav-sec-icon" style="background:rgba(196,154,82,.08)">✦</div>
+    <div>
+      <div class="nav-sec-title" style="color:#C49A52">Персональная работа с Дарьей</div>
+      <div style="font-size:.7rem;color:var(--text3);margin-top:2px">1 на 1 с Дарьей. Точечная работа с вашим запросом</div>
+    </div>
+  </div>
+
+  <div class="nv-grid-2">
+    <!-- Сессия -->
+    <div class="nv-card c-green">
+      <div class="nv-top">
+        <div class="nv-name">Сессия с Дарьей</div>
+        <div class="nv-badge" style="background:rgba(59,122,90,.08);color:var(--sage)">1 на 1</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">12 500 ₽</div>
-        <a href="https://payform.ru/8da7uRf/" target="_blank" class="cmp-btn outline">Записаться</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>60–90 мин</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>Запись навсегда</span>
+      </div>
+      <div class="nv-desc">Точечная работа с корнем вашего запроса. Не разговор о проблемах — работа с телом, где решение хранится.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ Персональная сессия</span>
+        <span class="nv-feat">✦ Запись навсегда</span>
+        <span class="nv-feat">✦ Инструменты</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">12 500 <small>₽</small></div>
+        <a href="https://payform.ru/8da7uRf/" target="_blank" class="nv-btn outline">Записаться <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
-    <div class="cmp-item vip">
-      <div class="cmp-left">
-        <div class="cmp-dot" style="background:#C49A52"></div>
-        <div class="cmp-info">
-          <div class="cmp-name">VIP-сопровождение</div>
-          <div class="cmp-meta"><span class="cmp-tag" style="background:rgba(196,154,82,.1);color:#C49A52">1 месяц</span>4 сессии + Human Design + все программы + личный чат</div>
-        </div>
+
+    <!-- VIP -->
+    <div class="nv-card vip" style="position:relative">
+      <div class="nv-label" style="background:linear-gradient(135deg,#C49A52,#D4AF6E)">VIP · Максимальный результат</div>
+      <div class="nv-top" style="margin-top:20px">
+        <div class="nv-name">VIP-сопровождение</div>
+        <div class="nv-badge" style="background:rgba(196,154,82,.1);color:#C49A52">1 месяц</div>
       </div>
-      <div class="cmp-right">
-        <div class="cmp-price">80 000 ₽</div>
-        <a href="https://payform.ru/dtaGdlM/" target="_blank" class="cmp-btn gold">Записаться</a>
+      <div class="nv-meta">
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>4 сессии</span>
+        <span class="nv-chip"><svg viewBox="0 0 24 24"><path d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9Z"/></svg>Human Design</span>
+        <span class="nv-chip" style="background:rgba(196,154,82,.08);color:#C49A52;font-weight:700">Все программы</span>
+      </div>
+      <div class="nv-desc">Месяц глубокой индивидуальной работы. Дарья работает лично с вами — с мозгом, паттернами, телом.</div>
+      <div class="nv-features">
+        <span class="nv-feat">✦ 4 сессии 1 на 1</span>
+        <span class="nv-feat">✦ Human Design</span>
+        <span class="nv-feat">✦ Все программы</span>
+        <span class="nv-feat">✦ Личный чат 30 дней</span>
+      </div>
+      <div class="nv-bottom">
+        <div class="nv-price">80 000 <small>₽</small></div>
+        <a href="https://payform.ru/dtaGdlM/" target="_blank" class="nv-btn gold-btn">Записаться <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
 </div>
 
+</div>
 </section>
-
-
 
 
 <!-- RESULTS INFOGRAPHIC -->
